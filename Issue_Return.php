@@ -5,7 +5,7 @@
 /*
 include_once("./database/constants.php");
 if (!isset($_SESSION["userid"])) {
-	header("location:".DOMAIN."/");
+	
 }
 */
 ?>
@@ -27,9 +27,7 @@ if (!isset($_SESSION["userid"])) {
  </head>
 <body>
 <div class="overlay"><div class="loader"></div></div>
-	<!-- Navbar -->
-	<?php include_once("./templates/header.php"); ?>
-	<br/><br/>
+	
 
 	<div class="container">
 		<div class="row">
@@ -43,27 +41,27 @@ if (!isset($_SESSION["userid"])) {
 					  <div  >
 				  			<label class="col-sm-3 col-form-label" align="right">Activity</label>
 				  		
-				  				<input type="radio" name="gender" value="Issue" checked  >Issue
-								  <input type="radio" name="gender" value="Return" style="margin-left:5px">Return
+				  				<input type="radio" name="activity" value="Issue" checked  >Issue
+								  <input type="radio" name="activity" value="Return" style="margin-left:5px">Return
 				  			
 				  		</div>
 						  <p></p>
 				  		<div class="form-group row">
 				  			<label class="col-sm-3 col-form-label" align="right">Date</label>
 				  			<div class="col-sm-6">
-				  				<input type="text" id="order_date" name="order_date" readonly class="form-control form-control-sm" value="<?php echo date("Y-d-m"); ?>">
+				  				<input type="text" id="date" name="date" readonly class="form-control form-control-sm" value="<?php echo date("Y-d-m"); ?>">
 				  			</div>
 				  		</div>	
 				  		<div class="form-group row">
 				  			<label class="col-sm-3 col-form-label" align="right">Registered Roll Number</label>
 				  			<div class="col-sm-6">
-				  				<input type="num" pattern=".*[0-9]" id="cust_name" name="cust_name"class="form-control form-control-sm" placeholder="Enter Roll No." required/>
+				  				<input type="num" pattern=".*[0-9]" id="roll" name="roll"class="form-control form-control-sm" placeholder="Enter Roll No." required/>
 				  			</div>
 				  		</div>
 						  <div class="form-group row">
 				  			<label class="col-sm-3 col-form-label" align="right">Group ID</label>
 				  			<div class="col-sm-6">
-				  				<input type="text" id="cust_name" name="cust_name"class="form-control form-control-sm" placeholder="" readonly required/>
+				  				<input type="text" id="group" name="group"class="form-control form-control-sm" placeholder="" readonly required/>
 				  			</div>
 				  		</div>
 
@@ -98,13 +96,13 @@ if (!isset($_SESSION["userid"])) {
 			
 	
 		                            </tbody>
-		                        </table> <!--Table Ends-->
+		                        </table>
 		                        <center style="padding:10px;">
 		                        	<button id="add" style="width:150px;" class="btn btn-success">Add</button>
 		                        	<button id="remove" style="width:150px;" class="btn btn-danger">Remove</button>
 		                        </center>
-				  			</div> <!--Crad Body Ends-->
-				  		</div> <!-- Order List Crad Ends-->
+				  			</div>
+				  		</div>
 
 				  	
 
