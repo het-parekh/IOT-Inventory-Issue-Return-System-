@@ -1,0 +1,144 @@
+<html>
+    
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>
+            | Create group |
+        </title>
+    </head>
+    
+    <style>
+       .row{
+           
+           margin-left: 250px;
+           margin-right: 250px;
+       }
+       .cols{
+           padding-left: 50px;
+           text-align: center;
+       }
+       .grp{
+          text-align: center; 
+           }
+       .align{
+       margin-top: 50px;
+       }
+       .alig{
+        text-align: center;
+       }
+       .dropbtn {
+  background-color: blue;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: blue;
+}
+.first{
+    text-align: center;
+    margin-top: 150px;
+}
+    </style>
+    
+    <body>
+        <!-- <div class="first"> -->
+            <!-- <p>Select Department : </p> -->
+            <!-- <div class="dropdown"> -->
+                <!-- <button class="dropbtn">Department</button> -->
+                <!-- <div class="dropdown-content"> -->
+                  <!-- <a href="groupform.html">IT</a> -->
+                  <!-- <a href="otherdept.html">Other</a> -->
+                <!-- </div> -->
+              <!-- </div> -->
+        <!-- </div> -->
+        <form>
+
+           <div class="align">
+            <div class="row">
+                <p>Student 1 : </p>
+                <div class="col">
+                <input type="text" class="form-control" placeholder="Name" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Roll number" required>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+                <p>Student 2 : </p>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Name" required>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Roll number" required>
+                </div>
+              </div>
+            <br>
+              <div class="row">
+                <p>Student 3 : </p>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Name" required>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Roll number" required>
+                </div>
+              </div>
+              <br>
+            <div class="row">
+                <p>Student 4 : </p>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Name" >
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Roll number" >
+                </div>
+              </div>
+            </div>
+            <br>
+            
+          </form>
+          <div class="grp">
+          <div class="row">
+                <p>Group ID : </p>
+                <div class="cols">
+                <input class="form-control" type="text" placeholder="Group ID" required>
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="alig">
+        <button type="submit" class="btn btn-primary">Create group</button>
+    </div>
+    </body>
+</html>
