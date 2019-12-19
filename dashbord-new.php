@@ -18,6 +18,17 @@ include_once("./database/constants.php");
  	<script type="text/javascript" src="./js/main.js"></script>
  </head>
 <body>
+	<style>
+		body{
+			background-image: url(2.jpg);
+		}
+		.card-body:hover {
+ 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
+			}
+		.jumbotron:hover {
+ 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
+			}
+		</style>
 	<!-- Navbar -->
 	<?php include_once("./templates/header.php"); ?>
 	<br/><br/>
@@ -27,18 +38,18 @@ include_once("./database/constants.php");
 				<div class="card mx-auto">
 				  <img class="card-img-top mx-auto" style="width:60%;" src="user.png" alt="Card image cap">
 				  <div class="card-body">
-				    <h4 class="card-title">Profile Info</h4>
+				    <h4 class="card-title"><b>Profile Info</b></h4>
 				    <p class="card-text"><i class="fa fa-user">&nbsp;</i>Vishal/Raza</p>
 				    <p class="card-text"><i class="fa fa-user">&nbsp;</i>Admin</p>
 				    <!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
-				    <a href="#" class="btn btn-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
-					<a href="#" class="btn btn-danger"><!-- <i class="fa fa-edit"> -->&nbsp;<!-- </i> -->Logout</a>
+				    <a href="group.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
+					<a href="logout.php" class="btn btn-outline-danger"><!-- <i class="fa fa-edit"> -->&nbsp;<!-- </i> -->Logout</a>
 				  </div>
 				</div>
 			</div>
 			<div class="col-md-8">
 				<div class="jumbotron" style="width:100%;height:100%;">
-					<h1>Welcome Admin,</h1>
+					<h1 align="center"><b>Welcome Admin</b></h1></br>
 					<div class="row">
 						<div class="col-sm-6">
 							<iframe src="http://free.timeanddate.com/clock/i616j2aa/n1993/szw160/szh160/cf100/hnce1ead6" frameborder="0" width="160" height="160"></iframe>
@@ -46,10 +57,10 @@ include_once("./database/constants.php");
 						</div>
 						<div class="col-sm-6">
 							<div class="card">
-						      <div class="card-body">
-						        <h4 class="card-title">New Issue/Return</h4>
+						      <div class="card-body" border-radius:24px>
+						        <h4 class="card-title"><b>New Issue/Return</b></h4>
 						        <p class="card-text">Here you can create new issues/returns</p>
-						        <a href="new_order.php" class="btn btn-primary">New Issue</a>
+						        <a href="new_order.php" class="btn btn-outline-primary">New Issue</a>
 						      </div>
 						    </div>
 						</div>
@@ -64,30 +75,30 @@ include_once("./database/constants.php");
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card">
-						<div class="card-body">
-						<h4 class="card-title">Department</h4>
+						<div class="card-body" border-radius:24px>
+						<h4 class="card-title"><b>Department</b></h4>
 						<p class="card-text">Here you can manage student of which department</p>
-						<a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-primary">I.T</a>
-						<a href="manage_categories.php" class="btn btn-primary">Others</a>
+						<a href="dept.php" class="btn btn-outline-primary">I.T</a>
+						<a href="manage_dept.php" class="btn btn-outline-primary">Others</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="card">
-						<div class="card-body">
-						<h4 class="card-title">Log</h4>
+						<div class="card-body" border-radius:24px>
+						<h4 class="card-title"><b>Log</b></h4>
 						<p class="card-text">Here you can manage changes made to database</p>
-						<a href="#" data-toggle="modal" data-target="#form_brand" class="btn btn-primary">View</a>
+						<a href="log.php" data-target="#form_brand" class="btn btn-outline-primary">View</a>
 						<!-- <a href="manage_brand.php" class="btn btn-primary">Manage</a> -->
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="card">
-						<div class="card-body">
-						<h4 class="card-title">Components</h4>
+						<div class="card-body" border-radius:24px>
+						<h4 class="card-title"><b>Components</b></h4>
 						<p class="card-text">Here you can view components</p>
-						<a href="#" data-toggle="modal" data-target="#form_products" class="btn btn-primary">View</a>
+						<a href="comp.php" data-target="#form_products" class="btn btn-outline-primary">View</a>
 						<!-- <a href="manage_product.php" class="btn btn-primary">Manage</a> -->
 					</div>
 				</div>
