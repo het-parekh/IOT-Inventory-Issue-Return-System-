@@ -11,19 +11,26 @@ if (!isset($_SESSION["userid"])) {
 ?>
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Inventory Management System</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- 	<script type="text/javascript" src="./js/order.js"></script>
+	 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	 <link rel="stylesheet" href="./css/Issue_Return.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	 <script type="text/javascript" src="./js/order.js"></script>
+	 <script type="text/javascript" src="./js/Issue_return.js"></script>
+
  </head>
 <body>
 <div class="overlay"><div class="loader"></div></div>
@@ -39,31 +46,34 @@ if (!isset($_SESSION["userid"])) {
 				   	<h4>Issue/Return Component(s)</h4>
 				  </div>
 				  <div class="card-body">
-				  	<form id="get_order_data" onsubmit="return false">
-					  <div  >
-				  			<label class="col-sm-3 col-form-label" align="right">Activity</label>
+				  	<form id="form1" method="POST" >
+					  <div >
+				  			<label class="col-sm-3 col-form-label" align="right">Activity </label>
 				  		
-				  				<input type="radio" name="gender" value="Issue" checked  >Issue
-								  <input type="radio" name="gender" value="Return" style="margin-left:5px">Return
+				  				<input type="radio" name="check" value="Issue"   >Issue
+								  <input type="radio" name="check" value="Return" style="margin-left:5px">Return
 				  			
 				  		</div>
 						  <p></p>
+						  <div id='all'>
 				  		<div class="form-group row">
 				  			<label class="col-sm-3 col-form-label" align="right">Date</label>
 				  			<div class="col-sm-6">
-				  				<input type="text" id="order_date" name="order_date" readonly class="form-control form-control-sm" value="<?php echo date("Y-d-m"); ?>">
+				  				<input type="text" id="date" name="date" readonly class="form-control form-control-sm" value="<?php echo date("Y-d-m"); ?>">
 				  			</div>
 				  		</div>	
 				  		<div class="form-group row">
 				  			<label class="col-sm-3 col-form-label" align="right">Registered Roll Number</label>
 				  			<div class="col-sm-6">
-				  				<input type="num" pattern=".*[0-9]" id="cust_name" name="cust_name"class="form-control form-control-sm" placeholder="Enter Roll No." required/>
-				  			</div>
+				  				<input type="text" pattern=".*[0-9]" id="roll"  name="roll"class="form-control form-control-sm" placeholder="Enter Roll No." required/>
+
+									  
+							 </div>
 				  		</div>
 						  <div class="form-group row">
 				  			<label class="col-sm-3 col-form-label" align="right">Group ID</label>
 				  			<div class="col-sm-6">
-				  				<input type="text" id="cust_name" name="cust_name"class="form-control form-control-sm" placeholder="" readonly required/>
+				  				<input type="text" id="group" name="group"class="form-control form-control-sm" placeholder="" readonly required/>
 				  			</div>
 				  		</div>
 
@@ -75,8 +85,8 @@ if (!isset($_SESSION["userid"])) {
 		                            <thead>
 		                              <tr>
 		                                <th>#</th>
-		                                <th style="text-align:center;">Component ID</th>
 		                                <th style="text-align:center;">Component Name</th>
+		                                <th style="text-align:center;">Component ID</th>
 		                                <th style="text-align:center;">Quantity</th>
 		                                <th style="text-align:center;">Available Quantity</th>
 		                              </tr>
@@ -87,12 +97,11 @@ if (!isset($_SESSION["userid"])) {
 			
 			<td><b id="number">1</b></td>
 		    <td>
-		        <select name="pid[]" class="form-control form-control-sm" required>
-		            <option></option>
-		        </select>
+		        <input name="pid[]" id="cname" type="text" class="form-control form-control-sm" spellcheck="false" required>
+		           
 		    </td>
 		    <td><input name="tqty[]" readonly type="text" class="form-control form-control-sm"></td>   
-		    <td><input name="qty[]" type="text" class="form-control form-control-sm" required></td>
+		    <td><input name="qty[]" type="number" pattern=".*[0-9]" class="form-control form-control-sm" required></td>
 		    <td><input name="price[]" type="text" class="form-control form-control-sm" readonly></td>
 		    
 			
@@ -121,8 +130,12 @@ if (!isset($_SESSION["userid"])) {
 			</div>
 		</div>
 	</div>
+	</div>
+	<script>
 	
+         
+	 </script>
 
-
+	
 </body>
 </html>
