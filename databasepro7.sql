@@ -26,6 +26,10 @@ CREATE TABLE `issue` (
 CREATE TABLE `Group` (
   `Rollno` int,
   `Group_id` varchar(255)
-);
-
+)
+create table 'login_details'(
+ username varchar(255),
+ password varchar(255)
+)
+insert into login_details values('vishal01','vishal'),('raza02','raza);
 ALTER TABLE `issue` ADD FOREIGN KEY (`c_ID`) REFERENCES `Students` (`Group`);
