@@ -42,7 +42,7 @@ echo $name;
 $con=mysqli_connect("localhost","akash","","iot_inventory");
 if($con){
     echo "connection established";
-    if(mysqli_query($con,"SELECT * FROM ulogin_details WHERE user_name='$name'")){
+    if(mysqli_query($con,"SELECT * FROM login_details WHERE user_name='$name'")){
         if(mysqli_num_row($data)>0){
         $row=$data->fetch_assoc();
         $pw=$row['password'];
