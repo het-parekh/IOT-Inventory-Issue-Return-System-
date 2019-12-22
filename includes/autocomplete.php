@@ -1,7 +1,7 @@
 <?php
 
 $term = $_GET[ "term" ];
-$con=mysqli_connect("localhost","root","root12345","iot_inv_management");
+$con=mysqli_connect("localhost","root","root12345","inventory");
 if($con)
 {
     
