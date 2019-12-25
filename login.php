@@ -19,6 +19,19 @@ if (isset($_SESSION["userid"])) {
  	<script type="text/javascript" rel="stylesheet" src="./js/main.js"></script>
  </head>
 <body>
+	<style>
+	body{
+		overflow:hidden;
+		background-color:rgb(245,245,245);
+	}
+	.card-header{
+		background-color:rgb(200,200,200);
+
+	}
+	.card-body:hover {
+ 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
+			}
+	</style>
 <div class="overlay"><div class="loader"></div></div>
 	<!-- Navbar -->
     <?php 
