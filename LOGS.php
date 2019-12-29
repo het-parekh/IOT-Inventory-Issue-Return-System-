@@ -14,7 +14,7 @@
         <br />
 			<br />
 			<br />
-			<h2 class="" align="center">COMPONENTS LOGS</h2><br />
+			<h2 class="" align="center">COMPONENT'S LOGS</h2><br />
 <?php 
 session_start();
 // if(isset)??
@@ -33,6 +33,7 @@ if($con){
                         <tr>
                         <th>issue date</th>
                         <th>LOG</th>
+                        <th>QUANTITY ISSUED</th>
                         </tr>';
         while($row=mysqli_fetch_array($data)){
             if($i<21){
@@ -40,6 +41,7 @@ if($con){
                     <tr>
                     <td>'.$row['issue_date'].'</td>
                     <td>'.$row['logs']." ".$row['comp_name'].'</td>
+                    <td>'.$row['quantity'].'</td>
                     <tr>';
                     $i++;
             }
