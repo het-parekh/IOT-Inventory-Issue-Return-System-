@@ -1,12 +1,52 @@
-
 .ui-autocomplete
 {
     
-    max-height:200px;
-    max-width: 200px;
+    max-height:150px;
+    max-width: 13%;
     overflow-y: auto; overflow-x: hidden;
+    background-color: aliceblue;
+    list-style: none;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;   
+}
+.ui-helper-hidden-accessible{
+    display:none !important;
+}
+.ui-state-active {
+    background-color:  #1aa3ff;
+    
+    color:white;
+}
+.req_qty
+{
+    min-width:"200px";
+    
+}
+.highlight
+{
+    background-color: #ffffb3;
+    border-style:solid;border-color:white;
 }
 
+.r_row
+{
+    background-color:#ccffff;border-style:solid;border-color:white;
+}
 
+.invalid {
+    background:url("cancel.png") no-repeat 0 50%;
+    padding-left:22px;
+    line-height:22px;
+	color:red;
+	
+}
 
+.status
+{
+    background:url("checkmark-16.ico") no-repeat 0 50%;
+    padding-left:22px;
+    color:green;background-color:#80ff80;border-style:solid;border-color:#00e600;
 
+}
