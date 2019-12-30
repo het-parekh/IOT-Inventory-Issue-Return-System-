@@ -71,12 +71,13 @@ if (isset($_SESSION["userid"])) {
 			  	<small id="p_error" class="form-text text-muted"></small>
 			  </div>
 			  <button type="submit" class="btn btn-outline-dark"><i class="fa fa-lock">&nbsp;</i>Login</button>
-			</form>
-		    
-		  <!-- </div>
+			
+		 </div>
 		  <div class="card-footer"><a href="#">Forget Password ?</a></div>
-		</div> -->
+		</div> 
 	</div>
+		</form>
+		    
 
 </body>
 </html>
