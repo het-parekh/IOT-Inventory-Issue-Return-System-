@@ -1,93 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
-<style>
-body{
-    margin:0;
-    padding:0;
-    background:#34495e;
-}
-.card{
-    position: absolute;
-    font-family:'Times New Roman', Times, serif;
-    font-weight: bold;
-    width:350px;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background:#191919;
-}
-.card input[type="password"],.card input[type="email"]{
-    border:0;
-    background:none;
-    display:block;
-    margin:10px auto;
-    text-align:center;
-    border:2px solid #3498db;
-    padding:10px 10px;
-    width:200px;
-    outline:none;
-    color:white;
-    border-radius:24px;
-    transition: 0.25s;
-}
-.card input[type="email"]:focus,.card input[type="password"]:focus{
-width:280px;
-border-color:#2ecc71;
-}
-.btn {
-    border:0;
-    background:none;
-    display:block;
-    margin:20px auto;
-    text-align:center;
-    border:2px solid #2ecc71;
-    padding:10px 35px;
-    outline:none;
-    color:white;
-    border-radius:24px;
-    transition: 0.25s;
-    cursor:pointer;
-}
-.btn:hover{
-background:#2ecc71;
-}
-
-
-</style>
+<title> Reset </title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <body>
-        <p id="typing"></p>
-    <div class="row">
-     
-        <div class="container">
-            <form action="passwordreset.php" method="post">
-            <div class="card" >
-                <div><p id="message"style="color:white;text-align:center;margin-top:10px;"></p></div>
-                <div class="card-title" style="color:white;text-align:center;margin-top:40px;"><h2>RESET PASSWORD</h2></div>
-                <div class="card-body">
-                    <div>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email">
-                  <small style="color:red;text-align:center"><p id="email"></p></small>
-                    <Button class="btn" type="submit" name="reset">
-                        Reset
-                    </Button>
+<style>
+.form-gap {
+    padding-top: 70px;
+}
+</style>
+<div class="form-gap"></div>
+<div class="container">
+<form action="passwordreset.php" method="post">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <h3><i class="fa fa-lock fa-4x"></i></h3>
+                  <h2 class="text-center">Forgot Password?</h2>
+                  <p>You can reset your password here.</p>
+                  <div class="panel-body">
+    
+                    <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+    
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                          <input id="email" name="email" placeholder="email address" class="form-control"  type="email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
+                      </div>
+                      
+                      <input type="hidden" class="hide" name="token" id="token" value=""> 
+                    </form>
+    
+                  </div>
                 </div>
-
+              </div>
             </div>
-            </form>
-        </div>
-    </div>
-    <script>
-
-    </script>
+          </div>
+	</div>
+</div>
 </body>
 </html>
 <?php
