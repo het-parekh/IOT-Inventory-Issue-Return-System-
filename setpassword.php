@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Set Password</title>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
@@ -13,7 +13,8 @@
 body{
     margin:0;
     padding:0;
-    background:#34495e;
+    background-color:rgb(245,245,245);
+    /* background:#34495e; */
 }
 .card{
     position: absolute;
@@ -23,7 +24,7 @@ body{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    background:#191919;
+    background:rgb(200,200,200);
 }
 .card input[type="password"],.card input[type="email"]{
     border:0;
@@ -31,17 +32,18 @@ body{
     display:block;
     margin:10px auto;
     text-align:center;
-    border:2px solid #3498db;
+    border:2px solid black;
     padding:10px 10px;
     width:200px;
     outline:none;
-    color:white;
+    color:black;
     border-radius:24px;
     transition: 0.25s;
 }
 .card input[type="email"]:focus,.card input[type="password"]:focus{
 width:280px;
-border-color:#2ecc71;
+border-color:black;
+/* border-color:#2ecc71; */
 }
 .btn {
     border:0;
@@ -49,32 +51,35 @@ border-color:#2ecc71;
     display:block;
     margin:20px auto;
     text-align:center;
-    border:2px solid #2ecc71;
+    border:2px solid black;
     padding:10px 35px;
     outline:none;
-    color:white;
+    color:black;
     border-radius:24px;
     transition: 0.25s;
     cursor:pointer;
 }
-.btn:hover{
+.card:hover {
+ 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
+			}
+/* .btn:hover{
 background:#2ecc71;
-}
+} */
 </style>
 <body>
     <div class="row">
        <div class="container">
             <form action="setpassword.php" method="post">
             <div class="card" >
-                <div><p id="message"style="color:white;text-align:center;margin-top:10px;"></p></div>
-                <div class="card-title" style="color:white;text-align:center;margin-top:40px;"><h2>RESET PASSWORD</h2></div>
+                <div><p id="message"style="color:black;text-align:center;margin-top:10px;"></p></div>
+                <div class="card-title" style="color:black;text-align:center;margin-top:40px;"><h2>RESET PASSWORD</h2></div>
                 <div class="card-body">
                     <div>
                     <input type="password" class="form-control"  name="newpassword" placeholder="New password">
                     <div style="color:red;text-align:center"><p id='password'></p></div>
                     <input type="password" class="form-control" name="confirmpassword" placeholder=" confirm password">
                     <div style="color:red;text-align:center"><p id='confirmpassword'></p></div>
-                    <Button class="btn" type="submit" name="reset">
+                    <button class="btn btn-outline-dark" type="button" name="reset">
                         Reset
                     </Button>
                 </div>
