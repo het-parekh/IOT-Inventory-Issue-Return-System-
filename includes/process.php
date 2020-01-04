@@ -1,4 +1,5 @@
 <?php
+//btn(Submit):return
 session_start();
 
 if(isset($_POST["table"]) && isset($_POST["qty"])){
@@ -21,18 +22,19 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 				$grpid=$_POST["group2"];
 				$rollid=$_POST["roll2"];
 				$dept_name=$_POST["dept2"];
-				$i=0;
+				$s_year2=$_POST["year2"];
+
 
 				if(!empty($data)){
 				foreach(array_combine($data, $qty) as $data => $qty)
 				{
-					$i=$i+$qty;
+					//$i=$i+$qty;
 					if($dept_name=="IT"){
 						$get=mysqli_query($con,"SELECT quantity_taken from issue where c_ID='$data' and g_id='$grpid' ORDER BY Rollno LIMIT 1");
 					}
 					else
 					{
-						$get=mysqli_query($con,"SELECT quantity_taken from issue where c_ID='$data' and Rollno='$rollid' and Dept_name='$dept'");
+						$get=mysqli_query($con,"SELECT quantity_taken from issue where c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
 					}
 					$get1=mysqli_fetch_assoc($get);
 					$get_info=$get1["quantity_taken"];
@@ -43,7 +45,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 						}
 						else
 						{
-							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept'");
+							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
 						}
 						
 						
@@ -55,7 +57,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 						}
 						else
 						{
-							$remove=mysqli_query($con,"UPDATE issue set quantity_taken=quantity_taken-$qty WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept'");
+							$remove=mysqli_query($con,"UPDATE issue set quantity_taken=quantity_taken-$qty WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
 						}
 					}
 					$add=mysqli_query($con,"UPDATE components SET Quantity=Quantity+$qty WHERE C_ID='$data'");
@@ -84,6 +86,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 
 
 <?php
+//btn(Submit):issue
 
 	if(isset($_POST["c_id1"]) && isset($_POST["req_qty1"]) && isset($_POST["roll1"]) && isset($_POST["dept1"]))
 	{
@@ -93,6 +96,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 			$roll=$_POST["roll1"];
 			$dept=$_POST["dept1"];
 			$grp=$_POST["grp1"];
+			$s_year=$_POST["year1"];
 			$data1 = json_decode($_POST["c_id1"]);
 			$data2 = json_decode($_POST["req_qty1"]);
 			$date=date("Y/m/d");
@@ -133,7 +137,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 					}
 					if(mysqli_num_rows($exists)==0)
 					{
-						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll','$grp','$data1')");
+						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll','$grp','$s_year','$data1')");
 						
 					}
 					$sql2=mysqli_query($con,"UPDATE components set Quantity=Quantity-$data2 where C_ID='$data1'");
@@ -146,15 +150,15 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 				foreach(array_combine($data1, $data2) as $data1 => $data2)
 				{
 					$i=$i+$data2;
-					$exists=mysqli_query($con,"SELECT quantity_taken from issue WHERE c_ID='$data1' and Rollno='$roll' and Dept_name='$dept'");
+					$exists=mysqli_query($con,"SELECT quantity_taken from issue WHERE c_ID='$data1' and Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
 
 					if(mysqli_num_rows($exists)>0)
 					{
-						$action=mysqli_query($con,"UPDATE issue SET quantity_taken=quantity_taken+$data2 WHERE c_ID='$data1' and Rollno='$roll' and Dept_name='$dept'");
+						$action=mysqli_query($con,"UPDATE issue SET quantity_taken=quantity_taken+$data2 WHERE c_ID='$data1' and Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
 					}
 					if(mysqli_num_rows($exists)==0)
 					{
-						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll',NULL,'$data1')");
+						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll',NULL,'$s_year','$data1')");
 					}
 					$sql2=mysqli_query($con,"UPDATE components set Quantity=Quantity-$data2 where C_ID='$data1'");
 				}

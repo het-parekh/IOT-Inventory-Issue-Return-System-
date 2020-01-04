@@ -1,18 +1,20 @@
 <?php
+//btn(GO):return
 
-if(((isset($_POST['grop'])) || (isset($_POST['roll']))) && isset($_POST['dept']) )
+if(((isset($_POST['group'])) || (isset($_POST['roll']))) && isset($_POST['dept']) && isset($_POST['s_year']))
 {
-	$info=$_POST["grop"];
+	$info=$_POST["group"];
 	$roll=$_POST["roll"];
 	$dept=$_POST["dept"];
+	$s_year=$_POST["s_year"];
 
 	$con=mysqli_connect("localhost","root","root12345","inventory");
 	if($con)
 	{
-		file_put_contents("test.txt", "");
+		//file_put_contents("test.txt", "");
 		if($dept=="IT"){
 
-			$data=mysqli_query($con,"SELECT g_id FROM issue WHERE g_id='$info' and Dept_name='$dept'");	
+			$data=mysqli_query($con,"SELECT g_id FROM issue WHERE g_id='$info' and Dept_name='$dept' and i_year='$s_year'");	
 			if(mysqli_num_rows($data)>0){
 
 				$temp= mysqli_query($con,"SELECT c_ID FROM issue WHERE g_id='$info'");
@@ -59,9 +61,9 @@ if(((isset($_POST['grop'])) || (isset($_POST['roll']))) && isset($_POST['dept'])
 		else 
 		{
 			
-			$data=mysqli_query($con,"SELECT Rollno FROM issue WHERE Rollno='$roll' and Dept_name='$dept'");
+			$data=mysqli_query($con,"SELECT Rollno FROM issue WHERE Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
 			if(mysqli_num_rows($data)>0){
-				$temp= mysqli_query($con ,"SELECT c_ID FROM issue WHERE Rollno='$roll' and Dept_name='$dept'");
+				$temp= mysqli_query($con ,"SELECT c_ID FROM issue WHERE Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
 				$info1=array();
 				$info2=array();
 				$info3=array();

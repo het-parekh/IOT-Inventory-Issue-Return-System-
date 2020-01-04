@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2019 at 07:32 PM
+-- Generation Time: Jan 04, 2020 at 09:52 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -130,6 +130,7 @@ CREATE TABLE `issue` (
   `quantity_taken` int(11) NOT NULL,
   `Rollno` int(11) NOT NULL,
   `g_id` varchar(255) DEFAULT NULL,
+  `i_year` varchar(255) NOT NULL,
   `c_ID` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -143,21 +144,23 @@ CREATE TABLE `students` (
   `Rollno` int(11) NOT NULL,
   `g_id` varchar(25) DEFAULT NULL,
   `S_name` varchar(255) NOT NULL,
-  `Dept_name` varchar(255) NOT NULL
+  `Dept_name` varchar(255) NOT NULL,
+  `s_year` varchar(255) NOT NULL DEFAULT 'TE'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`Rollno`, `g_id`, `S_name`, `Dept_name`) VALUES
-(1, 'B1', 'YO', 'IT'),
-(2, 'C1', 'Rak', 'IT'),
-(3, 'B1', 'LOL', 'IT'),
-(3, NULL, 'MAn', 'CS'),
-(16, NULL, 'Gam', 'EXTC'),
-(16, 'B1', 'yo', 'IT'),
-(16, NULL, 'tar', 'CS');
+INSERT INTO `students` (`Rollno`, `g_id`, `S_name`, `Dept_name`, `s_year`) VALUES
+(1, 'B1', 'YO', 'IT', 'TE'),
+(2, 'C1', 'Rak', 'IT', 'TE'),
+(3, 'B1', 'LOL', 'IT', 'TE'),
+(3, NULL, 'MAn', 'CS', 'TE'),
+(16, NULL, 'Gam', 'EXTC', 'TE'),
+(16, 'B4', 'yo', 'IT', 'TE'),
+(16, NULL, 'tar', 'CS', 'TE'),
+(31, 'B4', 'Get', 'IT', 'TE');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

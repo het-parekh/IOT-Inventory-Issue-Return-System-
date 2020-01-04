@@ -21,7 +21,7 @@
 }
 .req_qty
 {
-    min-width:"200px";
+    min-width:"50px";
     
 }
 .highlight
@@ -43,6 +43,7 @@
 	
 }
 
+/*
 .status
 {
     background:url("checkmark-16.ico") no-repeat 0 50%;
@@ -50,3 +51,4 @@
     color:green;background-color:#80ff80;border-style:solid;border-color:#00e600;
 
 }
+*/

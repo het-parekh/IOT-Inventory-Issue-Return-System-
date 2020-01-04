@@ -70,14 +70,21 @@ if (!isset($_SESSION["userid"])) {
                                 </div>
 
                                 <div id="drop"> 
-									<select class="selectpicker" data-style="btn-info" align="right"  id="dept">
+                                <select class="selectpicker" data-style="btn-info" multiple  id="dropbox" >
 
-                                    <option value="IT">IT</option>
-                                    <option value="CS">CS</option>
-                                    <option value="EXTC">EXTC</option>
-                                    <option value="ETRX">ETRX</option>
+                                    <optgroup label="Year" data-max-options="1"  id="s_year">
+                                       
+                                        <option selected>TE</option>
+                                        <option>BE</option>
+                                    </optgroup>
+                                    <optgroup label="Department" data-max-options="1"  id="dept">
+                                        <option value="IT" selected>IT</option>
+                                        <option value="CS">CS</option>
+                                        <option value="EXTC">EXTC</option>
+                                        <option value="ETRX">ETRX</option>
+                                    </optgroup>
 
-								</select>
+                                </select>
 								</div>
                             
                             </div>

@@ -20,15 +20,16 @@ $(document).ready(function(){
 			
 		if($(this).val()=="Return")
 		{
-			dept=$("#dept").children("option").filter(":selected").text().trim();
-			if(dept=="IT"){
+			dept=$("#dept").children("option").filter(":selected").text();
+			if(dept=="IT" ){
 			$("#rollgrp").hide();
 			$("#grp").prop('required',true);
 			$("#grp").val("");
 			$("#roll").prop('required',false);
 			$("#enter_grp").show();
 		
-			}else{
+			}
+			else{
 				$("#grp").prop('required',false);
 			$("#roll").prop('required',true);
 			$("#roll").val("");
@@ -45,11 +46,13 @@ $(document).ready(function(){
 		
 		});
 	
-	$("#dept").change(function(){
+	$("#dropbox").change(function(){
 	
 
 		var radio=$("input[name=check]:checked").val();
-		if($(this).val()=="IT" && radio=="Return" )
+		var dept=$("#dept").children("option").filter(":selected").text().trim();
+		
+		if(dept=="IT" && radio=="Return" )
 		{
 			$("#rollgrp").hide();
 			$("#grp").prop('required',true);
@@ -104,7 +107,7 @@ $(document).ready(function(){
 	var n=0;
 	addNewRow();
 	function addNewRow(){
-		var newRow='<tr class="c_row"><td>'+(++n)+'</td><td><input  spellcheck="false" type="text" required class="form-control form-control-sm c_name"></td><td><input readonly type="text"  class="form-control form-control-sm c_id"></td><td><center><input min="0" style="width:100px" type="number" name="reqqty" required class="form-control form-control-sm req_qty"></center></td><td><input type="text" readonly class="form-control form-control-sm avail_qty"></td></tr>';
+		var newRow='<tr class="c_row"><td>'+(++n)+'</td><td style="min-width:10px"><input  spellcheck="false" type="text" required class="form-control form-control-sm c_name"></td><td style="min-width:20px;"><input  readonly type="text"  class="form-control form-control-sm c_id"></td><td style="width:195px"><center><input min="0"  type="number" name="reqqty" required class="form-control form-control-sm req_qty"></center></td><td ><input type="text" readonly class="form-control form-control-sm avail_qty"></td></tr>';
 		$('#issue_table').append(newRow);
 		auto_complete2();
 		max_min_qty();	
@@ -113,7 +116,7 @@ $(document).ready(function(){
 	
 	var dept=$("#dept").children("option").filter(":selected").text().trim();
 	var get_dept;
-		
+	var get_year;	
 			$(".go").click(function(){
 				
 				
@@ -125,7 +128,7 @@ $(document).ready(function(){
 					if (radio=="Issue")
 					{
 						get_dept=$("#dept").children("option").filter(":selected").text().trim();
-
+						get_year=$("#s_year").children("option").filter(":selected").text().trim();
 						get_student();
 						if(get_dept!="IT")
 						{
@@ -140,6 +143,7 @@ $(document).ready(function(){
 					}
 					else if(radio=="Return")
 					{
+						get_year=$("#s_year").children("option").filter(":selected").text().trim();
 						get_dept=$("#dept").children("option").filter(":selected").text().trim();
 						transfer();
 						
@@ -155,10 +159,11 @@ $(document).ready(function(){
 			$("#statusp").removeClass("status");
 			var i_dept=$("#dept").children("option").filter(":selected").text();
 			var i_roll=$(".roll").val();
+			var i_year=$("#s_year").children("option").filter(":selected").text();
 			$.ajax({
 				url: DOMAIN+"/includes/send_details.php",
 				method: "POST",
-				data: {issueroll:i_roll,issuedept:i_dept},
+				data: {issueroll:i_roll,issuedept:i_dept,issueyear:i_year},
 				success: function(data){
 					if(data=="error")
 					{
@@ -178,7 +183,7 @@ $(document).ready(function(){
 						$(".go").hide();
 						$("input[name=check]").prop('disabled', true);
 						
-						$('#drop').replaceWith('<input type="text" style="background-color:lightgrey;text-align:center"readonly value='+$("#dept").val()+'>');
+						$('#drop').replaceWith('<input type="text" style="background-color:lightgrey;text-align:center"readonly value='+i_year+'-'+i_dept+'>');
 						$('#submit1').replaceWith($('#submit2'));
 						$("#roll").prop('readonly',true);
 						var item=JSON.parse(data);
@@ -194,12 +199,12 @@ $(document).ready(function(){
 			var ajxgrp=$("#grp").val();
 			var ajxdept=$("#dept").children("option").filter(":selected").text();
 			var ajxroll=$("#roll").val();
-			
+			var ajxyear=$("#s_year").children("option").filter(":selected").text();;
 			$.ajax({
 
 				url : DOMAIN+"/includes/get_details.php",
 				method : "POST",
-				data : {grop:ajxgrp,dept:ajxdept,roll:ajxroll},
+				data : {group:ajxgrp,dept:ajxdept,roll:ajxroll,s_year:ajxyear},
 				success : function(data){
 					
 					if(data==1)
@@ -228,7 +233,7 @@ $(document).ready(function(){
 						$(".go").hide();
 						$("input[name=check]").prop('disabled', true);
 						$('#submit2').replaceWith($('#submit1'));
-						$('#drop').replaceWith('<input type="text" id="replace_drop" style="background-color:lightgrey;text-align:center"readonly value='+$("#dept").val()+'>');
+						$('#drop').replaceWith('<input type="text" id="replace_drop" style="background-color:lightgrey;text-align:center"readonly value='+ajxyear+'-'+ajxdept+'>');
 						$("#grp").prop('readonly',true);
 						$("#roll").prop('readonly',true);
 					var item=JSON.parse(data);
@@ -354,11 +359,12 @@ $(document).ready(function(){
 		{
 			var roll=$("#roll").val();
 			var cur_dept=get_dept;
+			var cur_year=get_year;
 			var grp=$("#groupid").val();
 			$.ajax({
 				method: "POST",
 				url: DOMAIN+"/includes/process.php",
-				data: {c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp},
+				data: {c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp,year1:cur_year},
 				success: function(msg){
 					if(msg==10)
 					{	
@@ -367,6 +373,7 @@ $(document).ready(function(){
 					}
 					else if(msg==3)
 					{
+						//do nothing
 						issueData["c_id"]=[];
 		 				issueData["req_qty"]=[];
 					}
@@ -378,7 +385,6 @@ $(document).ready(function(){
 		 				issueData["req_qty"]=[];
 					}
 					else{
-						alert(msg);
 						location.href="Issue_and_Return.php" ;
 						
 					}
@@ -393,11 +399,12 @@ $(document).ready(function(){
 			var roll=$("#roll").val();
 			var group=$("#grp").val();
 			var dept=get_dept;
+			var year=get_year;
 
 			$.ajax({
 				method: "POST",
 				url: DOMAIN+"/includes/process.php",
-				data: {table:JSON.stringify(TableData.id),qty:JSON.stringify(TableData.qty),roll2:roll,group2:group,dept2:dept},
+				data: {table:JSON.stringify(TableData.id),qty:JSON.stringify(TableData.qty),roll2:roll,group2:group,dept2:dept,year2:year},
 				success: function(msg){
 				
 					if(msg==1)
