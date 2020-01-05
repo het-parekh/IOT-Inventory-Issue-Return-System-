@@ -1,0 +1,318 @@
+<html>
+    
+    <head>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        <title>
+            | Create group |
+        </title>
+    </head>
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Raleway:200,500,700,800);
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  font-weight: 500;
+  font-size: 1.05em;
+  font-family: 'Raleway', Arial, sans-serif;
+}
+
+#container {
+  position: absolute;
+  width: 710px;
+  height: 5em;
+  left: 50%;
+  top: 50%;
+  margin-left: -355px;
+  margin-top: -2.5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.input {
+  position: relative;
+  margin: 1em;
+  width: calc(50% - 2em);
+  height: 80px;
+}
+
+.message {
+  width: calc(100% - 2em);
+  height: 80px;
+}
+
+textarea {
+  border: none;
+  resize: none;
+}
+
+.input__field {
+  position: absolute;
+  margin: 0.8em 0;
+  padding: 0.4em;
+  width: 100%;
+  height: calc(100% - 1.6em);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: whitesmoke;
+  font-size: 1.20em;
+  font-weight: bold;
+  -webkit-appearance: none;/* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+  outline: none;
+}
+
+.input__label {
+  position: absolute;
+  padding: 0 1em;
+  margin: 1.2em 0;
+  width: 100%;
+  height: calc(100% - 2.4em);
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 70.25%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input__label-content {
+  position: relative;
+  display: block;
+  padding: 1.5em 0;
+  width: 100%;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.input__label::before,
+.input__label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: whitesmoke;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.input__label::before {
+  top: 0;
+}
+
+.input__label::after {
+  bottom: 0;
+}
+
+.input__field:focus + .input__label .input__label-content,
+.input--filled .input__label-content {
+  -webkit-transform: translate3d(0, -90%, 0);
+  transform: translate3d(0, -90%, 0);
+}
+
+.input__field:focus + .input__label::before,
+.input--filled .input__label::before {
+  -webkit-transform: translate3d(0, -0.5em, 0);
+  transform: translate3d(0, -0.5em, 0);
+}
+
+.input__field:focus + .input__label::after,
+.input--filled .input__label::after {
+  -webkit-transform: translate3d(0, 0.5em, 0);
+  transform: translate3d(0, 0.5em, 0);
+}
+
+#send-button {
+  width: 200px;
+  height: 60px;
+  background-color: darkslategray;
+  color:white;
+  border: 0;
+  font-weight: bold;
+  font-size: 70.25%;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+#send-button:hover,
+#send-button:focus {
+  outline: 0;
+  background-color:white;
+  color: #000;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+.topnav {
+    background-color:white;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: grey;
+  color: black;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}   
+
+.dropdown{
+  margin-top: 30px ;
+  text-align: center;
+}
+
+ </style>
+
+
+
+<script>
+        var $input;
+
+function onInputFocus(event) {
+  var $target = $(event.target);
+  var $parent = $target.parent();
+  $parent.addClass('input--filled');
+};
+
+function onInputBlur(event) {
+  var $target = $(event.target);
+  var $parent = $target.parent();
+
+  if (event.target.value.trim() === '') {
+    $parent.removeClass('input--filled');
+  }
+};
+
+$(document).ready(function() {
+  $input = $('.input__field');
+  
+  // in case there is any value already
+  $input.each(function(){
+    if ($input.val().trim() !== '') {
+      var $parent = $input.parent();
+      $parent.addClass('input--filled');
+    }
+  });
+  
+  $input.on('focus', onInputFocus);
+  $input.on('blur', onInputBlur);
+});
+
+
+</script>
+
+
+<body>
+  <div class="topnav">
+    <a class="active" href="#home">IOT Inventory Management</a>
+    <a href="test.html">Create group</a>
+    <a href="#">Issue/Return</a>
+    <a href="#">Components</a>
+    <a href="#">Log</a>
+    <div class="topnav-right">
+      <a href="#">LOGOUT</a>
+      
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      No. of students
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="one.html">1</a>
+        <a class="dropdown-item" href="two.html">2</a>
+        <a class="dropdown-item" href="three.html">3</a>
+        <a class="dropdown-item" href="four.html">4</a>
+        <a class="dropdown-item" href="test1.html">5</a>
+        </div>
+  </div>
+  <div id="container">
+
+  <span class="input">
+    <input type="text" class="input__field" id="roll1" />
+    <label for="input-1" class="input__label">
+    <span class="input__label-content">Roll number</span>
+  </label>
+  </span>
+
+  <span class="input">
+    <input type="text" class="input__field" id="roll2" />
+    <label for="input-2" class="input__label">
+      <span class="input__label-content">Roll number</span>
+    </label>
+  </span>
+
+  <span class="input">
+    <input type="text" class="input__field" id="roll3" />
+    <label for="input-3" class="input__label">
+      <span class="input__label-content">Roll number</span>
+    </label>
+  </span>
+
+  <span class="input">
+    <input type="text" class="input__field" id="roll4" />
+    <label for="input-4" class="input__label">
+      <span class="input__label-content">Roll number</span>
+    </label>
+  </span>
+
+  <span class="input message">
+    <input type="text" class="input__field" id="input-9" />    
+    <label for="input-9" class="input__label">
+      <span class="input__label-content">Group ID</span>
+    </label>
+  </span>
+
+  <button id="send-button" type="button">Create Group</button>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>
