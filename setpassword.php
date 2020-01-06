@@ -107,7 +107,8 @@ if(empty($error)){
         $con=mysqli_connect('localhost','root','pwd','iot_inventory');
         if($_POST['confirmpassword']==$newpassword){
             if($con){
-                $sql="UPDATE login_details SET password='$newpassword' WHERE username ='$username'";
+		$hash=password_hash($password,PASSWORD_DEFAULT);
+                $sql="UPDATE login_details SET password='$hash' WHERE username ='$username'";
                 $result=mysqli_query($con,$sql);
                 if($result){
                     if(($result)>0){
