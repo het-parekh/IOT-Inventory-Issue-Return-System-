@@ -62,7 +62,7 @@ border-color:black;
 .card:hover {
  		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
 			}
-/* .btn:hover{
+ /*.btn:hover{
 background:#2ecc71;
 } */
 </style>
@@ -70,8 +70,7 @@ background:#2ecc71;
     <div class="row">
        <div class="container">
             <form action="setpassword.php" method="post">
-            <div class="card" >
-                <div><p id="message"style="color:black;text-align:center;margin-top:10px;"></p></div>
+             <div class="card" >
                 <div class="card-title" style="color:black;text-align:center;margin-top:40px;"><h2>RESET PASSWORD</h2></div>
                 <div class="card-body">
                     <div>
@@ -79,9 +78,8 @@ background:#2ecc71;
                     <div style="color:red;text-align:center"><p id='password'></p></div>
                     <input type="password" class="form-control" name="confirmpassword" placeholder=" confirm password">
                     <div style="color:red;text-align:center"><p id='confirmpassword'></p></div>
-                    <button class="btn btn-outline-dark" type="button" name="reset">
-                        Reset
-                    </Button>
+                    <input class="btn btn-outline-dark" type="submit" name="reset"  placeholder="Reset">
+                    </input>
                 </div>
 
             </div>
@@ -107,7 +105,7 @@ if(empty($error)){
         $con=mysqli_connect('localhost','root','pwd','iot_inventory');
         if($_POST['confirmpassword']==$newpassword){
             if($con){
-		$hash=password_hash($password,PASSWORD_DEFAULT);
+		    $hash=password_hash($newpassword,PASSWORD_DEFAULT);
                 $sql="UPDATE login_details SET password='$hash' WHERE username ='$username'";
                 $result=mysqli_query($con,$sql);
                 if($result){
