@@ -93,7 +93,7 @@ if($con){
         $row=$data->fetch_assoc();
         $pw=$row['password'];
           if($pw===$password){
-            echo "<script> location.href='dashbord.php'</script>";
+            echo "<script> location.href='dashbord-new.php'</script>";
           }
           else{
             echo "<script>alert('incorrect password')</script>";
