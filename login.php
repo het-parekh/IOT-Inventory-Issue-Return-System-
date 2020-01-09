@@ -77,7 +77,37 @@ if (isset($_SESSION["userid"])) {
 		</div> 
 	</div>
 		</form>
-		    
-
 </body>
 </html>
+<?php
+// echo "harsh";
+$name=$_POST['username'];
+$password=$_POST['password'];
+// echo "hey there";
+echo $name;
+$con=mysqli_connect("localhost","root","pwd","iot_inventory");
+if($con){
+    echo "connection established";
+    if(mysqli_query($con,"SELECT * FROM login_details WHERE user_name='$name'")){
+        if(mysqli_num_row($data)>0){
+        $row=$data->fetch_assoc();
+        $pw=$row['password'];
+          if($pw===$password){
+            echo "<script> location.href='dashbord.php'</script>";
+          }
+          else{
+            echo "<script>alert('incorrect password')</script>";
+         }
+        }
+        else{
+            echo "<script>alert('username doesn't exist')</script>";
+        }
+    }
+    else{
+        echo "<br> query was not executed";
+    }
+}
+else{
+    echo "connection unsucessful";
+}
+?>
