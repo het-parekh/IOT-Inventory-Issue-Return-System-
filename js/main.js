@@ -366,6 +366,7 @@ $(document).ready(function(){
 				url: DOMAIN+"/includes/process.php",
 				data: {c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp,year1:cur_year},
 				success: function(msg){
+					
 					if(msg==10)
 					{	
 						alert1="Remove Duplicates";
