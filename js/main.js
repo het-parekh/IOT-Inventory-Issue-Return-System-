@@ -371,6 +371,8 @@ $(document).ready(function(){
 					{	
 						alert1="Remove Duplicates";
 						alertme();
+						issueData["c_id"]=[];
+		 				issueData["req_qty"]=[];
 					}
 					else if(msg==3)
 					{
