@@ -8,7 +8,7 @@ if(((isset($_POST['group'])) || (isset($_POST['roll']))) && isset($_POST['dept']
 	$dept=$_POST["dept"];
 	$s_year=$_POST["s_year"];
 
-	$con=mysqli_connect("localhost","root","root12345","inventory");
+	$con=mysqli_connect("localhost","root","","inventory");
 	if($con)
 	{
 		//file_put_contents("test.txt", "");

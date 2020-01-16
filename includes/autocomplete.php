@@ -1,7 +1,7 @@
 <?php
 
 $term = $_POST[ "term" ];
-$con=mysqli_connect("localhost","root","root12345","inventory");
+$con=mysqli_connect("localhost","root","","inventory");
 if($con)
 {
     

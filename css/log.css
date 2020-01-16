@@ -59,7 +59,9 @@
   border-radius: 2em;
   color:#FFF;
   }
-
+  .div .list-type1 a{
+    bakground: red;
+  }
 body {
   background-color: #02111b;
 }

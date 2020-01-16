@@ -7,7 +7,7 @@ if((isset($_POST["issueroll"]))  && (isset($_POST["issuedept"]) && isset($_POST[
     $dept=$_POST["issuedept"];
     $s_year=$_POST["issueyear"];
 
-    $con=mysqli_connect("localhost","root","root12345","inventory");
+    $con=mysqli_connect("localhost","root","","inventory");
     if($con)
     {
        // file_put_contents("test.txt", "");

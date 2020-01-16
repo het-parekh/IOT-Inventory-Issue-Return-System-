@@ -3,7 +3,7 @@
 session_start();
 
 if(isset($_POST["table"]) && isset($_POST["qty"])){
-			$con=mysqli_connect("localhost","root","root12345","inventory");
+			$con=mysqli_connect("localhost","root","","inventory");
 			if($con){
 
 				
@@ -41,12 +41,17 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 					if($qty==$get_info)
 					{
 						if($dept_name=="IT"){
+							$log1[]=$data;
+					        $log2[]=$qty;
 							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and g_id='$grpid' ORDER BY Rollno LIMIT 1");
+							
 						}
 						else
 						{
-							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
-						}
+								$log1[]=$data;
+	      				        $log2[]=$qty;
+     							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
+												}
 						
 						
 					}else
@@ -62,8 +67,21 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 					}
 					$add=mysqli_query($con,"UPDATE components SET Quantity=Quantity+$qty WHERE C_ID='$data'");
 					
+
 					
 				}
+
+				$log=array();
+				foreach(array_combine($log1, $log2) as $log1 => $log2)
+				{
+					$log[]=$log1." (".$log2.") ";
+				}
+				$t=time();
+				$out=implode(",",$log);
+				$txt=($dept_name=="IT")?("<li><a><strong>User</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from group <strong>".$grpid." (IT)</strong></a></li>\n") : ("<li><a><strong>User</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Roll Number <strong>".$rollid." (".$dept_name.")</strong></a></li>\n");
+				$content=file_get_contents("log.txt",true);
+				$txt1=$txt.$content;
+				file_put_contents("log.txt", $txt1);
 			/*	if($dept_name=="IT"){
 					$txt="'".$i."' Component(s) were Successfully Returned by Group '".$grpid."' of Department '".$dept_name."'";
 				}else
@@ -91,7 +109,7 @@ date_default_timezone_set('Asia/Kolkata');
 	if(isset($_POST["c_id1"]) && isset($_POST["req_qty1"]) && isset($_POST["roll1"]) && isset($_POST["dept1"]))
 	{
 		
-		$con=mysqli_connect("localhost","root","root12345","inventory");
+		$con=mysqli_connect("localhost","root","","inventory");
 		if($con){
 			$roll=$_POST["roll1"];
 			$dept=$_POST["dept1"];
