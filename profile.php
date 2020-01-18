@@ -1,7 +1,13 @@
 <?php
 session_start();
-$name=$_SESSION['name'];
-echo"Welcome Mr.$name";
+if(isset($_COOKIE['username'])){
+    $name=$_COOKIE['username'];
+    echo"Welcome Mr.$name";
+}else{
+    echo "<script>alert('sorry')</script>";
+    echo "<script>location.href='logout.php'</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

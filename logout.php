@@ -1,5 +1,4 @@
 <?php
-session_start();
-session_destroy();
+setcookie('username',$name,false);
 echo"<script>location.href='loginpro7.php'</script>";
 ?>
