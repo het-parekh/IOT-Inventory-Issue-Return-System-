@@ -1,8 +1,7 @@
 <?php
-include_once("./database/constants.php");
-//if (!isset($_SESSION["userid"])) {
-//	header("location:".DOMAIN."/");
-//}
+if(isset($_COOKIE['username'])):{
+    $name=$_COOKIE['username'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -142,3 +141,8 @@ include_once("./database/constants.php");
 
 </body>
 </html>
+<?php else:{
+	echo "<script>location.href='loginpro7.php'</script>";
+}
+?>
+<?php endif ?>
