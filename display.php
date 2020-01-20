@@ -1,3 +1,9 @@
+<?php
+if(isset($_COOKIE['username'])):{
+    $name=$_COOKIE['username'];
+}
+ 
+?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,7 +65,11 @@ $(document).ready(function(){
 	});
 });
 </script>
-
+<?php
+else:{
+	echo "<script>location.href='loginpro7.php'</script>";
+}
+endif?>
 
 
 
