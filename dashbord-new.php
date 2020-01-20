@@ -144,5 +144,5 @@ if(isset($_COOKIE['username'])):{
 <?php else:{
 	echo "<script>location.href='loginpro7.php'</script>";
 }
+endif
 ?>
-<?php endif ?>
