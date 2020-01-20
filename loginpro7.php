@@ -79,7 +79,7 @@ if($con){
         $row=mysqli_fetch_array($query);
           if(password_verify($password,$row['0'])){
             setcookie('username',$name,time()+60);
-            echo"<script>location.href='profile.php'</script>";
+            echo"<script>location.href='dashbord-new.php'</script>";
           }
           else{
             echo "<script>alert('incorrect password')</script>";
