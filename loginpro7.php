@@ -6,37 +6,66 @@
     }*/
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Inventory Management System</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+ 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 	<link rel="stylesheet" type="text/css" href="./includes/style.css">
+ 	<script type="text/javascript" rel="stylesheet" src="./js/main.js"></script>
+ </head>
 <body>
-        <div class="alert alert-danger container" role="alert" style="margin-top: 30px;">
-                <h3 class="alert-heading">LOGIN PAGE!!</h3>
-                <p>Enter your credentials here!!</p>
-            </div>
-    <div class="container jumbotron d-flex justify-content-center align-items-center" style="margin-top: 50px; height: 400px; width: 600px; border-radius: 10%;" >
-    <form  action="loginpro7.php" method="post">
-        <div class="form-heading" style="margin-bottom: 40px;">
-           <h1 class="display-3 text-success"> LOGIN HERE!!</h1>
+	<style>
+	body{
+		overflow:hidden;
+		background-color:rgb(245,245,245);
+	}
+	.card-header{
+		background-color:rgb(200,200,200);
+
+	}
+	.card-body:hover {
+ 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
+			}
+	</style>
+<div class="overlay"><div class="loader"></div></div>
+	<!-- Navbar -->
+    <?php 
+            //include_once("./templates/header.php"); ?>
+	<br/><br/>
+	<div class="container">
+		<div class="card  border-dark mb-3 mx-auto" style="width: 20rem;">
+        <!-- <div class="card border-dark mb-3" style="width: 20rem;"> -->
+
+        <div class="card  border-dark mb-3">
+        <h5 class="card-header" style='text-align:center;'>
+                IOT Inventory System
         </div>
-        <div class="form-group">
-            <label for="username">USERNAME:</label>
-            <input type="text" id="username" name="username">
-        </div>
-        <div class="from-group " style="margin-top: 20px;">
-            <label for="password">PASSWORD:</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <Button type="submit"name="click">LOGIN</Button>
-       <a href="#"> <small >forgot password?click here</small></a>
-    </form>
-</div>
+		  <img class="card-img-top mx-auto" style="width:60%;" src="logo_2.png" alt="Somaiya Icon">
+		  <div class="card-body">
+		    <form action='loginpro7.php' method="POST">
+			  <div class="form-group"></br>
+			    <label for="exampleInputEmail1"><b>Email address</b></label>
+			    <input required type="email" class="form-control" name="username" id="log_email" placeholder="Enter email">
+			    <small id="e_error" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1"><b>Password</b></label>
+			    <input required type="password" class="form-control" name="password" id="log_password" placeholder="Password">
+			  	<small id="p_error" class="form-text text-muted"></small>
+			  </div>
+			  <Button type="submit" class="btn btn-outline-dark" name='click'><i class="fa fa-lock">&nbsp;</i>Login</Button>
+			
+		 </div>
+		  <div class="card-footer"><a href="passwordreset.php">Forget Password ?</a></div>
+		</div> 
+	</div>
+		</form>
 </body>
 </html>
 <?php
@@ -45,7 +74,7 @@ $name=$_POST['username'];
 $password=$_POST['password'];
 $con=mysqli_connect("localhost","root","pwd","iot_inventory");
 if($con){
-   $query= mysqli_query($con,"SELECT password FROM login_details WHERE username='$name'");
+   $query= mysqli_query($con,"SELECT password FROM login_details WHERE email='$name'");
         if(mysqli_num_rows($query)>0){
         $row=mysqli_fetch_array($query);
           if(password_verify($password,$row['0'])){

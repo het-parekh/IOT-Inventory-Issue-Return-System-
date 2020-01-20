@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <title> Reset </title>
@@ -36,6 +37,7 @@
                       </div>
                   </div>
                 </div>
+                <a href="loginpro7.php">Back to login.</a>
               </div>
             </div>
           </div>
@@ -61,10 +63,10 @@ if(isset($_POST['reset'])){
             $result=mysqli_query($db,$sql);
             $row=mysqli_fetch_array($result);
           //  $row =mysqli_fetch_array($result);
-            $mail_body ='<html>
+            $Body ='<html>
             <body>
             <h2>Password Reset</h2>
-            <p>Dear user reset your account by click on link below</p>
+            <p>Dear user reset your Password by click on link below</p>
             <p><a href="http://localhost/project-007-dakshit/setpassword.php">Reset password</a></p>
             <p><strong>&copy;2019 IOT management</strong></p>
             </body>        
@@ -73,12 +75,12 @@ if(isset($_POST['reset'])){
             $headers = "Content-Type: text/html; charset=UTF-8\r\n";
             if($result){
                 if(mysqli_num_rows($result)>0){
-                    if(mail($name,$subject,$mail_body,$headers)){
+                    if(mail($name,$subject,$Body,$headers)){
                         session_start();
                         $_SESSION['username']=$row[0];
                         echo "<script>swal({
                             title: 'success!',
-                            text: 'Email send successfully pleasse check your mailbox!',
+                            text: 'Email send successfully please check your mailbox!',
                             type: 'success'
                           });</script>";
                     }
