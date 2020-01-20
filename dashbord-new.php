@@ -39,7 +39,7 @@ include_once("./database/constants.php");
 				  <img class="card-img-top mx-auto" style="width:60%;" src="user.png" alt="Card image cap">
 				  <div class="card-body">
 				    <h4 class="card-title"><b>Profile Info</b></h4>
-				    <p class="card-text"><i class="fa fa-user">&nbsp;</i>Vishal/Raza</p>
+				  <?php echo"Mr.$name"?>
 				    <p class="card-text"><i class="fa fa-user">&nbsp;</i>Admin</p>
 				    <!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
 				    <a href="group.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
