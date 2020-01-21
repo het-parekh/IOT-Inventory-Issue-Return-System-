@@ -1,9 +1,9 @@
 <?php
 //btn(Submit):return
 session_start();
-
+date_default_timezone_set('Asia/Kolkata');
 if(isset($_POST["table"]) && isset($_POST["qty"])){
-			$con=mysqli_connect("localhost","root","","inventory");
+	include 'DB.php';
 			if($con){
 
 				
@@ -109,7 +109,7 @@ date_default_timezone_set('Asia/Kolkata');
 	if(isset($_POST["c_id1"]) && isset($_POST["req_qty1"]) && isset($_POST["roll1"]) && isset($_POST["dept1"]))
 	{
 		
-		$con=mysqli_connect("localhost","root","","inventory");
+		include 'DB.php';
 		if($con){
 			$roll=$_POST["roll1"];
 			$dept=$_POST["dept1"];
@@ -121,7 +121,7 @@ date_default_timezone_set('Asia/Kolkata');
 			$log1=array();
 			$log2=array();
 		
-			if(count($data1)!==count(array_unique($data1)))
+			if(count($data1)!=count(array_unique($data1)))
 			{
 				echo(10);
 				exit();
@@ -200,7 +200,7 @@ date_default_timezone_set('Asia/Kolkata');
 				}
 				$t=time();
 				$out=implode(",",$log);
-				$txt=($dept=="IT")?("<li><a><strong>User</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Group <strong>".$grp." (IT)</strong></a></li>\n") : ("<li><a><strong>User</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Roll Number <strong>".$roll." (".$dept.")</strong></a></li>\n");
+				$txt=($dept=="IT")?("<li class='ret'><a><strong>User</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Group <strong>".$grp." (IT)</strong></a></li>\n") : ("<li><a><strong>User</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Roll Number <strong>".$roll." (".$dept.")</strong></a></li>\n");
 				$content=file_get_contents("log.txt",true);
 				$txt1=$txt.$content;
 				file_put_contents("log.txt", $txt1);

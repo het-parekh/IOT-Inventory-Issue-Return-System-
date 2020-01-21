@@ -1,9 +1,5 @@
 <?php
-
-include_once("./database/constants.php");
-if (isset($_SESSION["userid"])) {
-	session_destroy();
-}
-header("location:".DOMAIN."/");
-
+session_start();
+session_destroy();
+echo"<script>location.href='loginpro7.php'</script>";
 ?>

@@ -3,7 +3,7 @@
 
 if(isset($_POST["roll_no"]) && isset($_POST["grp"]) && isset($_POST["year"]))
 {
-    $con=mysqli_connect("localhost","root","","inventory");
+    include 'DB.php';
 
     if($con){
     

@@ -1,3 +1,5 @@
+
+
 <?php
 //btn(GO):return
 
@@ -7,8 +9,8 @@ if(((isset($_POST['group'])) || (isset($_POST['roll']))) && isset($_POST['dept']
 	$roll=$_POST["roll"];
 	$dept=$_POST["dept"];
 	$s_year=$_POST["s_year"];
-
-	$con=mysqli_connect("localhost","root","","inventory");
+	include 'DB.php';
+	
 	if($con)
 	{
 		//file_put_contents("test.txt", "");

@@ -1,7 +1,7 @@
 <?php
 
 $term = $_POST[ "term" ];
-$con=mysqli_connect("localhost","root","","inventory");
+include 'DB.php';
 if($con)
 {
     
