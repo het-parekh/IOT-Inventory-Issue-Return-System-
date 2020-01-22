@@ -78,7 +78,7 @@ if($con){
         if(mysqli_num_rows($query)>0){
         $row=mysqli_fetch_array($query);
           if(password_verify($password,$row['0'])){
-            setcookie('username',$name,time()+60);
+            setcookie('username',$name,time()+60*60*24*30);
             echo"<script>location.href='dashbord-new.php'</script>";
           }
           else{
