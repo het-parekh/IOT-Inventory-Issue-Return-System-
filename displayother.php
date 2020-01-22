@@ -11,7 +11,56 @@ if(isset($_COOKIE['username'])):{
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 	</head>
+	<style>
+				.topnav {
+			background-color:white;
+			overflow: hidden;
+		}
+
+		/* Style the links inside the navigation bar */
+		.topnav a {
+		float: left;
+		color: black;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+		}
+
+		/* Change the color of links on hover */
+		.topnav a:hover {
+		background-color: #ddd;
+		color: black;
+		}
+
+		/* Add a color to the active/current link */
+		.topnav a.active {
+		background-color: grey;
+		color: black;
+		}
+
+		/* Right-aligned section inside the top navigation */
+		.topnav-right {
+		float: right;
+		}   
+
+		.dropdown{
+		margin-top: 30px ;
+		text-align: center;
+		}
+
+	</style>
 	<body>
+		<div class="topnav">
+			<a class="active" href="#home">IOT Inventory Management</a>
+			<a href="#">Create group</a>
+			<a href="#">Issue/Return</a>
+			<a href="#">Components</a>
+			<a href="#">Log</a>
+			<div class="topnav-right">
+			<a href="#">LOGOUT</a>
+			
+		</div>
 		<div class="container">
 			<br />
 			<br />
