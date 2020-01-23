@@ -1,3 +1,4 @@
+
 <?php
 // $connect = mysqli_connect("localhost", "root", "", "iot_inventory");
 include 'DB.php';

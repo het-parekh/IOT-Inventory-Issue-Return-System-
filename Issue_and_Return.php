@@ -11,6 +11,7 @@ if(isset($_COOKIE['username'])):{
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <title>Inventory Management System</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/Issue_Return.css">
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -41,26 +42,77 @@ if(isset($_COOKIE['username'])):{
     
 
 </head>
+<style>
+		.topnav {
+			background-color:#f5f5f0;
+			overflow: hidden;
+		}
+
+		/* Style the links inside the navigation bar */
+		.topnav a {
+		float: right;
+		color:Black;
+		text-align: center;
+		padding: 20px 16px;
+		font-family: 'Lato', sans-serif;
+		font-weight:Bold;
+		text-decoration: none;
+		font-size: 17px;
+		}
+
+		/* Change the color of links on hover */
+		.topnav a:hover {
+		color:#A12023;
+		}
+		.logout a:hover{
+			color:red;
+		}
+
+		/* Add a color to the active/current link */
+		.topnav a.active {
+         background-color: grey;
+		color:#A12023;
+		}
+
+		/* Right-aligned section inside the top navigation */
+		.topnav-right {
+		float: right;
+		}   
+
+		.dropdown{
+		margin-top: 30px ;
+		text-align: center;
+		}
+		.desktop{
+			float:left;
+			padding-top:8px;
+			padding-left:15px;
+			height:70px;
+			width:100x;
+		}
+		.trust{
+			float:right;
+			padding-top:8px;
+            margin-Bottom:8px;
+			padding-Right:15px;
+			height:70px;
+			width:100x;
+		}
+
+</style>
 
 <body>
-     <div class="topnav">
-    <a class="active" href="#home">IOT Inventory Management</a>
-    <a href="#">Create group</a>
-    <a href="#">Issue/Return</a>
-    <a href="#">Components</a>
-    <a href="#">Log</a>
-    <div class="topnav-right">
-      <a href="#">LOGOUT</a>
-      
-    </div>
-  </div>
-	<div class="overlay">
-        <div class="loader"></div>
-    </div>
-    <!-- Navbar -->
-  
+<div class="topnav">
+		<img src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop">
+		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
+			<div class="logout"><a href="logout.php">LOGOUT</a></div>
+			<a href="search.php">Components</a>
+			<a href="log.php">Log</a>
+			<a href="dashboard-new.php">Dashboard</a>
+			<a href="Issue_and_Return.php">Issue/Return</a>
+			<a href="GroupForm.php">Create group</a>
 
-
+</div>
     <div class="container">
         <div class="row">
             <div class="col-md-10 mx-auto">
