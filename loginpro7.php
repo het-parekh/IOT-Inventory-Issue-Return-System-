@@ -11,6 +11,8 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Inventory Management System</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -82,12 +84,20 @@ if($con){
             echo"<script>location.href='dashboard-new.php'</script>";
           }
           else{
-            echo "<script>alert('Incorrect Password')</script>";
+			echo "<script>swal({
+				title: 'Error',
+				text: 'incorrect password',
+				type: 'error'
+			  });</script>"; 
             
          }
-        }
-        else{
-            echo "<script>alert('Email doesn't exist')</script>";
+		} else{
+			echo "<script>swal({
+				title: 'Error',
+				text: 'email Does not exist',
+				type: 'error'
+			  });</script>"; 
+            
         }
 }
 else{
