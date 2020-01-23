@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2020 at 09:52 PM
+-- Generation Time: Jan 23, 2020 at 11:31 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `user_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`user_name`, `email`, `Password`) VALUES
+('', 'dv', 'admin'),
+('test', 'gateway428@gmail.com', '$2y$10$tCNzAOcHvRp.ef0Jrbee4OfVtX2/MCGK0hbb8JiwfgLYxsvBZXmmq');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `components`
 --
 
@@ -42,8 +62,8 @@ CREATE TABLE `components` (
 --
 
 INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Total_Quantity`, `Price`) VALUES
-('C001', 'ARDUINO UNO R3', 'L', 21, 21, 7945),
-('C012', 'BREAD BOARD', 'L', 24, 24, 1490),
+('C001', 'ARDUINO UNO R3', 'L', 1, 21, 7945),
+('C012', 'BREAD BOARD', 'L', 20, 24, 1490),
 ('C015', 'JUMPER WIRES (ALL TYPES)', 'L', 17, 17, 85),
 ('C016', 'RASPBERRY PI MODEL 3B', 'L', 10, 10, 29500),
 ('C024', 'USB TO MICRO USB CABLE', 'L', 4, 4, 240),
@@ -64,12 +84,12 @@ INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Total_Quan
 ('C062', 'SOLONOID 12V DC', 'M', 1, 1, 300),
 ('C070', 'GSM MODULE (SIM-900)', 'M', 2, 2, 1560),
 ('C002', 'ARDUINO PRO MINI', 'M', 17, 17, 3740),
-('C003', '7-SEGMENT LED DISPLAY', 'M', 17, 17, 119),
+('C003', '7-SEGMENT LED DISPLAY', 'M', 15, 17, 119),
 ('C026', 'HC-SR-04 ULTRASONIC DISTANCE SENSOR', 'M', 4, 4, 380),
 ('C030', 'GAS SENSOR', 'M', 4, 4, 1180),
 ('C033', 'PIR MOTION SENSOR', 'M', 5, 5, 450),
 ('C050', 'ARDUINO MEGA 2560', 'M', 1, 1, 700),
-('C053', '2200 MaH BATTERY', 'M', 1, 1, 1350),
+('C053', '2200 MaH BATTERY', 'M', 0, 1, 1350),
 ('C054', 'MQ-03 GAS SENSOR MODULE', 'M', 1, 1, 150),
 ('C057', 'MQ-135 GAS SENSOR MODULE', 'M', 2, 2, 300),
 ('C072', 'PH SENSOR', 'M', 1, 1, 1850),
@@ -81,7 +101,7 @@ INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Total_Quan
 ('C007', '9V BATTERY CONNECTORS', 'S', 17, 17, 85),
 ('C009', '4*4 MATRIX KETPAD', 'S', 17, 17, 1275),
 ('C011', 'LED (R-G-B)', 'S', 17, 17, 238),
-('C014', 'DC JACK MALE', 'S', 17, 17, 255),
+('C014', 'DC JACK MALE', 'S', 12, 17, 255),
 ('C020', 'CARD READER', 'S', 10, 10, 2250),
 ('C022', 'WIFI MODULE (ESP 8266) NODE MCU', 'S', 11, 11, 2580),
 ('C023', 'WIFI ESP-01', 'S', 4, 4, 720),
@@ -95,7 +115,7 @@ INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Total_Quan
 ('C059', 'ADXL 1335 ACCELROMETER SENSOR', 'S', 1, 1, 250),
 ('C069', 'GPS MODULE', 'S', 1, 1, 450),
 ('C071', '10K POT', 'S', 2, 2, 20),
-('C073', 'HEART BEAT MODULE', 'S', 1, 1, 250),
+('C073', 'HEART BEAT MODULE', 'S', 0, 1, 250),
 ('C075', 'ADAFRUIT HML5883L', 'S', 1, 1, 200),
 ('C010', 'PUSH BUTTON SWITCHES', 'S', 19, 19, 57),
 ('C013', 'BUZZER', 'S', 17, 17, 340),
@@ -133,6 +153,18 @@ CREATE TABLE `issue` (
   `i_year` varchar(255) NOT NULL,
   `c_ID` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `issue`
+--
+
+INSERT INTO `issue` (`Dept_name`, `issue_date`, `quantity_taken`, `Rollno`, `g_id`, `i_year`, `c_ID`) VALUES
+('IT', '2020-01-23', 20, 1, 'B1', 'TE', 'C001'),
+('IT', '2020-01-23', 5, 1, 'B1', 'TE', 'C014'),
+('IT', '2020-01-23', 2, 1, 'B1', 'TE', 'C003'),
+('CS', '2020-01-23', 1, 16, NULL, 'TE', 'C073'),
+('CS', '2020-01-23', 1, 16, NULL, 'TE', 'C053'),
+('IT', '2020-01-23', 4, 2, 'C1', 'TE', 'C012');
 
 -- --------------------------------------------------------
 
