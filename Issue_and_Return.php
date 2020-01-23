@@ -11,7 +11,6 @@ if(isset($_COOKIE['username'])):{
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <title>Inventory Management System</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/Issue_Return.css">
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -38,12 +37,13 @@ if(isset($_COOKIE['username'])):{
     
         <script type="text/javascript" src="./js/main.js"></script>
     <script type="text/javascript" src="./js/decor.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
     
 
 </head>
 <style>
-		.topnav {
+ 		.topnav {
 			background-color:#f5f5f0;
 			overflow: hidden;
 		}
@@ -70,7 +70,7 @@ if(isset($_COOKIE['username'])):{
 
 		/* Add a color to the active/current link */
 		.topnav a.active {
-         background-color: grey;
+		background-color: grey;
 		color:#A12023;
 		}
 
@@ -95,12 +95,10 @@ if(isset($_COOKIE['username'])):{
 			padding-top:8px;
             margin-Bottom:8px;
 			padding-Right:15px;
-			height:70px;
-			width:100x;
+			height:10px;
+			width:20x;
 		}
-
 </style>
-
 <body>
 <div class="topnav">
 		<img src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop">
@@ -112,7 +110,7 @@ if(isset($_COOKIE['username'])):{
 			<a href="Issue_and_Return.php">Issue/Return</a>
 			<a href="GroupForm.php">Create group</a>
 
-</div>
+		</div>
     <div class="container">
         <div class="row">
             <div class="col-md-10 mx-auto">
