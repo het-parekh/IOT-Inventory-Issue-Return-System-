@@ -95,8 +95,8 @@ if(isset($_COOKIE['username'])):{
 			padding-top:8px;
             margin-Bottom:8px;
 			padding-Right:15px;
-			height:10px;
-			width:20x;
+			height:70px;
+			width:100x;
 		}
 </style>
 <body>
