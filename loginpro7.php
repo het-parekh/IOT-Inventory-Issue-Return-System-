@@ -31,9 +31,7 @@
 		background-color:rgb(200,200,200);
 
 	}
-	.card-body:hover {
- 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
-			}
+	
 	</style>
 <div class="overlay"><div class="loader"></div></div>
 	<!-- Navbar -->

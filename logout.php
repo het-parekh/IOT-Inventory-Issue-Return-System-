@@ -1,4 +1,5 @@
 <?php
 setcookie('username',$name,false);
-echo"<script>location.href='loginpro7.php'</script>";
+header("Location:" . "loginpro7.php");
+
 ?>

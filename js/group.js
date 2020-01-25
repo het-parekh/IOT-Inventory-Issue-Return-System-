@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var DOMAIN = "http://localhost/Het";
+    var DOMAIN = "http://localhost/final";
 
     function alertme(alert1) {
         $.alert({
@@ -79,7 +79,7 @@ $(document).ready(function () {
 
                     roll = [];
                 } else {
-                    location.href = "groupForm.html";
+                    location.href = "GroupForm.php";
                     roll = [];
                 }
 

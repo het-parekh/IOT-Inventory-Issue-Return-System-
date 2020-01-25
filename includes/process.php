@@ -1,6 +1,18 @@
 <?php
-//btn(Submit):return
 session_start();
+if(isset($_COOKIE['username'])){
+	$name=$_COOKIE['username'];
+	include "DB.php";
+	$data=($con)?(mysqli_query($con,"Select user_name from admin where email='$name'")):"";
+	$user=mysqli_fetch_assoc($data)['user_name'];
+	
+}
+?>
+
+
+<?php
+//btn(Submit):return
+
 date_default_timezone_set('Asia/Kolkata');
 if(isset($_POST["table"]) && isset($_POST["qty"])){
 	include 'DB.php';
@@ -78,7 +90,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 				}
 				$t=time();
 				$out=implode(",",$log);
-				$txt=($dept_name=="IT")?("<li><a><strong>User</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from group <strong>".$grpid." (IT)</strong></a></li>\n") : ("<li><a><strong>User</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Roll Number <strong>".$rollid." (".$dept_name.")</strong></a></li>\n");
+				$txt=($dept_name=="IT")?("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Group <strong>".strtoupper($grpid)." (IT)</strong></a></li>\n") : ("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Roll Number <strong>".$rollid." (".$dept_name.")</strong></a></li>\n");
 				$content=file_get_contents("log.txt",true);
 				$txt1=$txt.$content;
 				file_put_contents("log.txt", $txt1);
@@ -200,7 +212,7 @@ date_default_timezone_set('Asia/Kolkata');
 				}
 				$t=time();
 				$out=implode(",",$log);
-				$txt=($dept=="IT")?("<li class='ret'><a><strong>User</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Group <strong>".$grp." (IT)</strong></a></li>\n") : ("<li><a><strong>User</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Roll Number <strong>".$roll." (".$dept.")</strong></a></li>\n");
+				$txt=($dept=="IT")?("<li class='ret'><a><strong>".$user."</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Group <strong>".$grp." (IT)</strong></a></li>\n") : ("<li><a><strong>".$user."</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Roll Number <strong>".$roll." (".$dept.")</strong></a></li>\n");
 				$content=file_get_contents("log.txt",true);
 				$txt1=$txt.$content;
 				file_put_contents("log.txt", $txt1);

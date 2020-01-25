@@ -8,7 +8,7 @@ if(isset($_POST["query"]))
 	$search = mysqli_real_escape_string( $con,$_POST["query"]);
 	$query = "
 	SELECT * FROM issue
-    WHERE C_ID LIKE '%".$search."%'
+    WHERE g_id LIKE '%".$search."%' or C_ID LIKE '%".$search."%'
     AND Dept_name LIKE '%".'IT'."%'";
 }
 else

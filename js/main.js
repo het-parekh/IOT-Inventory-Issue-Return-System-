@@ -11,7 +11,7 @@ $(document).ready(function(){
 	  }
 	  $("#statusp").removeClass("status");
 	
-	var DOMAIN = "http://localhost/Het";
+	var DOMAIN = "http://localhost/final";
 	
 	$("#rollgrp").hide();
 	$("#enter_grp").hide();

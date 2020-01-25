@@ -13,7 +13,7 @@ if(isset($_COOKIE['username'])):{
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 	</head>
 	<style>
-			.topnav {
+		.topnav {
 			background-color:#f5f5f0;
 			overflow: hidden;
 		}
@@ -53,12 +53,12 @@ if(isset($_COOKIE['username'])):{
 		margin-top: 30px ;
 		text-align: center;
 		}
-		.desktop{
+		.an{
 			float:left;
-			padding-top:8px;
-			margin-Bottom:8px;
-			padding-left:15px;
-			height:70px;
+			padding-top:2px;
+			margin-Bottom:18px;
+			padding-left:8px;
+			height:80px;
 			width:100x;
 		}
 		.trust{
@@ -68,18 +68,20 @@ if(isset($_COOKIE['username'])):{
 			height:70px;
 			width:100x;
 		}
+
 	</style>
 	<body>
 	<div class="topnav">
-		<img src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop">
+		
 		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
+		
 			<div class="logout"><a href="logout.php">LOGOUT</a></div>
 			<a href="search.php">Components</a>
 			<a href="log.php">Log</a>
-			<a href="dashboard-new.php">Dashboard</a>
 			<a href="Issue_and_Return.php">Issue/Return</a>
 			<a href="GroupForm.php">Create group</a>
-
+			<a href="dashboard-new.php">Dashboard</a>
+			<div class="an"><a href="dashboard-new.php" class="an"><img style="height:60px;" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div>
 		</div>
 		<div class="container">
 			<br />
