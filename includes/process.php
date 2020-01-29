@@ -63,7 +63,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 								$log1[]=$data;
 	      				        $log2[]=$qty;
      							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
-												}
+						}
 						
 						
 					}else
@@ -103,6 +103,10 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 				
 				file_put_contents("test.txt", $txt);*/
 
+			}
+			else
+			{
+				echo(2);
 			}
 		
 		}	
@@ -169,7 +173,9 @@ date_default_timezone_set('Asia/Kolkata');
 					}
 					if(mysqli_num_rows($exists)==0)
 					{
-						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll','$grp','$s_year','$data1')");
+						$cname=mysqli_query($con,"SELECT Description FROM components WHERE C_ID='$data1'");
+						$data3=mysqli_fetch_array($cname)[0];
+						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll','$grp','$s_year','$data1','$data3')");
 						
 					}
 					$sql2=mysqli_query($con,"UPDATE components set Quantity=Quantity-$data2 where C_ID='$data1'");
@@ -192,7 +198,10 @@ date_default_timezone_set('Asia/Kolkata');
 					}
 					if(mysqli_num_rows($exists)==0)
 					{
-						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll',NULL,'$s_year','$data1')");
+						$cname=mysqli_query($con,"SELECT Description FROM components WHERE C_ID='$data1'");
+						$data3=mysqli_fetch_array($cname)[0];
+						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll','$grp','$s_year','$data1','$data3')");
+						
 					}
 					$sql2=mysqli_query($con,"UPDATE components set Quantity=Quantity-$data2 where C_ID='$data1'");
 					$log1[]=$data1;

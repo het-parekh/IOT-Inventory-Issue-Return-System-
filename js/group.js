@@ -22,8 +22,7 @@ $(document).ready(function () {
     }
 
     var row;
-    var head = "<tr><td><hr></td></tr><tr><td style='min-width:200px;width:500px;text-align:left;padding-bottom:20px'>Group ID<input id='grp_name' required placeholder='Unique Group Name'type='text' class='form-control form-control-sm'/></td></tr><tr><td style='min-width:200px;text-align:left;padding-bottom:20px'>Group Count<input type='range' required style='outline:none' value='1' class='custom-range grp' min='1' max='5' id='customRange2'></td></tr>";
-    $("#main1").append(head).append("<div align='left'>Enter Roll Number(s)</div>");
+    $("#head").append("<div align='left'>Enter Roll Number(s)</div>");
     var val = $(".grp").val();
     addRoll();
     $(".grp").change(function () {
@@ -37,7 +36,7 @@ $(document).ready(function () {
         for (i = 1; i <= val; i++) {
             row += "<td class='roll' style='text-align:left;min-width:40px;padding-bottom:15px;padding-right:10px'><input name='transfer' type='number' required placeholder='Roll Number'   min='1' class='form-control form-control-sm rollno' /></td>";
         }
-        $("#main1").append(row);
+        $("#tail").append(row);
 
         $(".rollno").change(function () {
             $(this).val(($(this).val() < 1) ? 1 : $(this).val());//This actually works!
@@ -58,7 +57,7 @@ $(document).ready(function () {
             var value = $(this).val();
             roll.push(value);
         });
-
+        
         $.ajax({
             method: "POST",
             url: DOMAIN + "/includes/groupForm.php",
@@ -79,8 +78,11 @@ $(document).ready(function () {
 
                     roll = [];
                 } else {
-                    location.href = "GroupForm.php";
-                    roll = [];
+                    
+                    swal({title:"Group Created Succesfully",icon: "success"}).then(function() {
+                        window.location = "GroupForm.php";
+                    });
+
                 }
 
             }
@@ -89,4 +91,5 @@ $(document).ready(function () {
     }
 
 
+    
 });

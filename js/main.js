@@ -366,7 +366,7 @@ $(document).ready(function(){
 				url: DOMAIN+"/includes/process.php",
 				data: {c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp,year1:cur_year},
 				success: function(msg){
-					
+		
 					if(msg==10)
 					{	
 						alert1="Remove Duplicates";
@@ -388,8 +388,10 @@ $(document).ready(function(){
 		 				issueData["req_qty"]=[];
 					}
 					else{
-						location.href="Issue_and_Return.php" ;
 						
+						swal({title:"Component(s) Issued Successfully",icon: "success"}).then(function() {
+							window.location = "Issue_and_Return.php";
+						});
 					}
 				
 				}
@@ -415,6 +417,8 @@ $(document).ready(function(){
 						
 						alert1="Select Atleast One Component!";
 						alertme();
+						TableData["id"]=[];
+						TableData["qty"]=[];
 					}
 					else if(msg==2)
 					{
@@ -426,7 +430,10 @@ $(document).ready(function(){
 
 					}
 					else{
-						location.href="Issue_and_Return.php" ;
+						swal({title:"Component(s) Returned Successfully",icon: "success"}).then(function() {
+							window.location = "Issue_and_Return.php";
+						});
+						
 						
 					}
 				

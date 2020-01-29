@@ -8,7 +8,7 @@ if(isset($_POST["query"]))
 	$search = mysqli_real_escape_string( $con,$_POST["query"]);
 	$query = "
 	SELECT * FROM issue
-    WHERE g_id LIKE '%".$search."%' or C_ID LIKE '%".$search."%'
+    WHERE g_id LIKE '%".$search."%' or c_name LIKE '%".$search."%'
     AND Dept_name LIKE '%".'IT'."%'";
 }
 else
@@ -24,7 +24,9 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
                         <th>RollNo</th>
 						<th>GroupId</th>
 						<th>Year</th>
-                        <th>Component_ID</th>
+                        <th>Component ID</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
                         <th>Issue_Date</th>
 						</tr>';
 	while($row = mysqli_fetch_array($result))
@@ -35,6 +37,8 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 				<td>'.$row["g_id"].'</td>
 				<td>'.$row["i_year"].'</td>
 				<td>'.$row["c_ID"].'</td>
+				<td>'.$row["c_name"].'</td>
+				<td>'.$row["quantity_taken"].'</td>
 				<td>'.$row["issue_date"].'</td>
 				
 			</tr>

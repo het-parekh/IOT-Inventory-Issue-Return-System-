@@ -7,10 +7,8 @@ if(isset($_POST["query"]))
 	$search = mysqli_real_escape_string( $con,$_POST["query"]);
 	$query = "
 	SELECT * FROM components 
-	WHERE C_ID LIKE '%".$search."%'
-	OR Description LIKE '%".$search."%' 
+	WHERE Description LIKE '%".$search."%'
 	OR Size LIKE '%".$search."%' 
-	OR Total_Quantity LIKE '%".$search."%' 
 	OR Price LIKE '%".$search."%'
 	";
 }
@@ -37,10 +35,10 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 		$output .= '
 			<tr>
 				<td>'.$row["C_ID"].'</td>
-				<td>'.$row["Description"].'</td>
+				<td style="width:300px">'.$row["Description"].'</td>
 				<td>'.$row["Size"].'</td>
-				<td>'.$row["Quantity"].'</td>
-				<td>'.$row["Total_Quantity"].'</td>
+				<td style="width:150px">'.$row["Quantity"].'</td>
+				<td style="width:150px">'.$row["Total_Quantity"].'</td>
 				<td>'.$row["Price"].'</td>
 			</tr>
 		';

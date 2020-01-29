@@ -23,6 +23,7 @@ if(isset($_COOKIE['username'])):{
 	<style>
 		body{
 			background-image: url(2.jpg);
+			margin-bottom:15px;
 		}
 		.card-body:hover {
  		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
