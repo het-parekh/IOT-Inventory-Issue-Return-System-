@@ -61,28 +61,31 @@ if(isset($_POST['reset'])){
             $sql="SELECT email FROM admin WHERE email='$name'";
             $result=mysqli_query($con,$sql);
             $row=mysqli_fetch_array($result);
-          //  $row =mysqli_fetch_array($result);
-            $mail_body ='<html>
-            <body>
-            <h2>Password Reset</h2>
-            <p>Dear user reset your account by click on link below</p>
-            <p><a href="http://localhost/Het/setpassword.php">Reset password</a></p>
-            <p><strong>&copy;2019 IOT management</strong></p>
-            </body>        
-            </html>';
-            $subject="Password Recovery mail";
-            $headers = "Content-Type: text/html; charset=UTF-8\r\n";
             if($result){
                 if(mysqli_num_rows($result)>0){
+                  $code = '123456789qazwsxedcrfvtgbyhnujmikolp';
+                  $code = str_shuffle($code);
+                  $code = substr($code,0, 10);
+                  $mail_body ='<html>
+                  <body>
+                  <h2>Password Reset</h2>
+                  <p>Dear user reset your account by click on link below</p>
+                  <p><a href="http://localhost/final/setpassword.php?code='.$code.'&email='.$name.'">Reset password</a></p>
+                  <p><strong>&copy;2019 IOT management</strong></p>
+                  </body>        
+                  </html>';
+                  $subject="Password Recovery mail";
+                  $headers = "Content-Type: text/html; charset=UTF-8\r\n";
+                  $query="UPDATE admin SET token='$code'WHERE email='$name'";
+                  $execute=mysqli_query($con,$query);
                     if(mail($name,$subject,$mail_body,$headers)){
-                        session_start();
-                        $_SESSION['email']=$row[0];
+                      session_start();
+                      $_SESSION['email']=$name;
                         echo "<script>swal({
-                            title: 'success!',
-                            text: 'Email send successfully pleasse check your mailbox!',
-                            type: 'success'
-                          });</script>";
-                    }
+                          title: 'success!',
+                          text: 'Email send successfully pleasse check your mailbox!',
+                          type: 'success'
+                        });</script>";
                 }else{
                     echo "<script>swal({
                         title: 'OOPS',
@@ -100,5 +103,6 @@ if(isset($_POST['reset'])){
                 </script>";                
             }
     }
+}
 }
 ?>

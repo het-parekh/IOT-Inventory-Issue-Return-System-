@@ -1,8 +1,0 @@
-<li><a><strong>test</strong> Recieved <strong>C050 (1) </strong> on <strong>24/01/2020 04:03:06 PM</strong> from Group <strong>B3 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C050 (1) </strong> on <strong>24/01/2020 04:02:11 PM</strong> to Group <strong>B3 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C004 (2) </strong> on <strong>24/01/2020 03:50:51 PM</strong> to Group <strong>B2 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C053 (1) ,C003 (2) ,C035 (2) </strong> on <strong>24/01/2020 03:48:37 PM</strong> to Group <strong>B1 (IT)</strong></a></li>
-<li><a><strong>test</strong> Recieved <strong></strong> on <strong>24/01/2020 03:47:01 PM</strong> from Group <strong>B1 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C004 (5) </strong> on <strong>24/01/2020 03:46:26 PM</strong> to Group <strong>B1 (IT)</strong></a></li>
-<li><a><strong>test</strong> Recieved <strong>C050 (1) ,C049 (1) </strong> on <strong>24/01/2020 03:45:40 PM</strong> from Group <strong>B1 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C050 (1) ,C049 (1) </strong> on <strong>24/01/2020 03:44:50 PM</strong> to Group <strong>B1 (IT)</strong></a></li>

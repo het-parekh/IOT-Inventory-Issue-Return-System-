@@ -69,14 +69,14 @@ background:#2ecc71;
 <body>
     <div class="row">
        <div class="container">
-            <form action="setpassword.php" method="post">
+            <form action="" method="post">
              <div class="card" >
                 <div class="card-title" style="color:black;text-align:center;margin-top:40px;"><h2>RESET PASSWORD</h2></div>
                 <div class="card-body">
                     <div>
-                    <input type="password" class="form-control"  name="newpassword" placeholder="New password">
+                    <input required type="password" class="form-control"  name="newpassword" placeholder="New password">
                     <div style="color:red;text-align:center"><p id='password'></p></div>
-                    <input type="password" class="form-control" name="confirmpassword" placeholder=" confirm password">
+                    <input required type="password" class="form-control" name="confirmpassword" placeholder=" confirm password">
                     <div style="color:red;text-align:center"><p id='confirmpassword'></p></div>
                     <input class="btn btn-outline-dark" type="submit" name="reset"  placeholder="Reset">
                     </input>
@@ -89,70 +89,61 @@ background:#2ecc71;
 </body>
 </html>
 <?php
-session_start();
-$error =array();
-$paramiter=array('newpassword','confirmpassword');
-if(isset($_POST['reset'])){
-    foreach($paramiter as $value){
-        if(($_POST[$value])==NULL||(!isset($_POST[$value]))){
-          $error[]=$value;
-        }
-      } 
-if(empty($error)){
-    if(isset($_SESSION['email'])){
-        $username=$_SESSION['email'];
-        $newpassword=$_POST['newpassword'];
-        include 'includes\DB.php';
-        if($_POST['confirmpassword']==$newpassword){
-            if($con){
-		    $hash=password_hash($newpassword,PASSWORD_DEFAULT);
-                $sql="UPDATE admin SET Password='$hash' WHERE email ='$username'";
-                $result=mysqli_query($con,$sql);
-                if($result){
-                    if(($result)>0){
-                        echo "<script>swal({
-                            title: 'success!',
-                            text: 'Password change successfully!',
-                            type: 'success'
-                          });</script>"; 
-                        if(session_destroy()){
-                            echo "<script>loaction.href='#'</script>";
+include 'includes\DB.php';
+$kode=$_GET['code'];
+$email = $_GET['email'];
+ if (isset($kode) && isset($email)){
+ $db_user = "SELECT * FROM admin WHERE email='$email'";
+ $query=mysqli_query($con,$db_user);
+ $row = mysqli_fetch_assoc($query);
+ $token = $row ['token'];
+ $db_email = $row ['email'];
+        if ($token==$kode && $db_email==$email){
+            if(isset($_POST["reset"])){
+                session_start();
+                if(isset($_SESSION['email'])){
+                    $newpassword = $_POST['newpassword'];
+                    $confirmpass = $_POST['confirmpassword'];
+                if ($newpassword==$confirmpass) {
+                    $hash=password_hash($newpassword,PASSWORD_DEFAULT);
+                    $sql="UPDATE admin SET Password='$hash' WHERE email ='$db_email'";
+                    $result=mysqli_query($con,$sql);
+                    if($result){
+                        if(($result)>0){
+                            echo "<script>swal({
+                                title: 'success!',
+                                text: 'Password change successfully!',
+                                type: 'success'
+                              });</script>"; 
+                              session_destroy();
+                        }else{
+                                echo "<script>swal({
+                                title: 'OOPS',
+                                text: 'fail to Update password',
+                                type: 'error'
+                              });</script>"; 
                         }
-                    }else{
-                        echo "<script>swal({
-                            title: 'OOPS',
-                            text: 'fail to Update password',
-                            type: 'error'
-                          });</script>"; 
                     }
+               
+                }else {
+                    echo "<script>swal({
+                        title: 'OOPS',
+                        text: 'Password Does not match',
+                        type: 'error'
+                      });</script>"; 
+                  }
+                }else{
+                    echo "<script>swal({
+                        title: 'OOPS',
+                        text: 'session Time out',
+                        type: 'error'
+                      });</script>"; 
                 }
+
+        }
+          }else{
+              echo "token & username is different";
             }
 
-        }else{
-            echo "<script>swal({
-                title: 'OOPS',
-                text: 'Password Does not match',
-                type: 'error'
-              });</script>"; 
-        }
-}else{
-    echo "<script>swal({
-        title: 'OOPS',
-        text: 'session Time out',
-        type: 'error'
-      });</script>"; 
-}
-}else{
-    foreach($error as $value){
-        echo "<script>
-        document.getElementById('$value').innerHTML = '$value is missing';
-        
-        </script>";  
-}
-}
-}
+ }
 ?>
-
-
-
-

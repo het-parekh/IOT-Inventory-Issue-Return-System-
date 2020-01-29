@@ -1,9 +1,7 @@
 <?php
     if(isset($_COOKIE['username'])){
         echo"<script>location.href='dashboard-new.php'</script>";        
-    }/*else{
-        echo"<script>location.href='loginpro7.php'</script>";
-    }*/
+    }
 ?>
 <!DOCTYPE html>
 <html>
