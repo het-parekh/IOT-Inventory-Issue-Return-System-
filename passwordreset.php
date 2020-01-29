@@ -69,7 +69,7 @@ if(isset($_POST['reset'])){
                   $mail_body ='<html>
                   <body>
                   <h2>Password Reset</h2>
-                  <p>Dear user reset your account by click on link below</p>
+                  <p>Dear user reset your account Password by click on link below.</p>
                   <p><a href="http://localhost/final/setpassword.php?code='.$code.'&email='.$name.'">Reset password</a></p>
                   <p><strong>&copy;2019 IOT management</strong></p>
                   </body>        

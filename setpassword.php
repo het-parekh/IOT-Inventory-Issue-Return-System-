@@ -142,8 +142,11 @@ $email = $_GET['email'];
 
         }
           }else{
-              echo "token & username is different";
+              echo "token or username is different";
             }
+
+ }else{ 
+      header("Location:" . "loginpro7.php");
 
  }
 ?>
