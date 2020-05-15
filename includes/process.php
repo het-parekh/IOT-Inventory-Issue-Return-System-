@@ -214,7 +214,9 @@ date_default_timezone_set('Asia/Kolkata');
 			
 			}
 
-				$log=array();
+				
+			
+			$log=array();
 				foreach(array_combine($log1, $log2) as $log1 => $log2)
 				{
 					$log[]=$log1." (".$log2.") ";

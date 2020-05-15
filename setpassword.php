@@ -146,7 +146,7 @@ $email = $_GET['email'];
             }
 
  }else{ 
-      header("Location:" . "loginpro7.php");
+      header("Location:loginpro7.php");
 
  }
 ?>

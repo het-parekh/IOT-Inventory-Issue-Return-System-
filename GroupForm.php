@@ -27,7 +27,7 @@ if(isset($_COOKIE['username'])):{
 		
 		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
 		
-			<a><button type="button" style="cursor:pointer;font-size:14px;padding:6px" class="btn btn-outline-danger">LOGOUT</button></a>
+			<a href="logout.php"><button type="button" style="cursor:pointer;font-size:14px;padding:6px" class="btn btn-outline-danger">LOGOUT</button></a>
 			<a href="search.php">Components</a>
 			<a href="log.php">Log</a>
 			<a href="Issue_and_Return.php">Issue/Return</a>
