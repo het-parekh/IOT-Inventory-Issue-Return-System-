@@ -1,0 +1,7 @@
+.flex-box{
+    display: flexbox;
+    margin: 50px 150px 50px 150px;
+    text-align: center;
+    border: 1px solid black;
+    height: 500px;
+}

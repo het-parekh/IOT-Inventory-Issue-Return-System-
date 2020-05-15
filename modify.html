@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="modify.css">
+    <title>Modify Group</title>
+</head>
+<body>
+    <div class="flex-box">
+        <h2>Modify Group</h2>
+        <br>
+        <form action="/action_page.php">
+            <label for="rnum">Roll Number:</label>
+            <input type="number" id="rnum" name="rnum" min="1"><br><br>
+            <label for="prevGroup">Previous Group :</label>
+            <input type="text" id="previousGroup" name="prvGrp" value="None" readonly>
+        </form>
+        <div class="dropdown">
+            <label for="newgroup">New group name:</label>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              New Group Name
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" >Action</a>
+              <a class="dropdown-item" >Another action</a>
+              <a class="dropdown-item" >Something else here</a>
+            </div>
+        </div>
+        <br>
+        <div class="dropdown">
+            <label for="department">Department name:</label>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Department
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" >Computer science</a>
+              <a class="dropdown-item" >Information Technology</a>
+              <a class="dropdown-item" >EXTC</a>
+              <a class="dropdown-item" >Electronics</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
