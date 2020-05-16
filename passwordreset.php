@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                          <input name="email" placeholder="email address" class="form-control"  type="email">
+                          <input required name="email" placeholder="email address" class="form-control"  type="email">
                         </div>
                         </br>
                       <div class="form-group">
@@ -46,23 +46,14 @@
 </body>
 </html>
 <?php
-$error =array();
-$paramiter=array('email');
+include 'includes\DB.php';
 if(isset($_POST['reset'])){
-    foreach($paramiter as $value){
-        if(($_POST[$value])==NULL||(!isset($_POST[$value]))){
-          $error[]=$value;
-        }
-      } 
     if(empty($error)){
         $name=$_POST['email'];
-        include 'includes\DB.php';
         if($con){
-            $sql="SELECT email FROM admin WHERE email='$name'";
-            $result=mysqli_query($con,$sql);
-            $row=mysqli_fetch_array($result);
-            if($result){
-                if(mysqli_num_rows($result)>0){
+          $result=user($name);
+            $row=mysqli_fetch_assoc($result);
+                if($name==$row['email']){
                   $code = '123456789qazwsxedcrfvtgbyhnujmikolp';
                   $code = str_shuffle($code);
                   $code = substr($code,0, 10);
@@ -76,10 +67,8 @@ if(isset($_POST['reset'])){
                   </html>';
                   $subject="Password Recovery mail";
                   $headers = "Content-Type: text/html; charset=UTF-8\r\n";
-                  $query="UPDATE admin SET token='$code'WHERE email='$name'";
-                  $execute=mysqli_query($con,$query);
+                  $tok=update_token($code,$name);
                     if(mail($name,$subject,$mail_body,$headers)){
-                      session_start();
                       $_SESSION['email']=$name;
                         echo "<script>swal({
                           title: 'success!',
@@ -93,16 +82,14 @@ if(isset($_POST['reset'])){
                         type: 'error'
                       });</script>"; 
                 }
+            }else{
+              echo "<script>swal({
+                title: 'OOPS',
+                text: 'email Does not exist!',
+                type: 'error'
+              });</script>"; 
             }
-         }
-        }else{
-            foreach($error as $value){
-                echo "<script>
-                document.getElementById('$value').innerHTML = '$value is missing';
-                
-                </script>";                
-            }
-    }
+        }
 }
 }
 ?>
