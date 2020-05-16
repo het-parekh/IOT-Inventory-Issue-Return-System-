@@ -45,7 +45,8 @@ if(isset($_COOKIE['username'])):{
 				    <p class="card-text"><i class="fa fa-user">&nbsp;</i>Admin</p>
 				    <!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
 				    <a href="GroupForm.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
-					<a href="logout.php" class="btn btn-outline-danger"><!-- <i class="fa fa-edit"> -->&nbsp;<!-- </i> -->Logout</a>
+				    <a href="modify.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Modify Group</a>
+					<a href="logout.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-danger"><!-- <i class="fa fa-edit"> -->&nbsp;<!-- </i> -->Logout</a>
 				  </div>
 				</div>
 			</div>
