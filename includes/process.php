@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 if(isset($_COOKIE['username'])){
 	$name=$_COOKIE['username'];
 	include "DB.php";
@@ -9,13 +9,13 @@ if(isset($_COOKIE['username'])){
 }
 ?>
 
-
 <?php
 //btn(Submit):return
 
 date_default_timezone_set('Asia/Kolkata');
+
 if(isset($_POST["table"]) && isset($_POST["qty"])){
-	include 'DB.php';
+	
 			if($con){
 
 				
@@ -31,56 +31,30 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 					}
 				}
 
-				$grpid=$_POST["group2"];
-				$rollid=$_POST["roll2"];
-				$dept_name=$_POST["dept2"];
-				$s_year2=$_POST["year2"];
+				$roll=$_POST["roll2"];
+				$dept=$_POST["dept2"];
+				$s_year=$_POST["year2"];
 
 
 				if(!empty($data)){
 				foreach(array_combine($data, $qty) as $data => $qty)
 				{
 					//$i=$i+$qty;
-					if($dept_name=="IT"){
-						$get=mysqli_query($con,"SELECT quantity_taken from issue where c_ID='$data' and g_id='$grpid' ORDER BY Rollno LIMIT 1");
-					}
-					else
-					{
-						$get=mysqli_query($con,"SELECT quantity_taken from issue where c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
-					}
+					$get=mysqli_query($con,"SELECT quantity_taken from issue where c_ID='$data' and Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
 					$get1=mysqli_fetch_assoc($get);
 					$get_info=$get1["quantity_taken"];
 					if($qty==$get_info)
 					{
-						if($dept_name=="IT"){
-							$log1[]=$data;
-					        $log2[]=$qty;
-							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and g_id='$grpid' ORDER BY Rollno LIMIT 1");
-							
-						}
-						else
-						{
-								$log1[]=$data;
-	      				        $log2[]=$qty;
-     							$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
-						}
+						$log1[]=$data;
+						$log2[]=$qty;
+						$remove=mysqli_query($con,"DELETE FROM issue WHERE c_ID='$data' and Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
 						
-						
-					}else
-					{
-						if($dept_name=="IT")
-						{
-							$remove=mysqli_query($con,"UPDATE issue set quantity_taken=quantity_taken-$qty WHERE c_ID='$data' and g_id='$grpid' ORDER BY Rollno LIMIT 1");
-						}
-						else
-						{
-							$remove=mysqli_query($con,"UPDATE issue set quantity_taken=quantity_taken-$qty WHERE c_ID='$data' and Rollno='$rollid' and Dept_name='$dept_name' and i_year='$s_year2'");
-						}
 					}
-					$add=mysqli_query($con,"UPDATE components SET Quantity=Quantity+$qty WHERE C_ID='$data'");
-					
-
-					
+					else
+					{
+						$remove=mysqli_query($con,"UPDATE issue set quantity_taken=quantity_taken-$qty WHERE c_ID='$data' and Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
+					}
+					$add=mysqli_query($con,"UPDATE components SET Quantity=Quantity+$qty WHERE C_ID='$data'");		
 				}
 
 				$log=array();
@@ -88,17 +62,19 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 				{
 					$log[]=$log1." (".$log2.") ";
 				}
+				$get_grp = mysqli_query($con,"SELECT g_id FROM students where Dept_name='IT' and Rollno='$roll' and s_year = '$s_year'");
+				$grpid = mysqli_fetch_assoc($get_grp)["g_id"];
 				$t=time();
 				$out=implode(",",$log);
-				$txt=($dept_name=="IT")?("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Group <strong>".strtoupper($grpid)." (IT)</strong></a></li>\n") : ("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Roll Number <strong>".$rollid." (".$dept_name.")</strong></a></li>\n");
+				$txt=($dept=="IT")?("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Group <strong>".strtoupper($grpid)." (IT)</strong></a></li>\n") : ("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Roll Number <strong>".$roll." (".$dept.")</strong></a></li>\n");
 				$content=file_get_contents("log.txt",true);
 				$txt1=$txt.$content;
 				file_put_contents("log.txt", $txt1);
-			/*	if($dept_name=="IT"){
-					$txt="'".$i."' Component(s) were Successfully Returned by Group '".$grpid."' of Department '".$dept_name."'";
+			/*	if($dept=="IT"){
+					$txt="'".$i."' Component(s) were Successfully Returned by Group '".$grpid."' of Department '".$dept."'";
 				}else
 				{
-					$txt="'".$i."' Component(s) were Successfully Returned by Roll No: '".$rollid."' of Department '".$dept_name."'";
+					$txt="'".$i."' Component(s) were Successfully Returned by Roll No: '".$roll."' of Department '".$dept."'";
 				}
 				
 				file_put_contents("test.txt", $txt);*/
@@ -108,6 +84,7 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 			{
 				echo(2);
 			}
+			
 		
 		}	
 	
@@ -125,7 +102,6 @@ date_default_timezone_set('Asia/Kolkata');
 	if(isset($_POST["c_id1"]) && isset($_POST["req_qty1"]) && isset($_POST["roll1"]) && isset($_POST["dept1"]))
 	{
 		
-		include 'DB.php';
 		if($con){
 			$roll=$_POST["roll1"];
 			$dept=$_POST["dept1"];
@@ -190,11 +166,11 @@ date_default_timezone_set('Asia/Kolkata');
 				foreach(array_combine($data1, $data2) as $data1 => $data2)
 				{
 				
-					$exists=mysqli_query($con,"SELECT quantity_taken from issue WHERE c_ID='$data1' and Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
+					$exists=mysqli_query($con,"SELECT quantity_taken from issue WHERE c_ID='$data1' and Rollno='$roll' and dept='$dept' and i_year='$s_year'");
 
 					if(mysqli_num_rows($exists)>0)
 					{
-						$action=mysqli_query($con,"UPDATE issue SET quantity_taken=quantity_taken+$data2 WHERE c_ID='$data1' and Rollno='$roll' and Dept_name='$dept' and i_year='$s_year'");
+						$action=mysqli_query($con,"UPDATE issue SET quantity_taken=quantity_taken+$data2 WHERE c_ID='$data1' and Rollno='$roll' and dept='$dept' and i_year='$s_year'");
 					}
 					if(mysqli_num_rows($exists)==0)
 					{
@@ -213,9 +189,6 @@ date_default_timezone_set('Asia/Kolkata');
 
 			
 			}
-
-				
-			
 			$log=array();
 				foreach(array_combine($log1, $log2) as $log1 => $log2)
 				{
@@ -227,12 +200,14 @@ date_default_timezone_set('Asia/Kolkata');
 				$content=file_get_contents("log.txt",true);
 				$txt1=$txt.$content;
 				file_put_contents("log.txt", $txt1);
-
+				
 				
 		}
-		
+
 		
 	}
 }
 
 ?>
+
+

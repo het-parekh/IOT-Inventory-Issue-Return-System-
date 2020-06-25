@@ -119,21 +119,6 @@ if(isset($_COOKIE['username'])):{
                                 </div>
                             </div>
 
-                            <div class="form-group row" id="enter_grp">
-                                <label class="col-sm-3 col-form-label" align="right">Group ID *</label>
-                                <div class="col-sm-6">
-                                
-                                    <button type="submit" value="GO" id="go1"
-                                        style="float: right;background-color:transparent" class="go">GO</button>
-                                    <div style="overflow: hidden; padding-right: .5em;">
-                                        <input type="text" class="form-control form-control-sm grp" spellcheck="false" id="grp" />
-                                        
-                                    </div>
-                                    <div id="showalert_g"></div>
-                                </div>
-                            </div>
-                            
-
                         </form>
 
                         <div id="all">
@@ -161,7 +146,7 @@ if(isset($_COOKIE['username'])):{
                                     <label class="col-sm-3 col-form-label" align="right">Group ID</label>
                                     <div class="col-sm-6">
                                         <input type="text" id="groupid" name="group" readonly
-                                            class="form-control form-control-sm" placeholder="Enter Customer Name"
+                                            class="form-control form-control-sm" placeholder="N/A"
                                             required />
                                     </div>
 
