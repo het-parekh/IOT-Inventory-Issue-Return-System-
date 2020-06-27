@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2020 at 09:45 PM
+-- Generation Time: Jun 27, 2020 at 05:26 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -31,15 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `user_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL
+  `Password` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`user_name`, `email`, `Password`) VALUES
-('test', 'gateway428@gmail.com', '$2y$10$3o2lElp7cSkyJBPx0sdbl.LcdA37X/DAwV6f1xAGrGa9LqbutAq2O');
+INSERT INTO `admin` (`user_name`, `email`, `Password`, `token`) VALUES
+('test', 'gateway428@gmail.com', '$2y$10$0pl.ZkYeq2gn3.PVLWWlVeLaZzFmuhs5TPnIIJKV6gyA6YDzsR6gK', 'sb8dxi6r37');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE `components` (
 
 INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Total_Quantity`, `Price`) VALUES
 ('C001', 'ARDUINO UNO R3', 'L', 21, 21, 7945),
-('C012', 'BREAD BOARD', 'L', 24, 24, 1490),
+('C012', 'BREAD BOARD', 'L', 21, 24, 1490),
 ('C015', 'JUMPER WIRES (ALL TYPES)', 'L', 17, 17, 85),
 ('C016', 'RASPBERRY PI MODEL 3B', 'L', 10, 10, 29500),
 ('C024', 'USB TO MICRO USB CABLE', 'L', 4, 4, 240),
@@ -115,7 +116,7 @@ INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Total_Quan
 ('C069', 'GPS MODULE', 'S', 1, 1, 450),
 ('C071', '10K POT', 'S', 2, 2, 20),
 ('C073', 'HEART BEAT MODULE', 'S', 1, 1, 250),
-('C075', 'ADAFRUIT HML5883L', 'S', 1, 1, 200),
+('C075', 'ADAFRUIT HML5883L', 'S', 0, 1, 200),
 ('C010', 'PUSH BUTTON SWITCHES', 'S', 19, 19, 57),
 ('C013', 'BUZZER', 'S', 17, 17, 340),
 ('C021', 'MICRO SD CARD (16GB)', 'S', 10, 10, 3900),
@@ -154,6 +155,14 @@ CREATE TABLE `issue` (
   `c_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `issue`
+--
+
+INSERT INTO `issue` (`Dept_name`, `issue_date`, `quantity_taken`, `Rollno`, `g_id`, `i_year`, `c_ID`, `c_name`) VALUES
+('IT', '2020-06-25', 3, 1, 'B1', 'SE', 'C012', 'BREAD BOARD'),
+('CS', '2020-06-25', 1, 20, '', 'TE', 'C075', 'ADAFRUIT HML5883L');
+
 -- --------------------------------------------------------
 
 --
@@ -165,27 +174,21 @@ CREATE TABLE `students` (
   `g_id` varchar(25) DEFAULT NULL,
   `S_name` varchar(255) NOT NULL,
   `Dept_name` varchar(255) NOT NULL,
-  `s_year` varchar(255) NOT NULL DEFAULT 'TE'
+  `s_year` varchar(255) NOT NULL DEFAULT 'TE',
+  `Email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`Rollno`, `g_id`, `S_name`, `Dept_name`, `s_year`) VALUES
-(1, 'B78', 'YO', 'IT', 'TE'),
-(2, 'B78', 'Rak', 'IT', 'TE'),
-(3, 'B2', 'LOL', 'IT', 'TE'),
-(3, NULL, 'MAn', 'CS', 'TE'),
-(16, NULL, 'Gam', 'EXTC', 'TE'),
-(16, 'B09', 'yo', 'IT', 'TE'),
-(16, NULL, 'tar', 'CS', 'TE'),
-(31, 'B09', 'Get', 'IT', 'TE'),
-(1, NULL, 'Jeet', 'IT', 'SE'),
-(2, NULL, 'Preet', 'IT', 'SE'),
-(3, NULL, 'Hem', 'IT', 'SE'),
-(4, NULL, 'Akash', 'IT', 'SE'),
-(5, NULL, 'Darsh', 'IT', 'SE');
+INSERT INTO `students` (`Rollno`, `g_id`, `S_name`, `Dept_name`, `s_year`, `Email`) VALUES
+(1, 'B1', 'Het', 'IT', 'SE', 'het.parekh@somaiya.edu'),
+(20, NULL, 'Raj', 'CS', 'TE', 'sample@somaiya.edu'),
+(33, 'L1', 'Akshay', 'IT', 'TE', 'samepl2@somaiya.edu'),
+(21, 'L1', 'Mangesh', 'IT', 'TE', 'onlysomaiyallowed@somaiya.edu'),
+(22, 'B1', 'Raman', 'IT', 'TE', 'nothing@somaiya.edu'),
+(56, NULL, 'Prakash', 'IT', 'TE', 'p@somaiya.edu');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
