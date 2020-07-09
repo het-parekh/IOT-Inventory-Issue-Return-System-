@@ -77,7 +77,12 @@ $(document).ready(function () {
                     alertme("RollNo. Not found...Try Again");
 
                     roll = [];
-                } else {
+                } else if(msg == "Already Exists"){
+                    swal({title:"Some Rollno(s) GroupID already exists and could not be altered. Go to modify Group page to change it.",icon: "error"}).then(function() {
+                        window.location = "GroupForm.php";
+                    });
+                }
+                else {
                     
                     swal({title:"Group Created Succesfully",icon: "success"}).then(function() {
                         window.location = "GroupForm.php";

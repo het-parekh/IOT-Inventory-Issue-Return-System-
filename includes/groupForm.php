@@ -46,12 +46,22 @@ if(isset($_POST["roll_no"]) && isset($_POST["grp"]) && isset($_POST["year"]))
             }
             
         }
-   
+        $flag = 0;
         foreach($rollno as $value)
         {
+            $g_id = mysqli_fetch_array(mysqli_query($con,"SELECT g_id from students WHERE Rollno='$value' AND s_year='$year' AND Dept_name='IT'"))[0];
+            if($g_id != null)
+            {
+                $flag = 1;
+                continue;
+            }
             $sql=mysqli_query($con,"UPDATE students SET g_id='$group_name' WHERE Rollno='$value' AND s_year='$year' AND Dept_name='IT'" );
-        }   
-        echo "done";
+        }
+
+        if ($flag == 1)
+            echo "Already Exists";
+        else
+            echo "done";
     }
 }
 
