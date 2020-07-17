@@ -1,3 +1,9 @@
+<?php
+if(isset($_COOKIE['username'])):{
+    $name=$_COOKIE['username'];
+}
+ 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,30 +38,33 @@
     <script type="text/javascript" src="./js/decor.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+    <script src="js/showGroup.js"></script>
 
     <style>
         button{
             padding-left:500px;
         }
         tr:nth-child(even){
-            background-color:#f2f2f2;
+            background-color:#f9e4b7;
+        }
+        tr:nth-child(odd){
+            background-color:#fdf6e3;
         }
         th{
-            background-color:yellow;
+            background-color:#f5f5dc;
         }
-    </style>    
+    </style>  
 </head>
 <body>
     <table class = "table table bordered">
         <tr>
-            <th>G_id</th>
+            <th>Group ID</th>
             <th>Roll no</th>
             <th>Year</th>
-            <th>Delete</th>
+            <th><button class="btn btn-outline-danger" id="deleted">Delete</button></th>
         </tr>
         <?php
-            $con=mysqli_connect("localhost","root","akash","iot_inventory");
+            include 'includes/DB.php';
             if($con){
                 // echo "connection success";
                 $query="Select g_id ,Rollno,s_year FROM students where g_id is not null";
@@ -67,14 +76,13 @@
                             <td> <?php echo $row['g_id']; ?> </td>
                             <td> <?php echo $row['Rollno']; ?> </td>
                             <td> <?php echo $row['s_year']; ?> </td>
-                            <td> <button onclick="deleteAjax(<?php echo $row['Rollno']; ?>)" class="btn btn-danger">Delete </button></td>
+                            <?php $id_name = $row['g_id']."-".$row['Rollno'] ?>
+                            <td> <input type="checkbox" name="del" id=<?php echo $id_name; ?>></td>
                         </tr>
         <?php }
                     echo "</table>";
                 }
-                else{
-                    echo "no groups created yet";
-                }
+
             }
             else
             {
@@ -82,24 +90,16 @@
             }
         ?>
 
-
-
-        <script>
-            function deleteAjax(id){
-                if(confirm('are you sure?')){
-                    $.ajax({
-                        type:'post',
-                        url:'delete.php',
-                        data:{delete_id:id},
-                        success: function(data){
-                            $('#delete'+id).hide();
-                        }
-                    })
-                }
-            }
-        </script>
         
 
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
     </body>
 </html>
+
+
+
+<?php else:{
+     echo "<script>location.href='loginpro7.php'</script>";
+}
+endif
+?>

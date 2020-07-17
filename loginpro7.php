@@ -70,7 +70,7 @@
 if(isset($_POST['click'])){
 $name=$_POST['email'];
 $password=$_POST['password'];
-include 'includes\DB.php';
+include 'includes/DB.php';
 if($con){
    $query= mysqli_query($con,"SELECT Password FROM admin WHERE email='$name'");
         if(mysqli_num_rows($query)>0){

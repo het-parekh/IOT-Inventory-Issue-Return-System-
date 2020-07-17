@@ -1,7 +1,7 @@
 <?php
 if(isset($_COOKIE['username'])):{
 	$name=$_COOKIE['username'];
-	include "includes/DB.php";
+	include "includes\DB.php";
 	$data=($con)?(mysqli_query($con,"Select user_name from admin where email='$name'")):"";
 	$result=mysqli_fetch_assoc($data)['user_name'];
 }
@@ -46,7 +46,8 @@ if(isset($_COOKIE['username'])):{
 				    <!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
 				    <a href="GroupForm.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
 				    <a href="modify.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Modify Group</a>
-					<a href="logout.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-danger"><!-- <i class="fa fa-edit"> -->&nbsp;<!-- </i> -->Logout</a>
+					<a href="showGroup.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-success">Display All Groups&nbsp;<i class="fa fa-eye"></i></a>
+					<a href="logout.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-danger">Logout&nbsp;<i class="fa fa-sign-out"></i></a>
 				  </div>
 				</div>
 			</div>
