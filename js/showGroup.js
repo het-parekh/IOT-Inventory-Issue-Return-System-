@@ -1,10 +1,15 @@
 
 $(document).ready(function() {
-    function deleted(){
+    function deleted(flag){
         var id_array = []
         $('input[name="del"]').each(function(){
-            if($(this).is(":checked"))
-            {
+            if (flag == 1){
+                if($(this).is(":checked"))
+                {
+                    id_array.push($(this).attr("id"))
+                }
+            }
+            else{
                 id_array.push($(this).attr("id"))
             }
         })
@@ -16,15 +21,29 @@ $(document).ready(function() {
                 if(msg == 1)
                 {
                     alert("Deleted Successfully")
+                    location.reload();
                 }
                 else{
-                    alert("Select atleast one student to delete")
+                    alert("Select atleast one student to delete") 
                 }
-                windows.location="showGroup.php"
+                
             }
         })
     }
     $("#deleted").click(function(){
-        deleted()
+        if (confirm("Are you sure you want to delete the selected students?"))
+        {
+            deleted(1)
+        }
+        else{}
+        
+    })
+    $("#deleteAll").click(function(){
+        if (confirm("Are you sure you want to delete the complete group list?"))
+        {
+            deleted(0)
+        }
+        else{}
+        
     })
 })

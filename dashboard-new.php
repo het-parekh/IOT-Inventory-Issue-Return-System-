@@ -1,7 +1,7 @@
 <?php
 if(isset($_COOKIE['username'])):{
 	$name=$_COOKIE['username'];
-	include "includes\DB.php";
+	include "includes/DB.php";
 	$data=($con)?(mysqli_query($con,"Select user_name from admin where email='$name'")):"";
 	$result=mysqli_fetch_assoc($data)['user_name'];
 }
@@ -12,6 +12,7 @@ if(isset($_COOKIE['username'])):{
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Inventory Management System</title>
+	<link rel="stylesheet" type="text/css" href="./css/group.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -20,6 +21,12 @@ if(isset($_COOKIE['username'])):{
  	<script type="text/javascript" src="./js/main.js"></script>
  </head>
 <body>
+<div class="topnav" style="margin-bottom:8px;padding:0px">
+		
+		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
+			<a href="dashboard-new.php">Dashboard</a>
+			<div class="an"><a href="dashboard-new.php" class="an" ><img style="height:60px;width:320px" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div>
+		</div>
 	<style>
 		body{
 			background-image: url(2.jpg);
@@ -56,7 +63,7 @@ if(isset($_COOKIE['username'])):{
 					<h1 align="center"><b>Welcome Admin</b></h1></br>
 					<div class="row">
 						<div class="col-sm-6">
-							<iframe style="pointer-events: none;" src="http://free.timeanddate.com/clock/i616j2aa/n1993/szw160/szh160/cf100/hnce1ead6" frameborder="0" width="160" height="160"></iframe>
+							<iframe style="pointer-events: none;" src="https://free.timeanddate.com/clock/i616j2aa/n1993/szw160/szh160/cf100/hnce1ead6" frameborder="0" width="160" height="160"></iframe>
 
 						</div>
 						<div class="col-sm-6">
