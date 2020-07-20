@@ -54,7 +54,9 @@ $(document).ready(function(){
                     item = $.unique(data)
                     var option = '';
                     for (var i=0;i<item.length;i++){
+                        
                        option += '<option value="'+ item[i] + '">' + item[i] + '</option>';
+                        
                     }
                     $('#new_grp').empty().append(option);
                 }

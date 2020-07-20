@@ -30,7 +30,7 @@ if(isset($_POST["roll1"]) && isset($_POST["year1"]) && isset($_POST["validate_pr
 
     $roll1 = $_POST["roll1"];
     $year1 = $_POST["year1"];
-    $query1 = mysqli_query($con,"SELECT g_id from students where Rollno = '$roll1' and s_year = '$year1' and Dept_name = 'IT'");
+    $query1 = mysqli_query($con,"SELECT g_id from students where Rollno = '$roll1' and s_year = '$year1' and Dept_name = 'IT' and g_id IS NOT NULL");
     if(mysqli_num_rows($query1)>0){
         $row1 = mysqli_fetch_assoc($query1)["g_id"];
         echo json_encode($row1);
@@ -47,7 +47,7 @@ if(isset($_POST["roll1"]) && isset($_POST["year1"]) && isset($_POST["validate_pr
 if(isset($_POST["year1"]) && isset($_POST["validate_newgrp"]) )
 {
     $year1 = $_POST["year1"];
-    $sql = mysqli_query($con,"SELECT g_id FROM students WHERE s_year = '$year1' and Dept_name = 'IT'");
+    $sql = mysqli_query($con,"SELECT g_id FROM students WHERE s_year = '$year1' and Dept_name = 'IT' and g_id IS NOT NULL");
     $arr = array();
     if(mysqli_num_rows($sql)>0)
 	{
