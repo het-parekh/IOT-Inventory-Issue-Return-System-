@@ -19,13 +19,88 @@ if(isset($_COOKIE['username'])):{
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
     </script>
 	</head>
-<script>
-		 $(function(){
-	$("#header").load("header.html"); 
-});
-</script>
-<body>
-	<div id="header"></div>
+	<style>
+		.topnav {
+			background-color:#f5f5f0;
+			overflow: hidden;
+		}
+
+		/* Style the links inside the navigation bar */
+		.topnav a {
+		float: right;
+		color:Black;
+		text-align: center;
+		padding: 20px 16px;
+		font-family: 'Lato', sans-serif;
+		font-weight:Bold;
+		text-decoration: none;
+		font-size: 17px;
+		}
+
+		/* Change the color of links on hover */
+		.topnav a:hover {
+		color:#A12023;
+		}
+		.logout a:hover{
+			color:red;
+		}
+
+		/* Add a color to the active/current link */
+		.topnav a.active {
+		background-color: grey;
+		color:#A12023;
+		}
+
+		/* Right-aligned section inside the top navigation */
+		.topnav-right {
+		float: right;
+		}   
+
+		.dropdown{
+		margin-top: 30px ;
+		text-align: center;
+		}
+		.an{
+			float:left;
+			padding-top:2px;
+			margin-Bottom:18px;
+			padding-left:8px;
+			height:80px;
+			width:100x;
+		}
+		.trust{
+			float:right;
+			padding-top:8px;
+			padding-Right:15px;
+			height:70px;
+			width:100x;
+		}
+
+	</style>
+	<body>
+	<div class="topnav" style="margin-bottom:0px;padding:0px">
+		
+		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
+		
+			<a href="logout.php"><button type="button" style="cursor:pointer;font-size:14px;padding:6px" class="btn btn-outline-danger">LOGOUT</button></a>
+			<a href="search.php">Components</a>
+			<a href="log.php">Log</a>
+			<a href="Issue_and_Return.php">Issue/Return</a>
+            <a href="GroupForm.php">New Group</a>
+            <a style="padding-right:0px;margin:0px">
+            <a class="nav-link dropdown-toggle" style="padding-right:0px;margin:0px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Issue Details
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="display.php">IT</a>
+                <a class="dropdown-item" href="displayother.php">Other</a>    
+                <div class="dropdown-divider"></div>
+            </div>
+
+             </a>
+			<a href="dashboard-new.php">Dashboard</a>
+			<div class="an"><a href="dashboard-new.php" class="an" ><img style="height:60px;width:320px" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div>
+		</div>
 		<div class="container">
 			<br />
 			<br />
@@ -33,8 +108,8 @@ if(isset($_COOKIE['username'])):{
 			<h2 align="center" style="font-family:'Garamond','Times New Roman'">COMPONENT&nbsp&nbspLIST</h2><br />
 			<div class="form-group">
 				<div class="input-group mb-3">
-					
 					<input type="text" name="search_text" id="search_text" placeholder="Search by Component Name / Size / Price" class="form-control" />
+					<a style="margin-left:5%" href="add-component.php" class="btn btn-outline-primary">ADD Products</a>
 				</div>
 			</div>
 			<br />
@@ -84,6 +159,26 @@ $(document).ready(function(){
 			load_data();			
 		}
 	});
+
+	$(document).on('click', '.btn-danger', function(){
+		if(window.confirm("Are you sure you want to remove this ?")){
+			$.ajax({
+		url:"remove_from_database.php",
+		type:"post",
+		data:{
+            message_id:this.id
+		},
+		success:function(data){
+			load_data();
+		},
+		error:function(err){
+			console.log(err);
+		}
+	})
+		}
+			}); 
+
+
 });
 </script>
 
