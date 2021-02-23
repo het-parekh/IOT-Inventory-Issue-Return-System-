@@ -14,12 +14,12 @@ if(isset($_COOKIE['username'])){
 
 date_default_timezone_set('Asia/Kolkata');
 
-if(isset($_POST["table"]) && isset($_POST["qty"])){
+if(isset($_POST["id"]) && isset($_POST["qty"])){
 	
 			if($con){
 
 				
-				$data = json_decode($_POST["table"]);
+				$data = json_decode($_POST["id"]);
 				$qty = json_decode($_POST["qty"]);
 
 				foreach($qty as $value)
@@ -57,19 +57,22 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 					$add=mysqli_query($con,"UPDATE components SET Quantity=Quantity+$qty WHERE C_ID='$data'");		
 				}
 
+				$get_grp = mysqli_query($con,"SELECT g_id FROM students where Dept_name='IT' and Rollno='$roll' and s_year = '$s_year'");
+				$grpid = mysqli_fetch_assoc($get_grp)["g_id"];
+				$txt="<tr style='background-color:#bbff99'><td>".$user."</td> <td>RETURN</td><td>".strtoupper($grpid)."</td><td>".$roll."</td><td>".$dept."</td>";
 				$log=array();
 				foreach(array_combine($log1, $log2) as $log1 => $log2)
 				{
 					$log[]=$log1." (".$log2.") ";
 				}
-				$get_grp = mysqli_query($con,"SELECT g_id FROM students where Dept_name='IT' and Rollno='$roll' and s_year = '$s_year'");
-				$grpid = mysqli_fetch_assoc($get_grp)["g_id"];
-				$t=time();
+
+				$date=date("d/m/Y",time());
+				$time=date("h:i:s A",time());
 				$out=implode(",",$log);
-				$txt=($dept=="IT")?("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Group <strong>".strtoupper($grpid)." (IT)</strong></a></li>\n") : ("<li><a><strong>".$user."</strong> Recieved <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> from Roll Number <strong>".$roll." (".$dept.")</strong></a></li>\n");
+				$txt .= "<td>".$out."</td><td>".$date."</td><td>".$time."</td></tr>";
 				$content=file_get_contents("log.txt",true);
-				$txt1=$txt.$content;
-				file_put_contents("log.txt", $txt1);
+				$txt.=$content;
+				file_put_contents("log.txt", $txt);
 			/*	if($dept=="IT"){
 					$txt="'".$i."' Component(s) were Successfully Returned by Group '".$grpid."' of Department '".$dept."'";
 				}else
@@ -78,7 +81,6 @@ if(isset($_POST["table"]) && isset($_POST["qty"])){
 				}
 				
 				file_put_contents("test.txt", $txt);*/
-
 			}
 			else
 			{
@@ -189,14 +191,20 @@ date_default_timezone_set('Asia/Kolkata');
 
 			
 			}
-			$log=array();
+				$log=array();
+				$get_grp = mysqli_query($con,"SELECT g_id FROM students where Dept_name='IT' and Rollno='$roll' and s_year = '$s_year'");
+				$grpid = mysqli_fetch_assoc($get_grp)["g_id"];
+				$txt="<tr><td>".$user."</td> <td>ISSUE</td><td>".strtoupper($grpid)."</td><td>".$roll."</td><td>".$dept."</td>";
+				
 				foreach(array_combine($log1, $log2) as $log1 => $log2)
 				{
 					$log[]=$log1." (".$log2.") ";
 				}
-				$t=time();
+				
+				$date=date("d/m/Y",time());
+				$time=date("h:i:s A",time());
 				$out=implode(",",$log);
-				$txt=($dept=="IT")?("<li class='ret'><a><strong>".$user."</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Group <strong>".$grp." (IT)</strong></a></li>\n") : ("<li><a><strong>".$user."</strong> Issued <strong>".$out."</strong> on <strong>".date("d/m/Y h:i:s A",$t)."</strong> to Roll Number <strong>".$roll." (".$dept.")</strong></a></li>\n");
+				$txt .= "<td>".$out."</td><td>".$date."</td><td>".$time."</td></tr>";
 				$content=file_get_contents("log.txt",true);
 				$txt1=$txt.$content;
 				file_put_contents("log.txt", $txt1);

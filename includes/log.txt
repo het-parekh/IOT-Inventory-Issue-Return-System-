@@ -1,9 +1,1 @@
-<li class='ret'><a><strong>test</strong> Issued <strong>C004 (2) </strong> on <strong>09/07/2020 04:14:40 PM</strong> to Group <strong>B1 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C064 (2) </strong> on <strong>09/07/2020 03:28:57 PM</strong> to Group <strong>B1 (IT)</strong></a></li>
-<li><a><strong>test</strong> Recieved <strong>C012 (2) ,C006 (2) </strong> on <strong>09/07/2020 03:28:20 PM</strong> from Group <strong>B1 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C006 (2) </strong> on <strong>09/07/2020 03:27:51 PM</strong> to Group <strong>B1 (IT)</strong></a></li>
-<li><a><strong>test</strong> Recieved <strong>C050 (1) </strong> on <strong>09/07/2020 03:25:42 PM</strong> from Group <strong>B1 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C050 (1) ,C012 (2) </strong> on <strong>09/07/2020 03:25:13 PM</strong> to Group <strong>B1 (IT)</strong></a></li>
-<li><a><strong>test</strong> Issued <strong>C075 (1) </strong> on <strong>25/06/2020 08:41:44 PM</strong> to Roll Number <strong>20 (CS)</strong></a></li>
-<li><a><strong>test</strong> Recieved <strong>C050 (1) </strong> on <strong>25/06/2020 08:40:22 PM</strong> from Group <strong>B1 (IT)</strong></a></li>
-<li class='ret'><a><strong>test</strong> Issued <strong>C050 (1) ,C012 (6) </strong> on <strong>25/06/2020 08:39:53 PM</strong> to Group <strong>B1 (IT)</strong></a></li>
+<tr style='background-color:#bbff99'><td>test</td> <td>RETURN</td><td>TE_IOT_01</td><td>1</td><td>IT</td><td>C003 (2) </td><td>23/02/2021</td><td>02:52:41 PM</td></tr><tr><td>test</td> <td>ISSUE</td><td>TE_IOT_01</td><td>1</td><td>IT</td><td>C003 (2) </td><td>23/02/2021</td><td>02:51:59 PM</td></tr>

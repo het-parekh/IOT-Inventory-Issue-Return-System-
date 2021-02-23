@@ -156,6 +156,17 @@ if(isset($_COOKIE['username'])):{
                                     <!--Crad Body Ends-->
                                 </div> <!-- Order List Crad Ends-->
 
+                                <div class="card" id="already_issued_card" style="box-shadow:0 0 15px 0 lightgrey;margin-top:10px;">
+                                    <div class="card-body">
+                                        <h3>Previously Issued Component(s)</h3>
+                                        <table align="center" style="width:100%;text-align:center" id="already_issued">
+                                        </table>
+                                        <!--Table Ends-->
+
+                                    </div>
+                                    <!--Crad Body Ends-->
+                                </div> <!-- Order List Crad Ends-->
+                                
 
                                 <br>
                                 <center>

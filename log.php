@@ -19,6 +19,9 @@
     </script>
     <script src="./js/log.js"></script>
     <link rel="stylesheet" type="text/css" href="css/log.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src= "//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"> 
+</script> 
 </head>
 
 <script>
@@ -33,13 +36,23 @@
     <div class="logo">
     <a >Logs</a>
 </div>
+<button class="download-btn" id="download-btn" ><i class="fa fa-download"></i> Download</button>
 <center>
-    <div id="issue" class="list-type1" style="width:87%;text-align:left;" >
-        <ol >
-    <div id="log">
-    </div>
-</ol>
-</div>
+    <table id="log">
+    <thead>
+       <tr>
+       <th>User</th>
+       <th>Transaction</th>
+       <th>Group</th>
+       <th>Roll No.</th>
+       <th>Branch</th>
+       <th>Component ID(s)</th>
+       <th>Date</th>
+       <th>Time</th>
+       </tr>
+    </thead>
+    <tbody>
+</table>
 </center>
 <div id="return">
 </div>
