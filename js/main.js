@@ -198,6 +198,7 @@ $(document).ready(function(){
 					}
 					else
 					{
+						$("#due_date_div").html("")
 						$('#showalert_r').html("");
 						$("#issue_table").replaceWith($("#return_table"));
 						$("#issue_date").replaceWith($("#return_date"));
@@ -215,10 +216,13 @@ $(document).ready(function(){
 						$("#roll").prop('readonly',true);
 					var item=JSON.parse(data);
 					var row="";
-					var head='<thead><tr style="background-color:#cc99ff;height:55px;min-width:105%;"><th><input type="checkbox" id="sel_all"></th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Quantity</th></tr></thead>'
+					var head='<thead><tr style="background-color:#cc99ff;height:55px;min-width:105%;"><th><input type="checkbox" id="sel_all"></th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Quantity</th><th style="text-align:center;">Due_Date</th></tr></thead>'
 					for(i=0;i<item.comp_id.length;i++)
 					{
-						row+="<tr class='r_row' ><td><input type='checkbox' class='cbox' name='send' id="+"ch"+i+"></td><td>"+item.comp_id[i]+"</td><td >"+item.description[i]+"</td><td><center><input class='form-control form-control-sm send_qty' onkeydown='return false' min='0' style='min-width:70px;max-width:70px' required max='"+item.quantity[i]+"' value='"+item.quantity[i]+"' type='number'/><center></td><td></tr>";
+						var on_time = new Date() < new Date(item.due_date[i])?"not_due":"due"
+						row+="<tr class='r_row' ><td><input type='checkbox' class='cbox' name='send' id="+"ch"+i+"></td><td>"+item.comp_id[i]+"</td><td >"+item.description[i]+"</td><td><center>"
+						+"<input class='form-control form-control-sm send_qty' onkeydown='return false' min='0' style='min-width:70px;max-width:70px' required max='"+item.quantity[i]+"' value='"+item.quantity[i]+"' type='number'/><center></td>"
+						+"<center><td class='"+ on_time +"'>"+(new Date(item.due_date[i])).toLocaleDateString() +"</td></center></tr>";
 					}	
 					$("#return_table").append(head).append(row);
 					$('#sel_all').change(function(){
@@ -333,13 +337,14 @@ $(document).ready(function(){
 		function issue()
 		{
 			var roll=$("#roll").val();
+			var due_date=$("#due_date ").val();
 			var cur_dept=get_dept;
 			var cur_year=get_year;
 			var grp=$("#groupid").val();
 			$.ajax({
 				method: "POST",
 				url: DOMAIN+"/includes/process.php",
-				data: {c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp,year1:cur_year},
+				data: {due_date:due_date,c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp,year1:cur_year},
 				success: function(msg){
 		
 					if(msg==10)
@@ -408,7 +413,7 @@ $(document).ready(function(){
 					}
 					else{
 						
-						//email(roll,dept,year,"Return",JSON.stringify(TableData.id),JSON.stringify(TableData.qty))
+						email(roll,dept,year,"Return",JSON.stringify(TableData.id),JSON.stringify(TableData.qty))
 						swal({title:"Component(s) Returned Successfully",icon: "success"}).then(function() {
 							window.location = "Issue_and_Return.php";
 						});

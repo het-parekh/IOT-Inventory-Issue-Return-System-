@@ -47,8 +47,8 @@
        <th>Roll No.</th>
        <th>Branch</th>
        <th>Component ID(s)</th>
-       <th>Date</th>
-       <th>Time</th>
+       <th>Issue_Date</th>
+       <th>Issue_Time</th>
        </tr>
     </thead>
     <tbody>

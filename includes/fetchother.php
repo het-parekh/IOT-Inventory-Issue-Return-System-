@@ -26,6 +26,7 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
                         <th>Component ID</th>
                         <th>Description</th>
                         <th>Issue_Date</th>
+                        <th>Due_Date</th>
 						</tr>';
 	while($row = mysqli_fetch_array($result))
 	{
@@ -37,6 +38,7 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 				<td>'.$row["c_ID"].'</td>
 				<td>'.$row["c_name"].'</td>
 				<td>'.$row["issue_date"].'</td>
+				<td>'.$row["due_date"].'</td>
 			</tr>
 		';
 	}

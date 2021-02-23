@@ -61,3 +61,28 @@ a {
 	color:red;
 	
 }
+
+.due::after{
+   font-family: "FontAwesome";
+   content: "\f06a";
+   display: inline-block;
+   padding-right: 30px;
+   float:right;
+   vertical-align: middle;
+   font-weight: 900;
+   font-size: 22px;
+   color:rgb(212, 80, 80);
+
+}
+
+.not_due:after{
+    font-family: "FontAwesome";
+    content: "\F0C8 ";
+    display: inline-block;
+    padding-right: 30px;
+    float:right;
+    vertical-align: middle;
+    font-weight: 900;
+    font-size: 22px;
+    color:transparent;
+}

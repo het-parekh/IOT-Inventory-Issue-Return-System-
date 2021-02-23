@@ -111,6 +111,9 @@ date_default_timezone_set('Asia/Kolkata');
 			$s_year=$_POST["year1"];
 			$data1 = json_decode($_POST["c_id1"]);
 			$data2 = json_decode($_POST["req_qty1"]);
+			$due_date = $_POST["due_date"];
+			// $due_date = date("Y/m/d",$due_date1);
+			// echo $due_date;
 			$date=date("Y/m/d");
 			$log1=array();
 			$log2=array();
@@ -153,7 +156,7 @@ date_default_timezone_set('Asia/Kolkata');
 					{
 						$cname=mysqli_query($con,"SELECT Description FROM components WHERE C_ID='$data1'");
 						$data3=mysqli_fetch_array($cname)[0];
-						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll','$grp','$s_year','$data1','$data3')");
+						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$due_date','$data2','$roll','$grp','$s_year','$data1','$data3')");
 						
 					}
 					$sql2=mysqli_query($con,"UPDATE components set Quantity=Quantity-$data2 where C_ID='$data1'");
@@ -178,7 +181,7 @@ date_default_timezone_set('Asia/Kolkata');
 					{
 						$cname=mysqli_query($con,"SELECT Description FROM components WHERE C_ID='$data1'");
 						$data3=mysqli_fetch_array($cname)[0];
-						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$data2','$roll','$grp','$s_year','$data1','$data3')");
+						$sql1=mysqli_query($con,"INSERT INTO issue VALUES('$dept','$date','$due_date','$data2','$roll','$grp','$s_year','$data1','$data3')");
 						
 					}
 					$sql2=mysqli_query($con,"UPDATE components set Quantity=Quantity-$data2 where C_ID='$data1'");

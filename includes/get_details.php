@@ -44,12 +44,20 @@ if((isset($_POST['roll'])) && isset($_POST['dept']) && isset($_POST['s_year']))
 					$row = mysqli_fetch_assoc($c_q);
 					$info3[]=$row['quantity_taken'];
 				}
+
+				foreach($info1 as $value)
+				{
+					$c_q=mysqli_query($con,"SELECT due_date FROM issue WHERE c_ID='$value'");
+					$row = mysqli_fetch_assoc($c_q);
+					$info4[]=$row['due_date'];
+				}
 			
 	
 				
 					$myarray['comp_id'] = $info1;
 					$myarray['description'] = $info2;
 					$myarray['quantity'] = $info3;
+					$myarray['due_date'] = $info4;
 				
 				echo json_encode($myarray);
 			}
