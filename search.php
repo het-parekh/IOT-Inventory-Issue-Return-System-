@@ -109,7 +109,8 @@ if(isset($_COOKIE['username'])):{
 			<div class="form-group">
 				<div class="input-group mb-3">
 					<input type="text" name="search_text" id="search_text" placeholder="Search by Component Name / Size / Price" class="form-control" />
-					<a style="margin-left:5%" href="add-component.php" class="btn btn-outline-primary">ADD Products</a>
+					<a style="margin-left:1%" href="add-component.php" class="btn btn-outline-primary">ADD Products</a>
+					<a style="margin-left:1%" id="delete" name="save_value" class="btn btn-outline-danger">Delete Products</a>
 				</div>
 			</div>
 			<br />
@@ -160,23 +161,32 @@ $(document).ready(function(){
 		}
 	});
 
-	$(document).on('click', '.btn-danger', function(){
-		if(window.confirm("Are you sure you want to remove this ?")){
-			$.ajax({
-		url:"remove_from_database.php",
-		type:"post",
-		data:{
-            message_id:this.id
-		},
-		success:function(data){
-			load_data();
-		},
-		error:function(err){
-			console.log(err);
-		}
-	})
-		}
-			}); 
+
+	$(document).on('click', '#delete', function(){
+        var value = [];
+        $(':checkbox:checked').each(function(i){
+          value[i] = $(this).val();
+        })
+		var jsonString = JSON.stringify(value);
+		if(value.length>0){
+				if(window.confirm("Are you sure you want to remove this ?")){
+					$.ajax({
+						url:"remove_from_database.php",
+						type:"post",
+						data:{
+							message_id:jsonString
+						},
+						success:function(response){
+							load_data();
+						},
+						error:function(err){
+							console.log(err);
+						}
+				})
+			}
+		}			
+		
+		}); 
 
 
 });
