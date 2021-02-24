@@ -27,8 +27,8 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 							<th>Description</th>
 							<th>Size</th>
 							<th>Quantity</th>
-							<th>Total Quantity</th>
 							<th>Price</th>
+							<th>Status</th>
 							<th>Edit</th>
 						</tr>';
 	while($row = mysqli_fetch_array($result))
@@ -39,9 +39,9 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 				<td style="width:300px">'.$row["Description"].'</td>
 				<td>'.$row["Size"].'</td>
 				<td style="width:150px">'.$row["Quantity"].'</td>
-				<td style="width:150px">'.$row["Total_Quantity"].'</td>
 				<td>'.$row["Price"].'</td>
-				<td><input type="checkbox" name="delete_id[]" value="'.$row['C_ID'].'" />
+				<td>'.$row["Status"].'</td>
+				<td><input type="checkbox" name="delete_id[]" value="'.$row['C_ID'].'" 
 			</tr>
 		';
 	}

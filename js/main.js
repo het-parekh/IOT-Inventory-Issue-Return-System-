@@ -297,20 +297,53 @@ $(document).ready(function(){
 		 issueData["c_id"]=[];
 		 issueData["req_qty"]=[];
 	
+		document.querySelector('#mark-new-damage').addEventListener('click',(e)=>{
+			console.log($('.c_id')[0].value,$('.c_name')[0].value)
+			if(!window.confirm("Mark the selected components as damaged?")){
+				e.preventDefault();
+			}
+			else if($('.dmg_qty')[0].value < 1){
+				e.preventDefault();
+				alert1="add atleast one component";
+				alertme();
+			}
+			else{
+				markDamage($('.c_id')[0].value, $('.dmg_qty')[0].value);
+			}
+		})
 		
+		function markDamage(id,qty){
+			var c_id = id;
+			var dmg_qty = qty;
+			console.log(c_id,dmg_qty)
+
+			$.ajax({
+				method: "POST",
+				url: DOMAIN+"/includes/damaged.php",
+				data: {c_id: c_id, qty: dmg_qty},
+				success: function(msg){
+					console.log(msg)
+					location.reload()
+				}
+			})
+		}
+
 		$("form#main").on('click', 'button#submit2', function(e) {
 			var count=0;
 			$
 			$('.c_id').each(function()
 			{	
+				console.log($('.c_id'))
 				++count;
 			})
+			console.log(count)
 			if(!window.confirm("Are you sure?"))
 			{
 				e.preventDefault();
 			}
 			else if(count==0)
 			{
+				console.log("how the it is getting here",count)
 				e.preventDefault();
 				alert1="Issue Atleast One Component";
 				alertme();
@@ -334,7 +367,7 @@ $(document).ready(function(){
 		});
 		
 
-		function issue()
+		function issue() 
 		{
 			var roll=$("#roll").val();
 			var due_date=$("#due_date ").val();
@@ -477,6 +510,7 @@ function auto_complete(){
 
 function auto_complete2()
 {
+	console.log('triggered')
 	$(".c_name").autocomplete({
 		min:1,
 		autoFocus:true,

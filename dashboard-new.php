@@ -27,7 +27,7 @@ if(isset($_COOKIE['username'])):{
 </script>
 <style>
 	body{
-		background-image: url(2.jpg);
+		background-image: url(./images/2.jpg);
 		margin-bottom:15px;
 	}
 	.card-body:hover {
