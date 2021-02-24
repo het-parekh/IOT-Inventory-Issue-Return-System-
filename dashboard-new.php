@@ -20,26 +20,25 @@ if(isset($_COOKIE['username'])):{
  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  	<script type="text/javascript" src="./js/main.js"></script>
  </head>
-<body>
-<div class="topnav" style="margin-bottom:8px;padding:0px">
-		
-		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
-			<a href="dashboard-new.php">Dashboard</a>
-			<div class="an"><a href="dashboard-new.php" class="an" ><img style="height:60px;width:320px" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div>
-		</div>
-	<style>
-		body{
-			background-image: url(./images/2.jpg);
-			margin-bottom:15px;
+ <script>
+	 $(function(){
+	$("#header").load("header.html"); 
+});
+</script>
+<style>
+	body{
+		background-image: url(./images/2.jpg);
+		margin-bottom:15px;
+	}
+	.card-body:hover {
+		box-shadow: 0 0 61px rgba(63,63,63,.22); 
 		}
-		.card-body:hover {
- 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
-			}
-		.jumbotron:hover {.j
- 		 box-shadow: 0 0 61px rgba(63,63,63,.22); 
-			}
-		</style>
-	
+	.jumbotron:hover {.j
+		box-shadow: 0 0 61px rgba(63,63,63,.22); 
+		}
+</style>
+<body>
+	<div id="header"></div>
 	<br/><br/>
 	<div class="container">
 		<div class="row">

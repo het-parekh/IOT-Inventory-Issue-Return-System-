@@ -29,6 +29,7 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 							<th>Quantity</th>
 							<th>Price</th>
 							<th>Status</th>
+							<th>Edit</th>
 						</tr>';
 	while($row = mysqli_fetch_array($result))
 	{
@@ -40,6 +41,7 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 				<td style="width:150px">'.$row["Quantity"].'</td>
 				<td>'.$row["Price"].'</td>
 				<td>'.$row["Status"].'</td>
+				<td><input type="checkbox" name="delete_id[]" value="'.$row['C_ID'].'" 
 			</tr>
 		';
 	}

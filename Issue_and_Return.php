@@ -42,31 +42,14 @@ if(isset($_COOKIE['username'])):{
     
 
 </head>
-
+<script>
+		 $(function(){
+	$("#header").load("header.html"); 
+});
+</script>
 <body>
-<div class="topnav" style="margin-bottom:8px;padding:0px">
-		
-		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
-		
-			<a href="logout.php"><button type="button" style="cursor:pointer;font-size:14px;padding:6px" class="btn btn-outline-danger">LOGOUT</button></a>
-			<a href="search.php">Components</a>
-			<a href="log.php">Log</a>
-			<a href="Issue_and_Return.php">Issue/Return</a>
-            <a href="GroupForm.php">New Group</a>
-            <a style="padding-right:0px;margin:0px">
-            <a class="nav-link dropdown-toggle" style="padding-right:0px;margin:0px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Issue Details
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="display.php">IT</a>
-                <a class="dropdown-item" href="displayother.php">Other</a>    
-                <div class="dropdown-divider"></div>
-            </div>
-
-             </a>
-			<a href="dashboard-new.php">Dashboard</a>
-			<div class="an"><a href="dashboard-new.php" class="an" ><img style="height:60px;width:320px" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div>
-		</div>
+<div id="header"></div>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-10 mx-auto">
@@ -131,6 +114,12 @@ if(isset($_COOKIE['username'])):{
                                             readonly class="form-control form-control-sm">
                                     </div>
                                 </div>
+                                <div class="form-group row" id="due_date_div" >
+                                    <label class="col-sm-3 col-form-label" align="right">Due Date</label>
+                                    <div class="col-sm-6">
+                                        <input id="due_date" type="date" min="<?php echo date("Y-m-d"); ?>" name="order_date"  class="form-control form-control-sm">
+                                    </div>
+                                </div>
 
                                 <div class="form-group row" id="return_date">
                                     <label class="col-sm-3 col-form-label" align="right">Return Date</label>
@@ -173,6 +162,17 @@ if(isset($_COOKIE['username'])):{
                                     <!--Crad Body Ends-->
                                 </div> <!-- Order List Crad Ends-->
 
+                                <div class="card" id="already_issued_card" style="box-shadow:0 0 15px 0 lightgrey;margin-top:10px;">
+                                    <div class="card-body">
+                                        <h3>Previously Issued Component(s)</h3>
+                                        <table align="center" style="width:100%;text-align:center" id="already_issued">
+                                        </table>
+                                        <!--Table Ends-->
+
+                                    </div>
+                                    <!--Crad Body Ends-->
+                                </div> <!-- Order List Crad Ends-->
+                                
 
                                 <br>
                                 <center>

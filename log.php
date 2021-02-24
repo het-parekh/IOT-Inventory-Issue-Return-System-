@@ -19,45 +19,40 @@
     </script>
     <script src="./js/log.js"></script>
     <link rel="stylesheet" type="text/css" href="css/log.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src= "//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"> 
+</script> 
 </head>
 
-
+<script>
+	 	 $(function(){
+	$("#header").load("header.html"); 
+});
+</script>
 <body style="background-color: white;margin:0px;padding:0px">
-<div class="topnav" style="margin-bottom:0px;padding:0px">
-		
-		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
-		
-			<a href="logout.php"><button type="button" style="cursor:pointer;font-size:14px;padding:6px" class="btn btn-outline-danger">LOGOUT</button></a>
-			<a href="search.php">Components</a>
-			<a href="log.php">Log</a>
-			<a href="Issue_and_Return.php">Issue/Return</a>
-            <a href="GroupForm.php">New Group</a>
-            <a style="padding-right:0px;margin:0px">
-            <a class="nav-link dropdown-toggle" style="padding-right:0px;margin:0px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Issue Details
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="display.php">IT</a>
-                <a class="dropdown-item" href="displayother.php">Other</a>    
-                <div class="dropdown-divider"></div>
-            </div>
+<div id="header"></div>
 
-             </a>
-			<a href="dashboard-new.php">Dashboard</a>
-			<div class="an"><a href="dashboard-new.php" class="an" ><img style="height:60px;width:320px" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div>
-		</div>
-    
     <div style="width:100%;" >
     <div class="logo">
     <a >Logs</a>
 </div>
+<button class="download-btn" id="download-btn" ><i class="fa fa-download"></i> Download</button>
 <center>
-    <div id="issue" class="list-type1" style="width:87%;text-align:left;" >
-        <ol >
-    <div id="log">
-    </div>
-</ol>
-</div>
+    <table id="log">
+    <thead>
+       <tr>
+       <th>User</th>
+       <th>Transaction</th>
+       <th>Group</th>
+       <th>Roll No.</th>
+       <th>Branch</th>
+       <th>Component ID(s)</th>
+       <th>Issue_Date</th>
+       <th>Issue_Time</th>
+       </tr>
+    </thead>
+    <tbody>
+</table>
 </center>
 <div id="return">
 </div>

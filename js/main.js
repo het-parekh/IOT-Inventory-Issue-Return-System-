@@ -19,14 +19,13 @@ $(document).ready(function(){
 		
 			dept=$("#dept").children("option").filter(":selected").text();
 			$("#roll").prop('required',true);
-			$("#roll").val("");	
 			$("#rollgrp").show();
+			$('#showalert_r').html("");
 		});
 	
 	$("#dropbox").change(function(){
 			dept=$("#dept").children("option").filter(":selected").text();
 			$("#roll").prop('required',true);
-			$("#roll").val("");
 			$("#rollgrp").show();
 			});
 	
@@ -65,7 +64,7 @@ $(document).ready(function(){
 	var n=0;
 	addNewRow();
 	function addNewRow(){
-		var newRow='<tr class="c_row"><td>'+(++n)+'</td><td style="min-width:10px"><input  spellcheck="false" type="text" required class="form-control form-control-sm c_name"></td><td style="min-width:20px;"><input  readonly type="text"  class="form-control form-control-sm c_id"></td><td style="width:195px"><center><input min="0"  type="number" name="reqqty" required class="form-control form-control-sm req_qty"></center></td><td ><input type="text" readonly class="form-control form-control-sm avail_qty"></td></tr>';
+		var newRow='<tr class="c_row"><td>'+(++n)+'</td><td style="min-width:10px"><input  spellcheck="false" type="text" required class="form-control form-control-sm c_name"></td><td style="min-width:20px;"><input  readonly type="text"  class="form-control form-control-sm c_id"></td><td style="min-width:180px;"><center><input min="0"  type="number" name="reqqty" required class="form-control form-control-sm req_qty"></center></td><td ><input type="text" readonly class="form-control form-control-sm avail_qty"></td></tr>';
 		$('#issue_table').append(newRow);
 		auto_complete2();
 		max_min_qty();	
@@ -88,6 +87,7 @@ $(document).ready(function(){
 						get_dept=$("#dept").children("option").filter(":selected").text().trim();
 						get_year=$("#s_year").children("option").filter(":selected").text().trim();
 						get_student();
+						alreadyissued();
 						
 					}
 					else if(radio=="Return")
@@ -102,7 +102,40 @@ $(document).ready(function(){
 				
 		
 			});
-		
+		function alreadyissued(){
+			var ajxdept=$("#dept").children("option").filter(":selected").text();
+			var ajxroll=$("#roll").val();
+			var ajxyear=$("#s_year").children("option").filter(":selected").text();;
+			
+			$.ajax({
+
+				url : DOMAIN+"/includes/get_details.php",
+				method : "POST",
+				data : {dept:ajxdept,roll:ajxroll,s_year:ajxyear},
+				success : function(data){
+					var item=JSON.parse(data);
+					
+					if( item==2){
+						var head = "<i>No Components Issued...</i>";
+						$("#already_issued").html("")
+						$("#already_issued").append(head);
+					}
+					else{
+						
+						var row="";
+						var head ='<thead><th></th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Quantity</th><th style="text-align:center;">Available Quantity</th></thead>';
+						for(i=0;i<item.comp_id.length;i++)
+						{
+							row +='<tr><td>'+(i+1)+'</td><td style="min-width:10px"><input value="'+item.description[i] +'" readonly  spellcheck="false"  required class="form-control form-control-sm "></td><td style="min-width:20px;"><input value="'+ item.comp_id[i] +'" readonly type="text"  class="form-control form-control-sm "></td><td><center><input value="'+ item.quantity[i] +'" readonly  required class="form-control form-control-sm"></center></td><td ><input type="text" readonly class="form-control form-control-sm"></td></tr>';
+						}	
+						$("#already_issued").html("")
+						$("#already_issued").append(head).append(row);
+						
+					}
+				}
+			})
+
+		}
 		function get_student()
 		{
 			$("#statusp").removeClass("status");
@@ -123,6 +156,7 @@ $(document).ready(function(){
 					}
 					else
 					{
+						$('#showalert_r').html("");
 						$("#return_table").replaceWith($("#issue_table"));
 						$("#all").slideDown(400,"linear");	
 						$("#add").show();
@@ -164,10 +198,11 @@ $(document).ready(function(){
 					}
 					else
 					{
-
+						$("#due_date_div").html("")
+						$('#showalert_r').html("");
 						$("#issue_table").replaceWith($("#return_table"));
 						$("#issue_date").replaceWith($("#return_date"));
-					
+						$("#already_issued_card").replaceWith("")
 						$("#all").slideDown(400,"linear");	
 						$("#add").hide();
 						$("#remove").hide();
@@ -181,10 +216,13 @@ $(document).ready(function(){
 						$("#roll").prop('readonly',true);
 					var item=JSON.parse(data);
 					var row="";
-					var head='<thead><tr style="background-color:#cc99ff;height:55px;min-width:105%;"><th><input type="checkbox" id="sel_all"></th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Quantity</th></tr></thead>'
+					var head='<thead><tr style="background-color:#cc99ff;height:55px;min-width:105%;"><th><input type="checkbox" id="sel_all"></th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Quantity</th><th style="text-align:center;">Due_Date</th></tr></thead>'
 					for(i=0;i<item.comp_id.length;i++)
 					{
-						row+="<tr class='r_row' ><td><input type='checkbox' class='cbox' name='send' id="+"ch"+i+"></td><td>"+item.comp_id[i]+"</td><td >"+item.description[i]+"</td><td><center><input class='form-control form-control-sm send_qty' onkeydown='return false' min='0' style='min-width:70px;max-width:70px' required max='"+item.quantity[i]+"' value='"+item.quantity[i]+"' type='number'/><center></td><td></tr>";
+						var on_time = new Date() < new Date(item.due_date[i])?"not_due":"due"
+						row+="<tr class='r_row' ><td><input type='checkbox' class='cbox' name='send' id="+"ch"+i+"></td><td>"+item.comp_id[i]+"</td><td >"+item.description[i]+"</td><td><center>"
+						+"<input class='form-control form-control-sm send_qty' onkeydown='return false' min='0' style='min-width:70px;max-width:70px' required max='"+item.quantity[i]+"' value='"+item.quantity[i]+"' type='number'/><center></td>"
+						+"<center><td class='"+ on_time +"'>"+(new Date(item.due_date[i])).toLocaleDateString() +"</td></center></tr>";
 					}	
 					$("#return_table").append(head).append(row);
 					$('#sel_all').change(function(){
@@ -320,6 +358,7 @@ $(document).ready(function(){
 
 				issueData.c_id.push(rowcells1);
 				issueData.req_qty.push(rowcells2);
+				console.log(issueData)
 
 			});
 			
@@ -331,13 +370,14 @@ $(document).ready(function(){
 		function issue() 
 		{
 			var roll=$("#roll").val();
+			var due_date=$("#due_date ").val();
 			var cur_dept=get_dept;
 			var cur_year=get_year;
 			var grp=$("#groupid").val();
 			$.ajax({
 				method: "POST",
 				url: DOMAIN+"/includes/process.php",
-				data: {c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp,year1:cur_year},
+				data: {due_date:due_date,c_id1:JSON.stringify(issueData.c_id),req_qty1:JSON.stringify(issueData.req_qty),roll1:roll,dept1:cur_dept,grp1:grp,year1:cur_year},
 				success: function(msg){
 		
 					if(msg==10)
@@ -361,6 +401,7 @@ $(document).ready(function(){
 		 				issueData["req_qty"]=[];
 					}
 					else{
+						
 						email(roll,cur_dept,cur_year,"Issue",JSON.stringify(issueData.c_id),JSON.stringify(issueData.req_qty));
 						swal({title:"Component(s) Issued Successfully",icon: "success"}).then(function() {
 							window.location = "Issue_and_Return.php";
@@ -383,9 +424,9 @@ $(document).ready(function(){
 			$.ajax({
 				method: "POST",
 				url: DOMAIN+"/includes/process.php",
-				data: {table:JSON.stringify(TableData.id),qty:JSON.stringify(TableData.qty),roll2:roll,dept2:dept,year2:year},
+				data: {id:JSON.stringify(TableData.id),qty:JSON.stringify(TableData.qty),roll2:roll,dept2:dept,year2:year},
 				success: function(msg){
-				
+					
 					if(msg==1)
 					{
 						
@@ -404,6 +445,7 @@ $(document).ready(function(){
 
 					}
 					else{
+						
 						email(roll,dept,year,"Return",JSON.stringify(TableData.id),JSON.stringify(TableData.qty))
 						swal({title:"Component(s) Returned Successfully",icon: "success"}).then(function() {
 							window.location = "Issue_and_Return.php";
