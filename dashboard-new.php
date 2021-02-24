@@ -2,8 +2,17 @@
 if(isset($_COOKIE['username'])):{
 	$name=$_COOKIE['username'];
 	include "includes/DB.php";
-	$data=($con)?(mysqli_query($con,"Select user_name from admin where email='$name'")):"";
+	if ($con){
+	$data=mysqli_query($con,"Select user_name from admin where email='$name'");
 	$result=mysqli_fetch_assoc($data)['user_name'];
+	$get_user_role_obj = mysqli_query($con,"SELECT role from admin where email='$name' ");
+	$get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
+	$ask_user = ($get_user_role=='ADMIN')?"manage users":"";
+	$user_profile_obj = mysqli_query($con,"SELECT profile_photo from admin where email='$name' ");
+	$user_profile_encoded = mysqli_fetch_assoc($user_profile_obj)['profile_photo'];
+	$user_profile = "data:image/jpeg;base64,".base64_encode($user_profile_encoded);
+	}
+	
 }
 ?>
 <!DOCTYPE html>
@@ -36,6 +45,13 @@ if(isset($_COOKIE['username'])):{
 	.jumbotron:hover {.j
 		box-shadow: 0 0 61px rgba(63,63,63,.22); 
 		}
+	.add_user{
+		color:blue!important;
+		cursor:pointer;
+		}
+	.add_user:hover{
+		text-decoration:underline!important;
+	}
 </style>
 <body>
 	<div id="header"></div>
@@ -44,11 +60,11 @@ if(isset($_COOKIE['username'])):{
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card mx-auto" style="height:100%">
-				  <img class="card-img-top mx-auto" style="width:60%;" src="images/user.png" alt="Card image cap">
+				  <img class="card-img-top mx-auto" style="width:60%;height:180px" src="<?php echo $user_profile; ?>" alt="Profile Photo">
 				  <div class="card-body">
 				    <h4 class="card-title"><b>Profile Info</b></h4>
 				  <?php echo"Mr.$result"?>
-				    <p class="card-text"><i class="fa fa-user">&nbsp;</i>Admin</p>
+				    &nbsp;<p class="card-text badge badge-secondary"><i class="fa fa-user ">&nbsp;</i><?php echo $get_user_role ?></p> <small><a href="manage_users.php" class="add_user"><?php echo $ask_user ?></a></a></small>
 				    <!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
 				    <a href="GroupForm.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
 				    <a href="modify.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Modify Group</a>
