@@ -117,6 +117,7 @@ if(isset($_COOKIE['username'])):{
 </style>
 <body>
 
+  <div id="header"></div>
     <!-- Popup to add new damaged component -->
     <div id="newly-damaged">
         <div id="close-modal"> &#10006; </div>
@@ -138,10 +139,10 @@ if(isset($_COOKIE['username'])):{
                         >
                     </td>
                     <td>
-                        <input type="number" required class="form-control form-control-sm avail_qty">
+                        <input type="number" required class="form-control form-control-sm avail_qty" id="id_avail_qty">
                     </td>
                     <td>
-                        <input type="number" required class="form-control form-control-sm dmg_qty">
+                        <input type="number" required class="form-control form-control-sm dmg_qty" id="id_dmg_qty">
                     </td>
                 </tr>
 
@@ -165,14 +166,14 @@ if(isset($_COOKIE['username'])):{
     </div>
     <!-- Display list of damaged component -->
     <div class="container">
-        <h1 class="mb-3"> Damaged Components</h1>
+        <h1 class="mb-3"> Damaged Components List</h1>
 
         <table class="table table-striped">
             <tr>
                 <th>C ID</th>
                 <th>Description</th>
                 <th>Size</th>
-                <th>Quantity</th>
+                <th>Available Quantity</th>
                 <th>Price</th>
                 <th>Damaged Quantity</th>
                 <th>Change Status</th>
@@ -190,7 +191,7 @@ if(isset($_COOKIE['username'])):{
                                 <td> <?php echo $row['C_ID']; ?> </td>
                                 <td> <?php echo $row['Description']; ?> </td>
                                 <td> <?php echo $row['Size']; ?> </td>
-                                <td> <?php echo $row['Quantity']; ?> </td>
+                                <td> <?php echo ($row['Quantity'] - $row['Quantity_Damaged']); ?> </td>
                                 <td> <?php echo $row['Price']; ?> </td>
                                 <td> <?php echo $row['Quantity_Damaged']; ?> </td>
                                 <td>
@@ -206,7 +207,7 @@ if(isset($_COOKIE['username'])):{
                     echo "connection unsuccessful";
                 }
             ?>
-    </table>
+        </table>
         <div class="add-damaged-component text-center mt-3">
                 <button class="btn btn-outline-success" id="add-Damaged-comp">Add new Damaged component</button>
         </div>
@@ -215,6 +216,9 @@ if(isset($_COOKIE['username'])):{
     
 
   <script>
+
+	$("#header").load("./header.html")
+
     
     const btnShowAdd = document.querySelector('#add-Damaged-comp')
     const closeModal = document.querySelector('#close-modal')
@@ -251,16 +255,23 @@ if(isset($_COOKIE['username'])):{
         qtyInput.max = qty
         repairModal.classList.add('active')
 
-        repairFromDb.addEventListener('click',()=>{
-        $.ajax({
-            method: "POST",
-            url: DOMAIN+"/includes/repair.php",
-            data:{c_id: id, qty: qtyInput.value},
-            success: function(msg){
-                console.log(msg);
-                location.reload();
-            }
-        })
+        repairFromDb.addEventListener('click',(e)=>{
+        
+        if(parseInt(qtyInput.value) > parseInt(qty)){
+            e.preventDefault()
+            alert('please enter quantity lower than damaged quantity');
+        }
+        else{
+            $.ajax({
+                method: "POST",
+                url: DOMAIN+"/includes/repair.php",
+                data:{c_id: id, qty: qtyInput.value},
+                success: function(msg){
+                    location.reload();
+                }
+            })
+        }
+        
     })
         
     }
