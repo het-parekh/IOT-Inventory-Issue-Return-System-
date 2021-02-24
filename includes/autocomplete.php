@@ -10,7 +10,7 @@ if($con)
     $data=array();
     while($row  =mysqli_fetch_array($result))
     {
-        $data[] = array("value1"=>$row['C_ID'],"value2"=>$row['Quantity'],"label"=>$row['Description']);
+        $data[] = array("value1"=>$row['C_ID'],"value2"=>($row['Quantity']-$row['Quantity_Damaged']),"label"=>$row['Description']);
       
     }
     echo json_encode( $data );

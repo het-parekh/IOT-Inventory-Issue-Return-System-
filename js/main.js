@@ -302,9 +302,9 @@ $(document).ready(function(){
 			if(!window.confirm("Mark the selected components as damaged?")){
 				e.preventDefault();
 			}
-			else if($('.dmg_qty')[0].value < 1){
+			else if($('.dmg_qty')[0].value < 1 || parseInt($('.dmg_qty')[0].value) > parseInt($('.avail_qty')[0].value) ){
 				e.preventDefault();
-				alert1="add atleast one component";
+				alert1="Please enter value of Damaged Quantity between 1 and total available quantity of selected component";
 				alertme();
 			}
 			else{
@@ -579,6 +579,7 @@ function auto_complete2()
 				}
 				var max1=parseInt(thisRow.find(".avail_qty").val());
 				thisRow.find(".req_qty").prop('max',max1);
+				thisRow.find('.dmg_qty').prop('max',max1);
 			}
 		 
 			   
