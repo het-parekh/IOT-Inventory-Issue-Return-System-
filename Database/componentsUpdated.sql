@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2021 at 05:03 PM
+-- Generation Time: Feb 24, 2021 at 01:44 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -33,20 +33,20 @@ CREATE TABLE `components` (
   `Size` varchar(3) CHARACTER SET utf8 DEFAULT NULL,
   `Quantity` int(11) DEFAULT NULL,
   `Price` int(11) DEFAULT NULL,
-  `isDamaged` tinyint(1) NOT NULL DEFAULT 0
+  `Quantity_Damaged` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `components`
 --
 
-INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Price`, `isDamaged`) VALUES
-('C001', 'ARDUINO UNO R3', 'L', 21, 7945, 1),
-('C012', 'BREAD BOARD', 'L', 24, 1490, 1),
-('C015', 'JUMPER WIRES (ALL TYPES)', 'L', 17, 85, 1),
-('C016', 'RASPBERRY PI MODEL 3B', 'L', 10, 29500, 1),
-('C024', 'USB TO MICRO USB CABLE', 'L', 4, 240, 1),
-('C036', 'SERVO MOTOR SG-90', 'L', 11, 1190, 1),
+INSERT INTO `components` (`C_ID`, `Description`, `Size`, `Quantity`, `Price`, `Quantity_Damaged`) VALUES
+('C001', 'ARDUINO UNO R3', 'L', 21, 7945, 0),
+('C012', 'BREAD BOARD', 'L', 24, 1490, 0),
+('C015', 'JUMPER WIRES (ALL TYPES)', 'L', 17, 85, 0),
+('C016', 'RASPBERRY PI MODEL 3B', 'L', 10, 29500, 0),
+('C024', 'USB TO MICRO USB CABLE', 'L', 4, 240, 0),
+('C036', 'SERVO MOTOR SG-90', 'L', 11, 1190, 0),
 ('C035', '2-CHANNEL RELAY', 'M', 6, 700, 0),
 ('C004', '16*2 LCD DISPLAY', 'M', 17, 1700, 0),
 ('C006', '9V BATTERY', 'M', 17, 272, 0),
