@@ -71,12 +71,15 @@ if(isset($_POST['click'])){
 $name=$_POST['email'];
 $password=$_POST['password'];
 include 'includes/DB.php';
+include 'includes/environment.php';
 if($con){
    $query= mysqli_query($con,"SELECT Password FROM admin WHERE email='$name'");
         if(mysqli_num_rows($query)>0){
         $row=mysqli_fetch_array($query);
           if(password_verify($password,$row[0])){
-            setcookie('username',$name,time()+60*60*24*30);
+			$encryption = openssl_encrypt($name, $ciphering, 
+            $encryption_key, $options, $encryption_iv); 
+            setcookie('username',$encryption,time()+60*60*24*30);
             echo"<script>location.href='dashboard-new.php'</script>";
           }
           else{
