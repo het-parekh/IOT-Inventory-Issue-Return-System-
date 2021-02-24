@@ -1,9 +1,16 @@
 <?php
+include "includes/DB.php";
+include 'includes/environment.php';
 if(isset($_COOKIE['username'])):{
-	$name=$_COOKIE['username'];
-	include "includes/DB.php";
-	$data=($con)?(mysqli_query($con,"Select user_name from admin where email='$name'")):"";
-	$result=mysqli_fetch_assoc($data)['user_name'];
+    $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
+        $encryption_key, $options, $encryption_iv); 
+	$query = "SELECT user_name FROM admin WHERE email='$name'";
+	$data=mysqli_query($con,$query);
+	if(mysqli_num_rows($data)>0){
+		$result=mysqli_fetch_assoc($data)['user_name'];
+	}else{
+		echo "<script>location.href='logout.php'</script>";
+	}
 }
 ?>
 
