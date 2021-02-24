@@ -6,9 +6,9 @@ $(document).ready(function(){
    });
 
    $("#download-btn").click(function(){
-      
+      var date = new Date().toLocaleString()
       $("#log").table2excel({
-         filename:'Iot Inventory Log.xls',
+         filename:'Iot Inventory Log ' + date + '.xls',
          preserveColors: true
       })
       
