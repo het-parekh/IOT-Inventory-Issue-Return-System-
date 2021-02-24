@@ -28,12 +28,6 @@ if(isset($_COOKIE['username'])):{
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     </head>
 
-    <script>
-	 $(function(){
-	$("#header").load("header.html"); 
-});
-	</script>
-
     <body>
 	    <div id="header"></div>
         <div class="mx-auto" style="width: 70%;margin-top:2%">
