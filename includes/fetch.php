@@ -27,8 +27,8 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 							<th>Description</th>
 							<th>Size</th>
 							<th>Quantity</th>
-							<th>Total Quantity</th>
 							<th>Price</th>
+							<th>Status</th>
 						</tr>';
 	while($row = mysqli_fetch_array($result))
 	{
@@ -38,8 +38,8 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 				<td style="width:300px">'.$row["Description"].'</td>
 				<td>'.$row["Size"].'</td>
 				<td style="width:150px">'.$row["Quantity"].'</td>
-				<td style="width:150px">'.$row["Total_Quantity"].'</td>
 				<td>'.$row["Price"].'</td>
+				<td>'.$row["Status"].'</td>
 			</tr>
 		';
 	}
