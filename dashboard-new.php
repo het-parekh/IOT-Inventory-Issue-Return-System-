@@ -1,4 +1,6 @@
 <?php
+include 'includes/environment.php';
+include "includes/DB.php";
 if(isset($_COOKIE['username'])):{
 	$name=$_COOKIE['username'];
 	include "includes/DB.php";
@@ -36,8 +38,21 @@ if(isset($_COOKIE['username'])):{
 </script>
 <style>
 	body{
-		background-image: url(2.jpg);
 		margin-bottom:15px;
+	}
+	.bg-clip{
+		position:absolute;
+		left:0;
+		top:25%;
+		width:100%;
+		z-index:-100;
+		height:70%;
+		background-image: url(./images/2.jpg);
+		background-size: cover;
+	  background-position: top;
+  	-webkit-clip-path: polygon(0 30%, 100% 0, 100% 70%, 0 100%);
+  	clip-path: polygon(0 30%, 100% 0, 100% 70%, 0 100%);
+
 	}
 	.card-body:hover {
 		box-shadow: 0 0 61px rgba(63,63,63,.22); 
@@ -54,6 +69,7 @@ if(isset($_COOKIE['username'])):{
 	}
 </style>
 <body>
+	<div class="bg-clip"></div>
 	<div id="header"></div>
 	<br/><br/>
 	<div class="container">
@@ -74,7 +90,7 @@ if(isset($_COOKIE['username'])):{
 				</div>
 			</div>
 			<div class="col-md-8">
-				<div class="jumbotron" style="width:100%;height:100%;">
+				<div class="jumbotron card-dashboard" style="width:100%;height:100%;">
 					<h1 align="center"><b>Welcome Admin</b></h1></br>
 					<div class="row">
 						<div class="col-sm-6">
@@ -85,7 +101,7 @@ if(isset($_COOKIE['username'])):{
 							<div class="card">
 						      <div class="card-body" border-radius:24px>
 						        <h4 class="card-title"><b>New Issue/Return</b></h4>
-						        <p class="card-text">Here you can create new issues/returns</p>
+						        <p class="card-text">Issue new components or Return issued components</p>
 						        <a href="Issue_and_Return.php" class="btn btn-outline-primary">New Issue</a>
 						      </div>
 						    </div>
@@ -100,33 +116,45 @@ if(isset($_COOKIE['username'])):{
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<div class="card">
+				<div class="card card-dashboard">
 						<div class="card-body" border-radius:24px>
 						<h4 class="card-title"><b>Department</b></h4>
-						<p class="card-text">Here you can manage student of which department</p>
+						<p class="card-text">View list of components given to Student of I.T as well as other department</p>
 						<a href="display.php" class="btn btn-outline-primary">I.T</a>
 						<a href="displayother.php" class="btn btn-outline-primary">Others</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="card">
+				<div class="card card-dashboard">
 						<div class="card-body" border-radius:24px>
 						<h4 class="card-title"><b>Log</b></h4>
-						<p class="card-text">Here you can manage changes made to database</p>
+						<p class="card-text">Log table for issued and returned components</p>
 						<a href="log.php" data-target="#form_brand" class="btn btn-outline-primary">View</a>
 						<!-- <a href="manage_brand.php" class="btn btn-primary">Manage</a> -->
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="card" style="height:100%">
+				<div class="card card-dashboard" style="height:100%">
 						<div class="card-body" border-radius:24px>
 						<h4 class="card-title"><b>Components</b></h4>
-						<p class="card-text">Here you can view components</p>
+						<p class="card-text">List of available components in department</p>
 						<a href="search.php" data-target="#form_products" class="btn btn-outline-primary">View</a>
 						<!-- <a href="manage_product.php" class="btn btn-primary">Manage</a> -->
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="card card-dashboard">
+						<div class="card-body" border-radius:24px>
+						<h4 class="card-title"><b>View Damaged List</b></h4>
+						<p class="card-text">View List of damaged component and mark as repaired if component is repaired</p>
+						<a href="damagedComponents.php" class="btn btn-outline-primary">Damaged Components</a>
 				</div>
 			</div>
 		</div>

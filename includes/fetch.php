@@ -26,8 +26,7 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 							<th>C_ID</th>
 							<th>Description</th>
 							<th>Size</th>
-							<th>Quantity</th>
-							<th>Total Quantity</th>
+							<th>Available Quantity</th>
 							<th>Price</th>
 							<th>Edit</th>
 						</tr>';
@@ -38,10 +37,9 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 				<td>'.$row["C_ID"].'</td>
 				<td style="width:300px">'.$row["Description"].'</td>
 				<td>'.$row["Size"].'</td>
-				<td style="width:150px">'.$row["Quantity"].'</td>
-				<td style="width:150px">'.$row["Total_Quantity"].'</td>
+				<td style="width:150px">'.($row["Quantity"] - $row["Quantity_Damaged"]).'</td>
 				<td>'.$row["Price"].'</td>
-				<td><input type="checkbox" name="delete_id[]" value="'.$row['C_ID'].'" />
+				<td><input type="checkbox" name="delete_id[]" value="'.$row['C_ID'].'" 
 			</tr>
 		';
 	}
