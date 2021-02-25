@@ -1,8 +1,11 @@
 <?php
+include 'includes/environment.php';
+include "DB.php";
 
 if(isset($_COOKIE['username'])){
-	$name=$_COOKIE['username'];
-	include "DB.php";
+	
+	$name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
+    $encryption_key, $options, $encryption_iv); 
 	$data=($con)?(mysqli_query($con,"Select user_name from admin where email='$name'")):"";
 	$user=mysqli_fetch_assoc($data)['user_name'];
 	

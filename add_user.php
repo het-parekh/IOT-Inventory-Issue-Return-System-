@@ -36,7 +36,7 @@ if(isset($_COOKIE['username'])):{
   <link rel="stylesheet" href="css/add_user.css" />
   
   
-  <script  src="./js/add_user.js"></script>
+  <script  src="./js/manage_users.js"></script>
 </head>
 
 <script>

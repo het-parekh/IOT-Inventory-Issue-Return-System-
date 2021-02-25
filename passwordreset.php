@@ -36,7 +36,7 @@
                       </div>
                   </div>
                 </div>
-                <div><a href="loginpro7.php">Back to login.</a></div>
+                <div><a href="loginpro7.php">Go Back</a></div>
               </div>
             </div>
           </div>

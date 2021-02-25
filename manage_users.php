@@ -35,7 +35,7 @@ if(isset($_COOKIE['username'])):{
 
   
   
-  <script  src="./js/add_user.js"></script>
+  <script  src="./js/manage_users.js"></script>
 </head>
 
 <script>
@@ -60,7 +60,7 @@ if(isset($_COOKIE['username'])):{
         
         </div>
       
-      <table>
+      <table id="update_user_table">
         <tr>
             <th>Username</th>
             <th>Profile Photo</th>
@@ -73,19 +73,39 @@ if(isset($_COOKIE['username'])):{
             while($row = mysqli_fetch_assoc($user_data_obj)){
         ?>
         <tr>
+        
             <td> <?php echo $row['user_name']; ?> </td>
-            <?php $imageData = "data:image/jpeg;base64,".base64_encode($row['profile_photo']); ?>
-            <td><img style="width:100px;height:100px;" src = <?php echo $imageData;?> alt="Profile Photo"/></td>
+            <td>
+            <?php $imageData = "data:image/jpeg;base64,".base64_encode($row['profile_photo']); 
+              
+              if ($row['profile_photo']!=false){
+            ?>
+            <div class="frame frame--70-50 frame--ikea frame--thin frame--silver frame--throne">
+              <div class="pic pic--throne">
+                <img  src=<?php echo $imageData;?> alt="Profile Photo"/>
+              </div>
+            </div>
+            <?php }else{ ?>
+              <img  src=<?php echo $imageData;?> alt="Profile Photo"/>
+              <?php } ?>
+            </td>
             <td> <?php echo $row['email']; ?> </td>
             <td> <?php echo $row['role']; ?> </td>
             <?php if ($row['email'] !== $name){?>
-            <td> <input type="checkbox" id="delete <?php echo $row['email']; ?>" name="del" ></td>
+            <td> <input type="checkbox" id="delete <?php echo $row['email']; ?>" name="del" > 
+            <?php if ($get_user_role == "ADMIN") { ?>
+            | <button data-toggle="modal" data-target="#edit_user_modal"  value="<?php echo $row['user_name'].',',$row['email'].',',$row['role'] ?>" style="color:white;background-color:#1a75ff;font-size:12px;" class='edit_user_btn btn btn-primary py-0 px-1'>Edit <i class="fa fa-pencil-square-o" ></i></button></td>
             <?php
             }
-            else{
-              echo "<td style='color:green'>CURRENT USER</td>";
             }
-            ?>  
+            else{
+              echo "<td style='color:green;margin-right:-10px'>CURRENT USER";
+              if ($get_user_role == "ADMIN") {
+            }
+            ?>
+            | <button data-toggle="modal" data-target="#edit_user_modal"  value="<?php echo $row['user_name'].',',$row['email'].',',$row['role'] ?>" style="color:white;background-color:#1a75ff;font-size:12px;" class='edit_user_btn btn btn-primary py-0   px-1'>Edit <i class="fa fa-pencil-square-o" ></i></button></td>
+            <?php } ?>
+           
         </tr>
         <?php }} ?>
       </table>
@@ -95,8 +115,14 @@ if(isset($_COOKIE['username'])):{
     <div class="modal" id="add_user_modal" tabindex="-1" role="dialog">
     
   </div>
+<<<<<<< HEAD
+    <div class="modal" id="edit_user_modal" tabindex="-1" role="dialog">
+    
+  </div>
+=======
 
   <div id="footer-section"></div>
+>>>>>>> 51f50f72957b8c80000dd6d78489e95507cab4a3
 </body>
 
 
