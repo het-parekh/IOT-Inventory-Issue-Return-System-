@@ -2,21 +2,22 @@
 include "includes/DB.php";
 include "includes/environment.php";
 if(isset($_COOKIE['username'])):{
-  $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
-  $encryption_key, $options, $encryption_iv); 
-    
-  $get_user_role_obj = mysqli_query($con,"SELECT role from admin where email ='$name' ");
-  $get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
-
-  if("ADMIN"!==$get_user_role){
-      echo'<script>location.href="dashboard-new.php"</script>';
-  }
-  $get_all_roles = mysqli_query($con,"SELECT role from admin");
-  $get_all_roles1= mysqli_fetch_assoc($get_all_roles);
+    $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
+        $encryption_key, $options, $encryption_iv); 
+        $get_user_role_obj = mysqli_query($con,"SELECT role from admin where email ='$name' ");
+        if(mysqli_num_rows($get_user_role_obj )>0){
+          $get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
+          if("ADMIN"!==$get_user_role){
+            echo'<script>location.href="dashboard-new.php"</script>';
+            }
+            $get_all_roles = mysqli_query($con,"SELECT role from admin");
+            $get_all_roles1= mysqli_fetch_assoc($get_all_roles);
+        }else{
+          echo "<script>location.href='logout.php'</script>";
+        }
 }
-
+ 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
