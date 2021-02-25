@@ -202,7 +202,7 @@ if(isset($_COOKIE['username'])):{
                                 <td> <?php echo $row['Price']; ?> </td>
                                 <td> <?php echo $row['Quantity_Damaged']; ?> </td>
                                 <td>
-                                    <button onclick="repair('<?php echo $row['Description'] ?>','<?php echo $row['C_ID'] ?>', '<?php echo $row['Quantity_Damaged'] ?>')" class="btn btn-outline-info <?php echo $row['C_ID'] ?>"  >Repaired</button>
+                                    <button onclick="repair('<?php echo $row['Description'] ?>','<?php echo $row['C_ID'] ?>', '<?php echo $row['Quantity_Damaged'] ?>')" class="btn btn-outline-info <?php echo $row['C_ID'] ?>"  >Repair</button>
                                 </td>
                             </tr>
             <?php }
@@ -283,6 +283,36 @@ if(isset($_COOKIE['username'])):{
         
     }
 
+    document.querySelector('#mark-new-damage').addEventListener('click',(e)=>{
+			console.log($('.c_id')[0].value,$('.c_name')[0].value)
+			if(!window.confirm("Mark the selected components as damaged?")){
+				e.preventDefault();
+			}
+			else if($('.dmg_qty')[0].value < 1 || parseInt($('.dmg_qty')[0].value) > parseInt($('.avail_qty')[0].value) ){
+				e.preventDefault();
+				alert1="Please enter value of Damaged Quantity between 1 and total available quantity of selected component";
+				alertme();
+			}
+			else{
+				markDamage($('.c_id')[0].value, $('.dmg_qty')[0].value);
+			}
+		})
+		
+		function markDamage(id,qty){
+			var c_id = id;
+			var dmg_qty = qty;
+			console.log(c_id,dmg_qty)
+
+			$.ajax({
+				method: "POST",
+				url: DOMAIN+"/includes/damaged.php",
+				data: {c_id: c_id, qty: dmg_qty},
+				success: function(msg){
+					console.log(msg)
+					location.reload()
+				}
+			})
+		}
   </script>
 
 </body>

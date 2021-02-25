@@ -1,5 +1,8 @@
 <?php
 
+include "./DB.php";
+
+
 if(isset($_POST["c_id"]) && isset($_POST["qty"])){
 
   if($con){

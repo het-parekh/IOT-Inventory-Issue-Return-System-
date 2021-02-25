@@ -1,20 +1,21 @@
 <?php
-include 'includes/environment.php';
 include "includes/DB.php";
+include "includes/environment.php";
 if(isset($_COOKIE['username'])):{
-	$name=$_COOKIE['username'];
-	include "includes/DB.php";
-	if ($con){
-	$data=mysqli_query($con,"Select user_name from admin where email='$name'");
-	$result=mysqli_fetch_assoc($data)['user_name'];
-	$get_user_role_obj = mysqli_query($con,"SELECT role from admin where email='$name' ");
-	$get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
-	$ask_user = ($get_user_role=='ADMIN')?"manage users":"";
-	$user_profile_obj = mysqli_query($con,"SELECT profile_photo from admin where email='$name' ");
-	$user_profile_encoded = mysqli_fetch_assoc($user_profile_obj)['profile_photo'];
-	$user_profile = "data:image/jpeg;base64,".base64_encode($user_profile_encoded);
+    $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
+        $encryption_key, $options, $encryption_iv); 
+		$data=mysqli_query($con,"Select user_name from admin where email='$name'");
+	if(mysqli_num_rows($data)>0){
+		$result=mysqli_fetch_assoc($data)['user_name'];
+		$get_user_role_obj = mysqli_query($con,"SELECT role from admin where email='$name' ");
+		$get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
+		$ask_user = ($get_user_role=='ADMIN')?"manage users":"";
+		$user_profile_obj = mysqli_query($con,"SELECT profile_photo from admin where email='$name' ");
+		$user_profile_encoded = mysqli_fetch_assoc($user_profile_obj)['profile_photo'];
+		$user_profile = "data:image/jpeg;base64,".base64_encode($user_profile_encoded);
+	}else{
+		echo "<script>location.href='logout.php'</script>";
 	}
-	
 }
 ?>
 <!DOCTYPE html>

@@ -1,20 +1,20 @@
 <?php
+include "includes/DB.php";
+include 'includes/environment.php';
 if(isset($_COOKIE['username'])):{
-    $name=$_COOKIE['username'];
-
-    include "includes/DB.php";
-    if($con){
-        $get_user_role_obj = mysqli_query($con,"SELECT role from admin where email ='$name' ");
-        $get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
-      
+    $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
+        $encryption_key, $options, $encryption_iv); 
+  $get_user_role_obj = mysqli_query($con,"SELECT role from admin where email ='$name' ");
+	if(mysqli_num_rows($get_user_role_obj)>0){
+    $get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
         if("ADMIN"!==$get_user_role){
-            echo'<script>location.href="dashboard-new.php"</script>';
-        }
-        $user_data_obj = mysqli_query($con,"SELECT * from admin");
-
-    }
+          echo'<script>location.href="dashboard-new.php"</script>';
+      }
+      $user_data_obj = mysqli_query($con,"SELECT * from admin");
+	}else{
+		echo "<script>location.href='logout.php'</script>";
+	}
 }
-
 ?>
 
 <!DOCTYPE html>
