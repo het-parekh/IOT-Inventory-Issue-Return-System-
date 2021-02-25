@@ -84,7 +84,7 @@ if(isset($_COOKIE['username'])):{
             <th>Roll no</th>
             <th>Year</th>
             <th><button class="btn btn-outline-danger" id="deleted">Delete</button><button class="btn btn-outline-danger" style="margin-left:10px" id="deleteAll">Delete All</button></th>
-        </tr>
+        </tr>   
         <?php
             
             if($con){
@@ -102,7 +102,7 @@ if(isset($_COOKIE['username'])):{
                             <td> <input type="checkbox" name="del" id=<?php echo $id_name; ?>></td>
                         </tr>
         <?php }
-                    echo "</table>";
+                    
                 }
 
             }
@@ -111,7 +111,7 @@ if(isset($_COOKIE['username'])):{
                 echo "connection unsuccessful";
             }
         ?>
-
+        </table>
 
         <div id="footer-section"></div>
         
