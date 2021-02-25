@@ -130,7 +130,7 @@ if(isset($_COOKIE['username'])):{
                                 <div class="form-group row" id="due_date_div" >
                                     <label class="col-sm-3 col-form-label" align="right">Due Date</label>
                                     <div class="col-sm-6">
-                                        <input id="due_date" type="date" min="<?php echo date("Y-m-d"); ?>" name="order_date"  class="form-control form-control-sm">
+                                        <input required id="due_date" type="date" min="<?php echo date("Y-m-d"); ?>" name="order_date"  class="form-control form-control-sm">
                                     </div>
                                 </div>
 
