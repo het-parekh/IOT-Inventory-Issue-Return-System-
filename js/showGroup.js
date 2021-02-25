@@ -20,8 +20,9 @@ $(document).ready(function() {
             success:function(msg){
                 if(msg == 1)
                 {
-                    alert("Deleted Successfully")
-                    location.reload();
+                    swal({title:"Group(s) Deleted Successfully",icon: "success"}).then(function() {
+                        location.reload()
+                    });
                 }
                 else{
                     alert("Select atleast one student to delete") 
@@ -46,4 +47,7 @@ $(document).ready(function() {
         else{}
         
     })
+    if ($(".table > tr > td").length == 0){
+        $(".table").append("<center><i>No Groups Found</i></center>")
+    }
 })
