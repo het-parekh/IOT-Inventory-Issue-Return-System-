@@ -1,5 +1,5 @@
 <?php
-include "includes\DB.php";
+include "DB.php";
 if(isset($_POST["message_id"]))
 {
     $id = json_decode(stripslashes($_POST['message_id']));
