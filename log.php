@@ -38,7 +38,8 @@
 <body style="background-color: white;margin:0px;padding:0px">
 <div id="header"></div>
 
-    <div style="width:100%;" >
+<div class="main-content" style="margin-top:-350px;  background:#fff; width:80%; position:relative; left:50%; transform:translate(-50%); box-shadow:4px 8px 16px rgba(0,0,0,.4); border-radius:10px; padding-bottom:20px;">
+<div style="width:100%;" >
     <div class="logo">
     <a >Logs</a>
 </div>
@@ -63,6 +64,8 @@
 <div id="return">
 </div>
 </div>
+</div>
+    
 
 <div id="footer-section"></div>
 

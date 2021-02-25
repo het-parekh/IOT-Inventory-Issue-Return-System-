@@ -42,6 +42,8 @@ if(isset($_COOKIE['username'])):{
 </script>
 <body>
   <div id="header"></div>
+  <div class="main-content" >
+
 <form id="add_user_form" method="POST" action="includes/manage_users_db.php" enctype="multipart/form-data">
     <h1 style="width:350px;color:brown;" class="text-center pt-8">EDIT USER
     <button onClick="location.href='passwordreset.php'" class="btn btn-info btn-lg float-right" type="button" id="pass_reset_btn" >Reset My Password &nbsp;<i style="color:white" class="fa fa-arrow-right" aria-hidden="true"></i></button>
@@ -82,6 +84,8 @@ if(isset($_COOKIE['username'])):{
           <button type="button"  id="submit_user_edit" >SUBMIT</button>
     </label>   
   </form>
+  </div>
+
 </body>
 
 <?php

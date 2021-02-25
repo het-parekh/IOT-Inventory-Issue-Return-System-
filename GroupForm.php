@@ -31,7 +31,9 @@ if(isset($_COOKIE['username'])):{
     </head>
 
     <body>
-	    <div id="header"></div>
+      <div id="header"></div>
+      <div class="main-content" style="margin-top:-370px;">
+
         <div class="mx-auto" style="width: 70%;margin-top:2%">
         <div class="card text-center" >
             <div class="card-header">
@@ -89,6 +91,8 @@ if(isset($_COOKIE['username'])):{
           </div>
           </div>
         </form>
+      </div>
+
 
         <div id="footer-section"></div>
     </body>

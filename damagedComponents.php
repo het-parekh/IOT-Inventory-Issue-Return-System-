@@ -127,6 +127,7 @@ if(isset($_COOKIE['username'])):{
 <body>
 
   <div id="header"></div>
+  <div class="main-content" style="margin-top:-330px; background-color:#fff; width:80%; position:relative; left:50%; transform:translate(-50%); box-shadow:4px 8px 16px rgba(0,0,0,.4); border-radius:10px;">
     <!-- Popup to add new damaged component -->
     <div id="newly-damaged">
         <div id="close-modal"> &#10006; </div>
@@ -160,7 +161,6 @@ if(isset($_COOKIE['username'])):{
         <button id="mark-new-damage" class="btn btn-outline-danger mt-3">Mark as Damaged</button>
 
     </div>
-
     <!-- Popup to mark damaged component as repaired -->
     <div id="repair-comp">
         <div id="close-repair-modal"> &#10006; </div>
@@ -172,7 +172,8 @@ if(isset($_COOKIE['username'])):{
         </div>
         <button class="btn btn-outline-info mt-4" id="repair-db">Repair</button>       
     </div>
-    </div>
+        <!-- </div> -->
+
     <!-- Display list of damaged component -->
     <div class="container">
         <h1 class="mb-3"> Damaged Components List</h1>
@@ -222,6 +223,11 @@ if(isset($_COOKIE['username'])):{
         </div>
 
     </div>
+  </div>
+    
+
+    
+    
     <div id="footer-section"></div>
 
   <script>

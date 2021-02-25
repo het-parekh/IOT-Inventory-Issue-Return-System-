@@ -65,7 +65,7 @@ if(isset($_COOKIE['username'])):{
 <body>
 <div id="header"></div>
     
-    <div class="container mt-5">
+    <div class="container" style="margin-top:-250px; margin-bottom:160px;">
         <div class="row">
             <div class="col-md-10 mx-auto">
                 <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">

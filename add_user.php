@@ -47,7 +47,8 @@ if(isset($_COOKIE['username'])):{
 </script>
 <body>
   <div id="header"></div>
-<form id="add_user_form" method="POST" action="includes/manage_users_db.php" enctype="multipart/form-data">
+  <div class="main-content">
+  <form id="add_user_form" method="POST" action="includes/manage_users_db.php" enctype="multipart/form-data">
     <h1 style="color:brown;" class="text-center pt-8">ADD USER</h1>
 
     <label>
@@ -97,6 +98,8 @@ if(isset($_COOKIE['username'])):{
 
     <button type="button" id="sumbit_user" >SUBMIT</button>
   </form>
+  </div>
+
 
   <div id="footer-section"></div>
 </body>

@@ -45,6 +45,8 @@ if(isset($_COOKIE['username'])):{
 </script>
 	<body>
 	<div id="header"></div>
+	<div class="main-content"style="margin-top:-370px; background:#fff; width:80%; position:relative; left:50%; transform:translate(-50%); box-shadow:4px 8px 16px rgba(0,0,0,.4); border-radius:10px; padding:10px 20px;" >
+
 		<div class="container">
 			<br />
 			<br />
@@ -66,6 +68,8 @@ if(isset($_COOKIE['username'])):{
 		<br />
 		<br />
 		<br />
+	</div>
+
 		<div id="footer-section"></div>
 	</body>
 </html>
