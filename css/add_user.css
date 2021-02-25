@@ -30,6 +30,7 @@ table,th,td{
     padding:10px 10px 10px 10px!important;
     border:#222 1px solid;
     font-size: medium;
+    text-align: center;
 }
 
 /*********************
@@ -113,7 +114,7 @@ form {
     top: -3em;
   }
   
-  #sumbit_user {
+  #sumbit_user, #submit_user_edit {
     display: inline-block;
     padding: 12px 24px;
     background: rgb(220,220,220);
@@ -127,6 +128,10 @@ form {
   } 
   
   #sumbit_user:hover {
+    background: #8BC34A;
+    color: #ffffff;
+  } 
+  #submit_user_edit:hover {
     background: #8BC34A;
     color: #ffffff;
   } 
@@ -160,4 +165,86 @@ form {
     font-weight: 900;
     font-size: 15px;
     color:rgb(190, 40, 40);
+}
+
+/*********************
+    PICTURE FRAME
+**********************/
+
+.frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0em;
+  background: #ccc;
+}
+
+.frame--dads {
+  width: 54em;
+  height: 69.75em;
+  border: 3.5em solid darkred;
+}
+
+.frame--ikea {
+  border: 1.8em solid black;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.frame--ikea-silver {
+  border: 2em ridge #eee;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.frame--virserum {
+  border: 4em ridge #EFBF8B;
+}
+
+
+.frame--thin {
+  border-width: 0.8em;
+}
+
+
+.frame--silver {
+  border-color: hsl(0, 0%, 90%);
+}
+
+.frame:after {
+  position: absolute;
+  bottom: -1.5em;
+  right: 0;
+  font-size: 2.7em;
+  color: #333;
+}
+
+.frame--ikea:after {
+  bottom: -2.4em;
+}
+.frame--50-70 {
+  width: 50em;
+  height: 70em;
+}
+.frame--50-70.frame--ikea:after {
+  content: '50 x 70 NYTTJA - £7'
+}
+
+.pic {
+  box-sizing: border-box;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px!important;
+  height: 100px!important;
+  padding:0px;
+}
+.pic img {
+  width: 100px!important;
+  height: 100px!important;
+}
+.pic--throne {
+  width: 61em;
+  height: 43.1em;
+  padding: 2em;
 }

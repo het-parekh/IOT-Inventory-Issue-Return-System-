@@ -216,7 +216,7 @@ if(isset($_COOKIE['username'])):{
             ?>
         </table>
         <div class="add-damaged-component text-center mt-3">
-                <button class="btn btn-outline-success" id="add-Damaged-comp">Add new Damaged component</button>
+                <button class="btn btn-outline-success" style="cursor:pointer;" id="add-Damaged-comp">Add new Damaged component</button>
         </div>
 
     </div>

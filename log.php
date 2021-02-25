@@ -1,6 +1,8 @@
 <?php
  if(isset($_COOKIE['username'])):{
-    $name=$_COOKIE['username'];
+    include 'includes/environment.php';
+    $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
+    $encryption_key, $options, $encryption_iv); 
  }
 ?>
 <html>

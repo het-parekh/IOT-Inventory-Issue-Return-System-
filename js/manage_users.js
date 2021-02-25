@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    $("#update_user_table").on('click','.edit_user_btn',function(){
+        var val = $(this).val().split(",")
+        var username = val[0]
+        var email = val[1]
+        var role = val[2]
+        $("#edit_user_modal").load('edit_user.php',{role:role,username:username,email:email},function(){})        
+    })
     
     $("#delete_user").click(function(){
         var users_to_delete = []
@@ -12,7 +19,6 @@ $(document).ready(function () {
                 location.reload()
             });
           });
-
     })
 
     $("#add_user").click(function(){
@@ -36,6 +42,12 @@ $(document).ready(function () {
             $("#err2").removeClass("valid").addClass("invalid") 
         }
     });
+
+    $("#submit_user_edit").click(function(){
+        swal({title:"User Profile Updated Successfully",icon: "success"}).then(function() {
+            $("#add_user_form").submit()
+        });
+    })
 
     $("#sumbit_user").click(function(){
         

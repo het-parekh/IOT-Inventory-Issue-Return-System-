@@ -11,8 +11,7 @@ if(isset($_COOKIE['username'])):{
   if("ADMIN"!==$get_user_role){
       echo'<script>location.href="dashboard-new.php"</script>';
   }
-  $get_all_roles = mysqli_query($con,"SELECT role from admin");
-  $get_all_roles1= mysqli_fetch_assoc($get_all_roles);
+
 }
 
 ?>
@@ -44,54 +43,44 @@ if(isset($_COOKIE['username'])):{
 <body>
   <div id="header"></div>
 <form id="add_user_form" method="POST" action="includes/manage_users_db.php" enctype="multipart/form-data">
-    <h1 style="color:brown;" class="text-center pt-8">ADD USER</h1>
+    <h1 style="width:350px;color:brown;" class="text-center pt-8">EDIT USER
+    <button onClick="location.href='passwordreset.php'" class="btn btn-info btn-lg float-right" type="button" id="pass_reset_btn" >Reset My Password &nbsp;<i style="color:white" class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </h1>
 
     <label>
-      <input type="email" class="input" required name="email" placeholder="ENTER EMAIL*"/>
+      <input type="email" value="<?php echo $_POST['email'] ?>" class="input" required name="email" placeholder="ENTER EMAIL*"/>
         <div class="line-box">
           <div class="line"></div>
         </div>
     </label>
 
     <label>
-      <input type="file"  id="image" accept ="image/*" name="profile_photo" class="input"   />
+      <input type="file" id="image" accept ="image/*" name="edit_profile_photo" class="input"   />
       <small style="color:red;padding:0px;margin-top:-5px;float:left;margin-left:8px;">File Size should not exceed 2 MB*</small>
     </label>
 
     <label>
-        <input type="text" class="input" required name="username" placeholder="ENTER USERNAME*"/>
+        <input type="text" id='ad' value="<?php echo $_POST['username'] ?>" class="input" required name="edit_username" placeholder="ENTER USERNAME*"/>
         <div class="line-box">
           <div class="line"></div>
         </div>
     </label>
 
-       
-        <select name="role" id="role" required style="color:#787878">
-        <option selected disabled value="" >---SELECT ROLE---</option>
+        <?php if($get_user_role == "ADMIN"){ ?>
+
+        <select value="<?php echo $_POST['role'] ?>" name="edit_role" id="role" required style="color:#787878">
+        <option disabled value="" >---SELECT ROLE---</option>
         <option>ADMIN</option>
         <option>ADVANCED USER</option>
         </select>
-        
+        <?php } ?>
+       
         <br/>
-
-    <label>
-
-        <input type="password" required class="input" id="password" name="password" placeholder="ENTER PASSWORD*"/>
-        <div class="line-box">
-          <div class="line"></div>
-          <span class="" id="err"></span>
-        </div>
-    </label>
-
-    <label>
-      <input type="password" required class="input" id="confirm" name="confirm" placeholder="CONFIRM PASSWORD*"/>
-      <div class="line-box">
-        <div class="line"></div>
-        <span class="" id="err2"></span>
-      </div>
-    </label>
-
-    <button type="button" id="sumbit_user" >SUBMIT</button>
+        <br/>
+        <br/>
+    <label class='mr-auto'>
+          <button type="button"  id="submit_user_edit" >SUBMIT</button>
+    </label>   
   </form>
 </body>
 
