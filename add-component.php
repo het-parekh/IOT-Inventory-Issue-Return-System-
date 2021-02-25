@@ -24,12 +24,16 @@ if(isset($_COOKIE['username'])):{
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 
 </head>
 
 <script>
 	 	 $(function(){
-	$("#header").load("header.html"); 
+    $("#header").load("header.html"); 
+    $("#footer-section").load("footer.html")
+    
 });
 </script>
 <body>
@@ -53,7 +57,7 @@ if(isset($_COOKIE['username'])):{
      <tr>
       <td contenteditable="true" class="item_id"></td>
       <td contenteditable="true" class="item_name"></td>
-      <td contenteditable="true" class="item_size"></td>
+      <td class="item_size"><select name="i_size" id="i_size"><option value="S">S</option><option value="M">M</option><option value="L">L</option></td>
       <td contenteditable="true" class="item_quantity"></td>
       <td contenteditable="true" class="item_price"></td>
       <td></td>
@@ -70,6 +74,7 @@ if(isset($_COOKIE['username'])):{
    </div>
    
   </div>  
+  <div id="footer-section"></div>
 </body>
 </html>
 <script>
@@ -80,7 +85,7 @@ if(isset($_COOKIE['username'])):{
         var html_code = "<tr id='row"+count+"'>";
         html_code += "<td contenteditable='true' class='item_id'></td>";
         html_code += "<td contenteditable='true' class='item_name'></td>";
-        html_code += "<td contenteditable='true' class='item_size'></td>";
+        html_code += "<td class='item_size'><select name='i_size' id='i_size'><option value='S'>S</option><option value='M'>M</option><option value='L'>L</option></td>";
         html_code += "<td contenteditable='true' class='item_quantity' ></td>";
         html_code += "<td contenteditable='true' class='item_price' ></td>";
         html_code += "<td><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
@@ -105,7 +110,7 @@ if(isset($_COOKIE['username'])):{
         item_name.push($(this).text());
         });
         $('.item_size').each(function(){
-        item_size.push($(this).text());
+           item_size.push($(this).find('#i_size :selected').text());
         });
         $('.item_quantity').each(function(){
         item_quantity.push($(this).text());
@@ -118,14 +123,13 @@ if(isset($_COOKIE['username'])):{
         method:"POST",
         data:{item_id:item_id, item_name:item_name, item_size:item_size, item_quantity:item_quantity,item_price:item_price},
         success:function(response){
-          
+
           var jsonData = JSON.parse(response);
-          
             if(jsonData.success==1){
                 $("td[contentEditable='true']").text("");
             for(var i=2; i<= count; i++)
             {
-            $('tr#'+i+'').remove();
+            $('#row'+i).remove();
             }
             swal({title: 'success!',text: 'Data added successfully!',type: 'success'});
             }else if(jsonData.success==2){

@@ -42,6 +42,8 @@ if(isset($_COOKIE['username'])):{
         integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="./js/main.js"></script>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 </head>
 <style>
 
@@ -220,11 +222,12 @@ if(isset($_COOKIE['username'])):{
         </div>
 
     </div>
-    
+    <div id="footer-section"></div>
 
   <script>
 
 	$("#header").load("./header.html")
+    $("#footer-section").load("footer.html")
 
     
     const btnShowAdd = document.querySelector('#add-Damaged-comp')
@@ -290,8 +293,8 @@ if(isset($_COOKIE['username'])):{
 			}
 			else if($('.dmg_qty')[0].value < 1 || parseInt($('.dmg_qty')[0].value) > parseInt($('.avail_qty')[0].value) ){
 				e.preventDefault();
-				alert1="Please enter value of Damaged Quantity between 1 and total available quantity of selected component";
-				alertme();
+				alert("Please enter value of Damaged Quantity between 1 and total available quantity of selected component");
+				
 			}
 			else{
 				markDamage($('.c_id')[0].value, $('.dmg_qty')[0].value);

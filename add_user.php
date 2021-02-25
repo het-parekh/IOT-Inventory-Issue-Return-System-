@@ -2,21 +2,22 @@
 include "includes/DB.php";
 include "includes/environment.php";
 if(isset($_COOKIE['username'])):{
-  $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
-  $encryption_key, $options, $encryption_iv); 
-    
-  $get_user_role_obj = mysqli_query($con,"SELECT role from admin where email ='$name' ");
-  $get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
-
-  if("ADMIN"!==$get_user_role){
-      echo'<script>location.href="dashboard-new.php"</script>';
-  }
-  $get_all_roles = mysqli_query($con,"SELECT role from admin");
-  $get_all_roles1= mysqli_fetch_assoc($get_all_roles);
+    $name=openssl_decrypt ($_COOKIE['username'], $ciphering,  
+        $encryption_key, $options, $encryption_iv); 
+        $get_user_role_obj = mysqli_query($con,"SELECT role from admin where email ='$name' ");
+        if(mysqli_num_rows($get_user_role_obj )>0){
+          $get_user_role = mysqli_fetch_assoc( $get_user_role_obj)["role"];
+          if("ADMIN"!==$get_user_role){
+            echo'<script>location.href="dashboard-new.php"</script>';
+            }
+            $get_all_roles = mysqli_query($con,"SELECT role from admin");
+            $get_all_roles1= mysqli_fetch_assoc($get_all_roles);
+        }else{
+          echo "<script>location.href='logout.php'</script>";
+        }
 }
-
+ 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,8 @@ if(isset($_COOKIE['username'])):{
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
   <link rel="stylesheet" href="css/add_user.css" />
   
   
@@ -38,7 +41,8 @@ if(isset($_COOKIE['username'])):{
 
 <script>
 	 $(function(){
-	$("#header").load("header.html"); 
+  $("#header").load("header.html"); 
+  $("#footer-section").load("footer.html")
 });
 </script>
 <body>
@@ -93,6 +97,8 @@ if(isset($_COOKIE['username'])):{
 
     <button type="button" id="sumbit_user" >SUBMIT</button>
   </form>
+
+  <div id="footer-section"></div>
 </body>
 
 <?php

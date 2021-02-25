@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 
+	$("#footer-section").load("footer.html");
 	$("#all").hide();
 
 	if ($("#status").text().length > 0) {

@@ -52,18 +52,20 @@ if(isset($_COOKIE['username'])):{
     <script type="text/javascript" src="./js/decor.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     
 
 </head>
 <script>
 		 $(function(){
-	$("#header").load("header.html"); 
+    $("#header").load("header.html");
+  $("#footer-section").load("footer.html"); 
 });
 </script>
 <body>
 <div id="header"></div>
     
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-10 mx-auto">
                 <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
@@ -205,6 +207,7 @@ if(isset($_COOKIE['username'])):{
         </div>
     </div>
 
+    <div id="footer-section"></div>
 
 
 </body>

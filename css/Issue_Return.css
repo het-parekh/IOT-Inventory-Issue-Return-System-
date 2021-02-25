@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+    background-image: url('../images/back.jpg') ;
+}
 
 .previous {
     background-color: #f1f1f1;

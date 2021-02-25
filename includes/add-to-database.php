@@ -1,5 +1,5 @@
 <?php
-include "includes\DB.php";
+include "DB.php";
 if(isset($_POST["item_id"]))
 {
  $item_id = $_POST["item_id"];
