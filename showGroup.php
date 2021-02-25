@@ -77,7 +77,8 @@ if(isset($_COOKIE['username'])):{
 </script>
 <body>
 	<div id="header"></div>
-   
+   <div class="main-content" style="margin-top:-370px; background:#fff; width:80%; position:relative; left:50%; transform:translate(-50%); box-shadow:4px 8px 16px rgba(0,0,0,.4); border-radius:10px; padding:20px;">
+       
     <table class = "table table bordered">
         <tr>
             <th>Group ID</th>
@@ -112,11 +113,15 @@ if(isset($_COOKIE['username'])):{
             }
         ?>
 
+    </div>
 
         <div id="footer-section"></div>
         
 
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
+    
+
+    
     </body>
 </html>
 

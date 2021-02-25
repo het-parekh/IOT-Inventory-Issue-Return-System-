@@ -58,100 +58,108 @@ if(isset($_COOKIE['username'])):{
 	.add_user:hover{
 		text-decoration:underline!important;
 	}
+	.card-dashboard{
+		box-shadow:4px 8px 16px rgba(0,0,0,.4);
+		background-color:#fff;
+	}
+	.full-main-content{
+		margin-top:-370px;
+	}
 </style>
 <body>
 	<div class="bg-clip"></div>
 	<div id="header"></div>
 	<br/><br/>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="card mx-auto" style="height:100%">
-				  <img class="card-img-top mx-auto" style="width:60%;height:180px" src="<?php echo $user_profile; ?>" alt="Profile Photo">
-				  <div class="card-body">
-				    <h4 class="card-title"><b>Profile Info</b></h4>
-				  <?php echo"Mr.$result"?>
-				    &nbsp;<p class="card-text badge badge-secondary"><i class="fa fa-user ">&nbsp;</i><?php echo $get_user_role ?></p> <small><a href="manage_users.php" class="add_user"><?php echo $ask_user ?></a></a></small>
-				    <!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
-				    <a href="GroupForm.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
-				    <a href="modify.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Modify Group</a>
-					<a href="showGroup.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-success">Display All Groups&nbsp;<i class="fa fa-eye"></i></a>
-					<a href="logout.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-danger">Logout&nbsp;<i class="fa fa-sign-out"></i></a>
-				  </div>
+	<div class="full-main-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card mx-auto card-dashboard" style="height:100%;">
+						<img class="card-img-top mx-auto" style="width:60%;height:180px" src="<?php echo $user_profile; ?>" alt="Profile Photo">
+						<div class="card-body">
+							<h4 class="card-title"><b>Profile Info</b></h4>
+						<?php echo"Mr.$result"?>
+							&nbsp;<p class="card-text badge badge-secondary"><i class="fa fa-user ">&nbsp;</i><?php echo $get_user_role ?></p> <small><a href="manage_users.php" class="add_user"><?php echo $ask_user ?></a></a></small>
+							<!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
+							<a href="GroupForm.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
+							<a href="modify.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Modify Group</a>
+						<a href="showGroup.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-success">Display All Groups&nbsp;<i class="fa fa-eye"></i></a>
+						<a href="logout.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-danger">Logout&nbsp;<i class="fa fa-sign-out"></i></a>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="jumbotron card-dashboard" style="width:100%;height:100%;">
-					<h1 align="center"><b>Welcome Admin</b></h1></br>
-					<div class="row">
-						<div class="col-sm-6">
-							<iframe style="pointer-events: none;" src="https://free.timeanddate.com/clock/i616j2aa/n1993/szw160/szh160/cf100/hnce1ead6" frameborder="0" width="160" height="160"></iframe>
+				<div class="col-md-8">
+					<div class="jumbotron card-dashboard" style="width:100%;height:100%;">
+						<h1 align="center"><b>Welcome Admin</b></h1></br>
+						<div class="row">
+							<div class="col-sm-6">
+								<iframe style="pointer-events: none;" src="https://free.timeanddate.com/clock/i616j2aa/n1993/szw160/szh160/cf100/hnce1ead6" frameborder="0" width="160" height="160"></iframe>
 
-						</div>
-						<div class="col-sm-6">
-							<div class="card">
-						      <div class="card-body" border-radius:24px>
-						        <h4 class="card-title"><b>New Issue/Return</b></h4>
-						        <p class="card-text">Issue new components or Return issued components</p>
-						        <a href="Issue_and_Return.php" class="btn btn-outline-primary">New Issue</a>
-						      </div>
-						    </div>
+							</div>
+							<div class="col-sm-6">
+								<div class="card">
+										<div class="card-body" border-radius:24px>
+											<h4 class="card-title"><b>New Issue/Return</b></h4>
+											<p class="card-text">Issue new components or Return issued components</p>
+											<a href="Issue_and_Return.php" class="btn btn-outline-primary">New Issue</a>
+										</div>
+									</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<p></p>
-	<p></p>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="card card-dashboard">
-						<div class="card-body" border-radius:24px>
-						<h4 class="card-title"><b>Department</b></h4>
-						<p class="card-text">View list of components given to Student of I.T as well as other department</p>
-						<a href="display.php" class="btn btn-outline-primary">I.T</a>
-						<a href="displayother.php" class="btn btn-outline-primary">Others</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card card-dashboard">
-						<div class="card-body" border-radius:24px>
-						<h4 class="card-title"><b>Log</b></h4>
-						<p class="card-text">Log table for issued and returned components</p>
-						<a href="log.php" data-target="#form_brand" class="btn btn-outline-primary">View</a>
-						<!-- <a href="manage_brand.php" class="btn btn-primary">Manage</a> -->
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card card-dashboard" style="height:100%">
-						<div class="card-body" border-radius:24px>
-						<h4 class="card-title"><b>Components</b></h4>
-						<p class="card-text">List of available components in department</p>
-						<a href="search.php" data-target="#form_products" class="btn btn-outline-primary">View</a>
-						<!-- <a href="manage_product.php" class="btn btn-primary">Manage</a> -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container mt-3 mb-4">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="card card-dashboard">
-						<div class="card-body" border-radius:24px>
-							<h4 class="card-title"><b>View Damaged List</b></h4>
-							<p class="card-text">View List of damaged component and mark as repaired if component is repaired</p>
-							<a href="damagedComponents.php" class="btn btn-outline-primary">Damaged Components</a>
+		<p></p>
+		<p></p>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card card-dashboard">
+							<div class="card-body" border-radius:24px>
+							<h4 class="card-title"><b>Department</b></h4>
+							<p class="card-text">View list of components given to Student of I.T as well as other department</p>
+							<a href="display.php" class="btn btn-outline-primary">I.T</a>
+							<a href="displayother.php" class="btn btn-outline-primary">Others</a>
 						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card card-dashboard">
+							<div class="card-body" border-radius:24px>
+							<h4 class="card-title"><b>Log</b></h4>
+							<p class="card-text">Log table for issued and returned components</p>
+							<a href="log.php" data-target="#form_brand" class="btn btn-outline-primary">View</a>
+							<!-- <a href="manage_brand.php" class="btn btn-primary">Manage</a> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card card-dashboard" style="height:100%">
+							<div class="card-body" border-radius:24px>
+							<h4 class="card-title"><b>Components</b></h4>
+							<p class="card-text">List of available components in department</p>
+							<a href="search.php" data-target="#form_products" class="btn btn-outline-primary">View</a>
+							<!-- <a href="manage_product.php" class="btn btn-primary">Manage</a> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-3 mb-4">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="card card-dashboard">
+							<div class="card-body" border-radius:24px>
+								<h4 class="card-title"><b>View Damaged List</b></h4>
+								<p class="card-text">View List of damaged component and mark as repaired if component is repaired</p>
+								<a href="damagedComponents.php" class="btn btn-outline-primary">Damaged Components</a>
+							</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<div id="footer-section"></div>
 
 </body>

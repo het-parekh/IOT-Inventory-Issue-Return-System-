@@ -40,7 +40,7 @@ if(isset($_COOKIE['username'])):{
 <div id="header"></div>
 	
 <br /><br />
-  <div class="container">
+  <div class="container" style="margin-top:-370px;">
    <br />
    <h2 align="center">ADD MORE COMPONENTS IN TO DATABASE</h2>
    <br />

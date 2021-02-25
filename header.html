@@ -1,29 +1,45 @@
 
 
 
-<style>
+<!-- <style>
 .topnav {
-	background-color:#fff;
+	background-color:#a02929;
 	overflow: hidden;
-	box-shadow: 4px 8px 16px rgba(0,0,0,.2);
+	/* box-shadow: 4px 8px 16px rgba(0,0,0,.2); */
 	padding:10px 0;
+	color: #fff;
 }
 
+.logo-kj{
+	background: #fff;
+
+}
 /* Style the links inside the navigation bar */
 .topnav a {
-	float: right;
-	color:Black;
+	float: left;
+	color:#fcfcfc;
 	text-align: center;
-	padding: 20px 12px;
+	padding: 20px 25px;
+	margin-right: 4px;
 	font-family: 'Lato', sans-serif;
 	font-weight:Bold;
 	text-decoration: none;
 	font-size: 17px;
-}
 
-/* Change the color of links on hover */
+}
+.topnav .dropdown-item{
+	color: #a02929;
+	transition: all .4s ease;
+} -->
+
+<!-- /* Change the color of links on hover */
 .topnav a:hover {
-	color:#A12023;
+	background: white;
+	color: #a02929;
+}
+.topnav .dropdown-item:hover{
+	color:#fff;
+	background-color: #a02929;
 }
 .logout a:hover{
 	color:red;
@@ -53,7 +69,7 @@
 	width:100x;
 }
 .trust{
-	float:right;
+	float:left;
 	padding-top:8px;
 	padding-Right:15px;
 	height:70px;
@@ -63,28 +79,129 @@
 	margin-left:-10px;
 	margin-top:-5px!important;
 }
+</style> -->
+<style>
+	nav{
+    display: flex;
+    height: 70px;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    /* position: fixed; */
+    transition: all .3s ease-in-out;
+    z-index: 100;
+		background-color: #a02929;
+	}
+	nav .logo{
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+		color: white;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+		position: relative;
+}
+nav ul li{
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100%;
+		position: relative;
+		top:10px;
+    transition: all .3s ease-in-out;
+}
+nav ul li > a{
+	text-decoration: none;
+	color: white;
+}
+nav ul li > a:hover{
+	color:white;
+	text-decoration: none;
+}
+
+.shape1{
+	position: relative;
+	top: -60px;
+	left: 0;
+	background-color: #ed1c24;
+	height: 400px;
+	transform: skew(0,-5deg);
+	z-index: -1;
+}
+.shape2{
+	position: relative;
+	background-color: #a02929;
+	top: -60px;
+	left: 0;
+	height: 390px;
+	z-index: 0;
+	box-shadow: 4px 8px 16px rgba(0,0,0,.4);
+}
+
 </style>
-<header class="topnav" style="">
+<!-- <header class="topnav" style="">
 		
-		<img src="https://kjsieit.somaiya.edu/assets/arigel_general/img/homepage/Trust.svg" alt="" class="trust">
 		
-			<a href="logout.php"><button type="button" style="cursor:pointer;font-size:14px;padding:6px" class="btn btn-outline-danger">LOGOUT</button></a>
-			<a href="search.php">Components</a>
-			<a href="damagedComponents.php">Damaged Components</a>
-			<a href="log.php">Log</a>
-			<a href="Issue_and_Return.php">Issue/Return</a>
-			<a href="GroupForm.php">New Group</a>
-			<a style="padding-right:0px;margin:0px">
-			<a class="nav-link dropdown-toggle" style="padding-right:0px;margin:0px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Issue Details
-			</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="display.php">IT</a>
-					<a class="dropdown-item" href="displayother.php">Other</a>    
-					<div class="dropdown-divider"></div>
+			<div class="">
+				KJSIEIT
 			</div>
 
-				</a>
 			<a href="dashboard-new.php">Dashboard</a>
-			<div class="an"><a href="dashboard-new.php" class="an" ><img style="height:60px;width:320px" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div>
-</header>
+			<a class="" href="search.php">Components</a>
+			<a class="" href="Issue_and_Return.php">Issue/Return</a> -->
+
+			<!-- <a href="logout.php"><button type="button" style="cursor:pointer;font-size:14px;padding:6px" class="btn btn-outline-danger">LOGOUT</button></a> -->
+			<!-- <a href="aboutus.php">About Us</a>
+			<a class="nav-link dropdown-toggle" style="padding-right:0px;margin:0px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							More Features
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="GroupForm.php">New Group</a>
+					<a class="dropdown-item" href="damagedComponents.php">Damaged Components</a>
+					<a class="dropdown-item" href="log.php">Log</a>
+					<a class="dropdown-item" href="display.php">Issue detail of IT</a>
+					<a class="dropdown-item" href="displayother.php">Issue detail of Other Dept.</a>    
+					<div class="dropdown-divider"></div>
+			</div> -->
+			<!-- <div class="an"><a href="dashboard-new.php" class="an logo-kj" ><img style="height:60px;width:320px" src="https://kjsieit.somaiya.edu/assets/kjsieit/images/Logo/kjsieit-logo.svg" alt="KJSIEIT" class="desktop"></a></div> -->
+			
+<!-- </header> -->
+
+<nav>
+	<div class="logo">
+			KJSIEIT
+	</div>
+	<ul>
+			<li class="nav-link active"><a href="dashboard-new.php">Dashboard</a></li>
+			<li class="nav-link"><a href="search.php">Components</a></li>
+			<li class="nav-link"><a href="Issue_and_Return.php">Issue/Return</a></li>
+			<li>
+				<a class="nav-link dropdown-toggle" style="padding-right:0px;margin:0px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					More Features
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="GroupForm.php">New Group</a>
+						<a class="dropdown-item" href="damagedComponents.php">Damaged Components</a>
+						<a class="dropdown-item" href="log.php">Log</a>
+						<a class="dropdown-item" href="display.php">Issue detail of IT</a>
+						<a class="dropdown-item" href="displayother.php">Issue detail of Other Dept.</a>    
+						<div class="dropdown-divider"></div>
+				</div>
+			</li>
+			<li class="nav-link"><a href="aboutus.php">About Us</a></li>
+
+	</ul>
+</nav>
+
+<div class="full-shape">
+	<div class="shape1">
+		<div class="shape2">
+		
+		</div>
+	</div>
+
+</div>
