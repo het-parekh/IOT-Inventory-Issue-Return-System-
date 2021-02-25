@@ -20,13 +20,17 @@
     <script src="./js/log.js"></script>
     <link rel="stylesheet" type="text/css" href="css/log.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
     <script src= "//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"> 
 </script> 
 </head>
 
 <script>
 	 	 $(function(){
-	$("#header").load("header.html"); 
+    $("#header").load("header.html"); 
+  $("#footer-section").load("footer.html")
+    
 });
 </script>
 <body style="background-color: white;margin:0px;padding:0px">
@@ -58,6 +62,7 @@
 </div>
 </div>
 
+<div id="footer-section"></div>
 
 </body>
 </html>

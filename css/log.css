@@ -1,9 +1,9 @@
 
 
-
-
 body {
   background-color: #02111b;
+  margin: 0;
+  background-image: url('../images/back.jpg') ;
 }
 
 .logo {

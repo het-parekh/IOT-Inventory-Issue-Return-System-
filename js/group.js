@@ -1,6 +1,9 @@
 $(document).ready(function () {
     $("#header").load("header.html"); 
 
+    $("#footer-section").load("footer.html");
+
+
     var DOMAIN = "http://localhost/final";
 
     function alertme(alert1) {

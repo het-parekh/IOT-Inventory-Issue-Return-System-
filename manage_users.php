@@ -31,6 +31,8 @@ if(isset($_COOKIE['username'])):{
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="css/add_user.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
   
   
   <script  src="./js/add_user.js"></script>
@@ -38,7 +40,9 @@ if(isset($_COOKIE['username'])):{
 
 <script>
 	 $(function(){
-	$("#header").load("header.html"); 
+  $("#header").load("header.html"); 
+  $("#footer-section").load("footer.html")
+  
 });
 </script>
 <body>
@@ -91,6 +95,8 @@ if(isset($_COOKIE['username'])):{
     <div class="modal" id="add_user_modal" tabindex="-1" role="dialog">
     
   </div>
+
+  <div id="footer-section"></div>
 </body>
 
 

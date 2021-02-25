@@ -24,12 +24,16 @@ if(isset($_COOKIE['username'])):{
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 
 </head>
 
 <script>
 	 	 $(function(){
-	$("#header").load("header.html"); 
+    $("#header").load("header.html"); 
+    $("#footer-section").load("footer.html")
+    
 });
 </script>
 <body>
@@ -70,6 +74,7 @@ if(isset($_COOKIE['username'])):{
    </div>
    
   </div>  
+  <div id="footer-section"></div>
 </body>
 </html>
 <script>
