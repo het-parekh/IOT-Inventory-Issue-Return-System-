@@ -50,6 +50,8 @@ if(isset($_COOKIE['username'])):{
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/showGroup.js"></script>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 
     <style>
         button{
@@ -68,7 +70,9 @@ if(isset($_COOKIE['username'])):{
 </head>
 <script>
 		 $(function(){
-	$("#header").load("header.html"); 
+    $("#header").load("header.html"); 
+   $("#footer-section").load("footer.html")
+    
 });
 </script>
 <body>
@@ -108,6 +112,8 @@ if(isset($_COOKIE['username'])):{
             }
         ?>
 
+
+        <div id="footer-section"></div>
         
 
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->

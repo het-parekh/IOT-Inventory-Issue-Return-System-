@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect("localhost","root","root12345","inventory");
+$con=mysqli_connect("localhost","root","","inventory");
 ?>
 <?php
 session_start();

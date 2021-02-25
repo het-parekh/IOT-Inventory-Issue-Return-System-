@@ -29,30 +29,20 @@ if(isset($_COOKIE['username'])):{
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
- 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+	 
  	<script type="text/javascript" src="./js/main.js"></script>
  </head>
  <script>
 	 $(function(){
 	$("#header").load("header.html"); 
+
 });
 </script>
 <style>
 	body{
-		margin-bottom:15px;
-	}
-	.bg-clip{
-		position:absolute;
-		left:0;
-		top:25%;
-		width:100%;
-		z-index:-100;
-		height:70%;
-		background-image: url(./images/2.jpg);
-		background-size: cover;
-	  background-position: top;
-  	-webkit-clip-path: polygon(0 30%, 100% 0, 100% 70%, 0 100%);
-  	clip-path: polygon(0 30%, 100% 0, 100% 70%, 0 100%);
+		background-image:url('./images/back.jpg');
 
 	}
 	.card-body:hover {
@@ -148,37 +138,21 @@ if(isset($_COOKIE['username'])):{
 			</div>
 		</div>
 	</div>
-	<div class="container mt-3">
+	<div class="container mt-3 mb-4">
 		<div class="row">
 			<div class="col-md-8">
 				<div class="card card-dashboard">
 						<div class="card-body" border-radius:24px>
-						<h4 class="card-title"><b>View Damaged List</b></h4>
-						<p class="card-text">View List of damaged component and mark as repaired if component is repaired</p>
-						<a href="damagedComponents.php" class="btn btn-outline-primary">Damaged Components</a>
+							<h4 class="card-title"><b>View Damaged List</b></h4>
+							<p class="card-text">View List of damaged component and mark as repaired if component is repaired</p>
+							<a href="damagedComponents.php" class="btn btn-outline-primary">Damaged Components</a>
+						</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Inventory Management System</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
- 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 	<script type="text/javascript" src="./js/main.js"></script>
- </head>
-<body>
-	<!- Navbar --> 
-	
-	
-
+	<div id="footer-section"></div>
 
 </body>
 </html>
