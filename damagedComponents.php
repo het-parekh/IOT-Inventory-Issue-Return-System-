@@ -202,7 +202,7 @@ if(isset($_COOKIE['username'])):{
                                 <td> <?php echo $row['Price']; ?> </td>
                                 <td> <?php echo $row['Quantity_Damaged']; ?> </td>
                                 <td>
-                                    <button onclick="repair('<?php echo $row['Description'] ?>','<?php echo $row['C_ID'] ?>', '<?php echo $row['Quantity_Damaged'] ?>')" class="btn btn-outline-info <?php echo $row['C_ID'] ?>"  >Repaired</button>
+                                    <button onclick="repair('<?php echo $row['Description'] ?>','<?php echo $row['C_ID'] ?>', '<?php echo $row['Quantity_Damaged'] ?>')" class="btn btn-outline-info <?php echo $row['C_ID'] ?>"  >Repair</button>
                                 </td>
                             </tr>
             <?php }
