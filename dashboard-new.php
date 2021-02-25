@@ -33,6 +33,8 @@ if(isset($_COOKIE['username'])):{
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 	 
  	<script type="text/javascript" src="./js/main.js"></script>
+	 <script src="./js/log.js"></script>
+
  </head>
  <script>
 	 $(function(){
@@ -43,7 +45,11 @@ if(isset($_COOKIE['username'])):{
 <style>
 	body{
 		background-image:url('./images/back.jpg');
-
+		font-family:lato,Arial,Georgia,;
+		font-size:17px;
+	}
+	h1{
+		font-family:Times,Georgia,sans-serif ;
 	}
 	.card-body:hover {
 		box-shadow: 0 0 61px rgba(63,63,63,.22); 
@@ -58,6 +64,7 @@ if(isset($_COOKIE['username'])):{
 	.add_user:hover{
 		text-decoration:underline!important;
 	}
+
 </style>
 <body>
 	<div class="bg-clip"></div>
@@ -67,11 +74,11 @@ if(isset($_COOKIE['username'])):{
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card mx-auto" style="height:100%">
-				  <img class="card-img-top mx-auto" style="width:60%;height:180px" src="<?php echo $user_profile; ?>" alt="Profile Photo">
+				  <img class="card-img-top mx-auto" style="width:60%;height:200px" src="<?php  echo ($user_profile!=true)?$user_profile:"images/user.png"; ?>" alt="Profile Photo">
 				  <div class="card-body">
-				    <h4 class="card-title"><b>Profile Info</b></h4>
+				    <h4 class="card-title"><b>PROFILE INFO</b></h4>
 				  <?php echo"Mr.$result"?>
-				    &nbsp;<p class="card-text badge badge-secondary"><i class="fa fa-user ">&nbsp;</i><?php echo $get_user_role ?></p> <small><a href="manage_users.php" class="add_user"><?php echo $ask_user ?></a></a></small>
+				    &nbsp;<p style="margin-right:100px;"class="card-text badge badge-secondary"><i class="fa fa-user ">&nbsp;</i><?php echo $get_user_role ?></p> 
 				    <!-- <p class="card-text">Last Login : xxxx-xx-xx</p> -->
 				    <a href="GroupForm.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
 				    <a href="modify.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Modify Group</a>
@@ -82,7 +89,7 @@ if(isset($_COOKIE['username'])):{
 			</div>
 			<div class="col-md-8">
 				<div class="jumbotron card-dashboard" style="width:100%;height:100%;">
-					<h1 align="center"><b>Welcome Admin</b></h1></br>
+					<h1 align="center"><b>WELCOME <?php echo $get_user_role ?></b></h1></br>
 					<div class="row">
 						<div class="col-sm-6">
 							<iframe style="pointer-events: none;" src="https://free.timeanddate.com/clock/i616j2aa/n1993/szw160/szh160/cf100/hnce1ead6" frameborder="0" width="160" height="160"></iframe>
@@ -93,7 +100,7 @@ if(isset($_COOKIE['username'])):{
 						      <div class="card-body" border-radius:24px>
 						        <h4 class="card-title"><b>New Issue/Return</b></h4>
 						        <p class="card-text">Issue new components or Return issued components</p>
-						        <a href="Issue_and_Return.php" class="btn btn-outline-primary">New Issue</a>
+						        <a href="Issue_and_Return.php" class="btn btn-outline-primary">New Issue/Return</a>
 						      </div>
 						    </div>
 						</div>
@@ -109,8 +116,8 @@ if(isset($_COOKIE['username'])):{
 			<div class="col-md-4">
 				<div class="card card-dashboard">
 						<div class="card-body" border-radius:24px>
-						<h4 class="card-title"><b>Department</b></h4>
-						<p class="card-text">View list of components given to Student of I.T as well as other department</p>
+						<h4 class="card-title"><b>Issue Details</b></h4>
+						<p class="card-text">View list of components issued to students of I.T. as well as other department.</p>
 						<a href="display.php" class="btn btn-outline-primary">I.T</a>
 						<a href="displayother.php" class="btn btn-outline-primary">Others</a>
 					</div>
@@ -120,7 +127,7 @@ if(isset($_COOKIE['username'])):{
 				<div class="card card-dashboard">
 						<div class="card-body" border-radius:24px>
 						<h4 class="card-title"><b>Log</b></h4>
-						<p class="card-text">Log table for issued and returned components</p>
+						<p class="card-text">Complete log of the issues and returns made by the user. You can even download it in excel format.</p>
 						<a href="log.php" data-target="#form_brand" class="btn btn-outline-primary">View</a>
 						<!-- <a href="manage_brand.php" class="btn btn-primary">Manage</a> -->
 					</div>
@@ -130,8 +137,9 @@ if(isset($_COOKIE['username'])):{
 				<div class="card card-dashboard" style="height:100%">
 						<div class="card-body" border-radius:24px>
 						<h4 class="card-title"><b>Components</b></h4>
-						<p class="card-text">List of available components in department</p>
+						<p class="card-text">List of available components in department. You can even add or remove components from here.</p>
 						<a href="search.php" data-target="#form_products" class="btn btn-outline-primary">View</a>
+						<a href="add-component.php"  class="btn btn-outline-success">Add</a>
 						<!-- <a href="manage_product.php" class="btn btn-primary">Manage</a> -->
 					</div>
 				</div>
@@ -140,17 +148,27 @@ if(isset($_COOKIE['username'])):{
 	</div>
 	<div class="container mt-3 mb-4">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-4">
 				<div class="card card-dashboard">
 						<div class="card-body" border-radius:24px>
 							<h4 class="card-title"><b>View Damaged List</b></h4>
-							<p class="card-text">View List of damaged component and mark as repaired if component is repaired</p>
-							<a href="damagedComponents.php" class="btn btn-outline-primary">Damaged Components</a>
+							<p class="card-text">Add or view list of damaged components. Mark them as repaired if they have been fixed.</p>
+							<a href="damagedComponents.php" class="btn btn-outline-danger">Damaged Components</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card card-dashboard">
+						<div class="card-body" border-radius:24px>
+							<h4 class="card-title"><b>Manage Users</b></h4>
+							<p class="card-text">View complete details of all the users of this app. You can add, remove and edit other users if you are an admin.</p>
+							<a href="manage_users.php" class="btn btn-outline-primary">Manage Users</a>
 						</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+
 
 	<div id="footer-section"></div>
 

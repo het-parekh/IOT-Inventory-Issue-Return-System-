@@ -115,14 +115,13 @@ if(isset($_COOKIE['username'])):{
     <div class="modal" id="add_user_modal" tabindex="-1" role="dialog">
     
   </div>
-<<<<<<< HEAD
     <div class="modal" id="edit_user_modal" tabindex="-1" role="dialog">
     
   </div>
-=======
+
 
   <div id="footer-section"></div>
->>>>>>> 51f50f72957b8c80000dd6d78489e95507cab4a3
+
 </body>
 
 

@@ -27,6 +27,9 @@ th{
     color:#fff;
     text-align: center;
 }
+td{
+  font-weight:bold;
+}
 tr:nth-child(even) { 
     background-color: rgba(240, 235, 235, 0.589); 
 } 
