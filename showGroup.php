@@ -77,7 +77,7 @@ if(isset($_COOKIE['username'])):{
 </script>
 <body>
 	<div id="header"></div>
-   <div class="main-content" style="margin-top:-370px; background:#fff; width:80%; position:relative; left:50%; transform:translate(-50%); box-shadow:4px 8px 16px rgba(0,0,0,.4); border-radius:10px; padding:20px;">
+   <div class="main-content" style="margin-top:-370px; background:#fff; width:80%; position:relative; left:50%; transform:translate(-50%); box-shadow:4px 8px 16px rgba(0,0,0,.4); border-radius:10px; padding:10px;">
        
     <table class = "table table bordered">
         <tr>
