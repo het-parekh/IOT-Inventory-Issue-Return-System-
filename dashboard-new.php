@@ -167,6 +167,7 @@ if(isset($_COOKIE['username'])):{
 				</div>
 			</div>
 		</div>
+	</div>
 
 
 
