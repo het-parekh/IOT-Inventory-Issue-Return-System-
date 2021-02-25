@@ -297,36 +297,6 @@ $(document).ready(function(){
 		 issueData["c_id"]=[];
 		 issueData["req_qty"]=[];
 	
-		document.querySelector('#mark-new-damage').addEventListener('click',(e)=>{
-			console.log($('.c_id')[0].value,$('.c_name')[0].value)
-			if(!window.confirm("Mark the selected components as damaged?")){
-				e.preventDefault();
-			}
-			else if($('.dmg_qty')[0].value < 1 || parseInt($('.dmg_qty')[0].value) > parseInt($('.avail_qty')[0].value) ){
-				e.preventDefault();
-				alert1="Please enter value of Damaged Quantity between 1 and total available quantity of selected component";
-				alertme();
-			}
-			else{
-				markDamage($('.c_id')[0].value, $('.dmg_qty')[0].value);
-			}
-		})
-		
-		function markDamage(id,qty){
-			var c_id = id;
-			var dmg_qty = qty;
-			console.log(c_id,dmg_qty)
-
-			$.ajax({
-				method: "POST",
-				url: DOMAIN+"/includes/damaged.php",
-				data: {c_id: c_id, qty: dmg_qty},
-				success: function(msg){
-					console.log(msg)
-					location.reload()
-				}
-			})
-		}
 
 		$("form#main").on('click', 'button#submit2', function(e) {
 			var count=0;
