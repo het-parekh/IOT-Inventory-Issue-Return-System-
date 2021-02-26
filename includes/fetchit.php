@@ -33,10 +33,11 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 						</tr>';
 	while($row = mysqli_fetch_array($result))
 	{
-		$date_check=strtotime($row['due_date']) > strtotime(date("Y-d-m"));
+		$date_check=strtotime($row['due_date']) >strtotime(date("Y-m-d"));
+		echo "<script>console.log(".$date_check.")</script>";
 		$output .= '
 			<tr>
-				<td><i  style="font-size: 1.3rem; color:'. (($date_check>0) ? "green" : "red") . ';" class="'. (($date_check>0) ? "bi bi-check-circle-fill" : "bi bi-x-circle-fill") . '"></i></td>
+				<td><i  style="font-size: 1.3rem; color:'. (($date_check) ? "green" : "red") . ';" class="'. (($date_check) ? "bi bi-check-circle-fill" : "bi bi-x-circle-fill") . '"></i></td>
 				<td>'.$row["Rollno"].'</td>
 				<td>'.$row["g_id"].'</td>
 				<td>'.$row["i_year"].'</td>

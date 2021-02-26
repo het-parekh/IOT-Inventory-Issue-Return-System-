@@ -17,7 +17,6 @@ else
 $result = mysqli_query($con, $query);
 if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 {
-	$date_check=strtotime($row['due_date']) > strtotime(date("Y-d-m"));
 	$output .= '<div class="table-responsive">
 					<table class="table table bordered">
                         <tr>
@@ -32,10 +31,10 @@ if(mysqli_num_rows(mysqli_query($con,$query)) > 0)
 						</tr>';
 	while($row = mysqli_fetch_array($result))
 	{
-		$date_check=strtotime($row['due_date']) > strtotime(date("Y-d-m"));
+		$date_check=strtotime($row['due_date']) >strtotime(date("Y-m-d"));
 		$output .= '
             <tr>
-			<td><i  style="font-size: 1.3rem; color:'. (($date_check>0) ? "green" : "red") . ';" class="'. (($date_check>0) ? "bi bi-check-circle-fill" : "bi bi-x-circle-fill") . '"></i></td>
+			<td><i  style="font-size: 1.3rem; color:'. (($date_check) ? "green" : "red") . ';" class="'. (($date_check) ? "bi bi-check-circle-fill" : "bi bi-x-circle-fill") . '"></i></td>
                 <td>'.$row["Dept_name"].'</td>
 				<td>'.$row["Rollno"].'</td>
 				<td>'.$row["i_year"].'</td>
