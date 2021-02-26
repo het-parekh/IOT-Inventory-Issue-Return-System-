@@ -7,7 +7,6 @@
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
-    /* position: fixed; */
     transition: all .3s ease-in-out;
     z-index: 100;
 		background-color: #a02929;
@@ -26,19 +25,25 @@ nav ul{
     width: 50%;
 		position: relative;
 }
-nav ul li{
-    padding-left: 30px;
-    padding-right: 30px;
+nav ul .nav-link{
+    padding-left: 15px;
+    padding-right: 15px;
     height: 100%;
 		position: relative;
 		top:10px;
     transition: all .3s ease-in-out;
 }
+nav ul .nav-link > a,
 nav ul li > a{
+	outline:none;
 	text-decoration: none;
 	color: white;
+	padding: 0;
+	width:max-content;
 }
-nav ul li > a:hover{
+nav ul .nav-link > a:hover,
+nav ul li > a:hover,
+nav ul li > a:active{
 	color:white;
 	text-decoration: none;
 }
@@ -61,15 +66,115 @@ nav ul li > a:hover{
 	z-index: 0;
 	box-shadow: 4px 8px 16px rgba(0,0,0,.4);
 }
+.burger{
+    position: absolute;
+    left: 2%;
+    padding: 6px;
+    display: none;
+    transition: background-color .3s ease-in;
+    cursor: pointer;
+}
+.burger div{
+			height: 2px;
+			width: 30px;
+			background-color: #fff;;
+			margin: 8px;
+			transition: all .3s ease-in;
+}
+.toggle .line1{
+    transform: rotate(-45deg) translate(-8px, 8px);
+    transition: all .3s ease;
+}
+.toggle .line2{
+    opacity: 0;
+		width: 0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px, -6px);
+    transition: all .3s ease;
+}
+
+@media (max-width:900px){
+	nav{
+        justify-content: start;
+    }
+    nav .nav-logo{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    nav ul{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        margin:0;
+        height: 100%;
+        width: 80%;
+        top: 70px;
+        background-color: #a02929;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        line-height: 80px;
+        transform: translateX(-100%);
+        transition: all .2s ease-in;
+				z-index: 100;
+    }
+
+    nav ul li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top:0;
+        padding:10px 30px;
+    }
+		nav ul .nav-link{
+			height: 60px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		nav ul li:last-child{
+			margin-bottom:50px;
+		}
+		.nav-active ul{
+    	transform: translateX(0);
+			position: fixed;
+		}
+		.burger{
+        display: block;
+    }
+		body.nav-active{
+			position: fixed;
+		}
+}
 
 </style>
 
+
+<script>
+	const burger = document.querySelector('.burger');
+	const navElement = document.querySelector('nav')
+
+	burger.addEventListener('click',()=>{
+		burger.classList.toggle('toggle')
+		navElement.classList.toggle('nav-active')
+		document.body.classList.toggle('nav-active');
+	})
+
+</script>
 <nav>
 	<div class="nav-logo">
 			KJSIEIT
 	</div>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
 	<ul>
-			<li class="nav-link active"><a href="dashboard-new.php">Dashboard</a></li>
+			<li class="nav-link"><a href="dashboard-new.php">Dashboard</a></li>
 			<li class="nav-link"><a href="search.php">Components</a></li>
 			<li class="nav-link"><a href="Issue_and_Return.php">Issue/Return</a></li>
 			<li>

@@ -35,6 +35,11 @@ if(isset($_COOKIE['username'])):{
 		#delete:hover{
 			color:#fff!important;
 		}
+		body{
+			background-image:url('./images/back.jpg');
+			background-position:top;
+			background-size:cover;
+		}
 	</style>
 	<script>
 	 	 $(function(){
