@@ -54,7 +54,7 @@ if(isset($_COOKIE['username'])):{
 	.card-body:hover {
 		box-shadow: 0 0 61px rgba(63,63,63,.22); 
 		}
-	.jumbotron:hover {.j
+	.jumbotron:hover {
 		box-shadow: 0 0 61px rgba(63,63,63,.22); 
 		}
 	.add_user{
@@ -67,9 +67,35 @@ if(isset($_COOKIE['username'])):{
 	.card-dashboard{
 		box-shadow:4px 8px 16px rgba(0,0,0,.4);
 		background-color:#fff;
+		position:relative;
+		z-index:1;
+		overflow:hidden;
+	}
+	.card-dashboard::before{
+		content:'';
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		height:100%;
+		width:100%;
+		background-image:linear-gradient(to right, #00308F,#00308F);
+		clip-path:polygon(100% 0, 70% 0, 100% 40%);
+	}
+	.card-dashboard > *{
+		position:relative;
+		z-index:100;
+	}
+	.prof-dash::after,
+	.prof-dash::before{
+		content:'';
+		width:0;
 	}
 	.full-main-content{
 		margin-top:-370px;
+	}
+	.btn{
+		box-shadow: 4px 8px 16px rgba(0,0,0,.15);
 	}
 </style>
 <body>
@@ -80,7 +106,7 @@ if(isset($_COOKIE['username'])):{
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="card mx-auto card-dashboard" style="height:100%;">
+					<div class="card mx-auto card-dashboard prof-dash" style="height:100%;">
 						<img class="card-img-top mx-auto" style="width:60%;height:200px" src="<?php echo ($user_profile!=true)?$user_profile:"images/user.png"; ?>" alt="Profile Photo">
 						<div class="card-body">
 							<h4 class="card-title"><b>PROFILE INFO</b></h4>
@@ -103,7 +129,7 @@ if(isset($_COOKIE['username'])):{
 
 							</div>
 							<div class="col-sm-6">
-								<div class="card">
+								<div class="card" style="box-shadow:4px 8px 16px rgba(0,0,0,.2);">
 										<div class="card-body" border-radius:24px>
 											<h4 class="card-title"><b>New Issue/Return</b></h4>
 											<p class="card-text">Issue new components or Return issued components</p>
