@@ -79,7 +79,7 @@ if(isset($_COOKIE['username'])):{
 		right:0;
 		height:100%;
 		width:100%;
-		background-image:linear-gradient(to right, #00308F,#00308F);
+		background-image:linear-gradient(to right, #00397a,#00397a);
 		clip-path:polygon(100% 0, 70% 0, 100% 40%);
 	}
 	.card-dashboard > *{
@@ -95,7 +95,7 @@ if(isset($_COOKIE['username'])):{
 		margin-top:-370px;
 	}
 	.btn{
-		box-shadow: 4px 8px 16px rgba(0,0,0,.15);
+		box-shadow: 1px 2px 4px rgba(0,0,0,.15);
 	}
 </style>
 <body>
@@ -116,7 +116,7 @@ if(isset($_COOKIE['username'])):{
 							<a href="GroupForm.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Create Group</a>
 							<a href="modify.php" class="btn btn-outline-primary"><i class="fa fa-edit">&nbsp;</i>Modify Group</a>
 						<a href="showGroup.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-success">Display All Groups&nbsp;<i class="fa fa-eye"></i></a>
-						<a href="logout.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-danger">Logout&nbsp;<i class="fa fa-sign-out"></i></a>
+						<a href="logout.php" style="self-align:right;margin-top:15px;width:95%" class="btn btn-outline-danger">Logout&nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i></a>
 						</div>
 					</div>
 				</div>
@@ -132,7 +132,7 @@ if(isset($_COOKIE['username'])):{
 								<div class="card" style="box-shadow:4px 8px 16px rgba(0,0,0,.2);">
 										<div class="card-body" border-radius:24px>
 											<h4 class="card-title"><b>New Issue/Return</b></h4>
-											<p class="card-text">Issue new components or Return issued components</p>
+											<p class="card-text">Issue New components or Return issued components</p>
 											<a href="Issue_and_Return.php" class="btn btn-outline-primary">New Issue</a>
 										</div>
 									</div>
@@ -150,7 +150,7 @@ if(isset($_COOKIE['username'])):{
 					<div class="card card-dashboard">
 							<div class="card-body" border-radius:24px>
 							<h4 class="card-title"><b>Department</b></h4>
-							<p class="card-text">View list of components given to Student of I.T as well as other department</p>
+							<p class="card-text">View list of components given to Student of I.T as well as other department.</p>
 							<a href="display.php" class="btn btn-outline-primary">I.T</a>
 							<a href="displayother.php" class="btn btn-outline-primary">Others</a>
 						</div>
@@ -160,8 +160,9 @@ if(isset($_COOKIE['username'])):{
 					<div class="card card-dashboard">
 							<div class="card-body" border-radius:24px>
 							<h4 class="card-title"><b>Log</b></h4>
-							<p class="card-text">Log table for issued and returned components</p>
+							<p class="card-text">Complete log of components issued or returned by the user. Log can be downloaded.</p>
 							<a href="log.php" data-target="#form_brand" class="btn btn-outline-primary">View</a>
+							
 							<!-- <a href="manage_brand.php" class="btn btn-primary">Manage</a> -->
 						</div>
 					</div>
@@ -170,8 +171,9 @@ if(isset($_COOKIE['username'])):{
 					<div class="card card-dashboard" style="height:100%">
 							<div class="card-body" border-radius:24px>
 							<h4 class="card-title"><b>Components</b></h4>
-							<p class="card-text">List of available components in department</p>
+							<p class="card-text">List of available components in department. User can also add or remove components.</p>
 							<a href="search.php" data-target="#form_products" class="btn btn-outline-primary">View</a>
+							<a href="add-component.php" data-target="#form_brand" class="btn btn-outline-success">Add</a>
 							<!-- <a href="manage_product.php" class="btn btn-primary">Manage</a> -->
 						</div>
 
@@ -195,7 +197,7 @@ if(isset($_COOKIE['username'])):{
 				<div class="card card-dashboard">
 						<div class="card-body" border-radius:24px>
 							<h4 class="card-title"><b>Manage Users</b></h4>
-							<p class="card-text">View complete details of all the users of this app. You can add, remove and edit other users if you are an admin.</p>
+							<p class="card-text">View complete details of all the users. Admins can add, remove and edit other users.</p>
 							<a href="manage_users.php" class="btn btn-outline-primary">Manage Users</a>
 						</div>
 				</div>

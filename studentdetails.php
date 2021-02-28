@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Details</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <style>
         body{
@@ -50,7 +51,7 @@
                 <form action="/action.php">
                     <label>Student Photo</label>
                     <br>
-                    <input type="file" id="myFile" name="filename">
+                    <input accept="image/*" type="file" id="myFile" name="filename">
                 </form>
                 </div>
                 <br>
@@ -98,7 +99,7 @@
                 <form action="/import.php">
                     <label>Import from Excel</label>
                     <br>
-                    <input type="file" id="myFile" name="filename">
+                    <input  type="file" id="import" name="filename">
                 </form>
                 </div>
                 <br>
@@ -108,3 +109,15 @@
     </div>
 </body>
 </html>
+
+<script>
+$('#import').change(function () {
+    console.log($('#import').val())
+    if($("#import").val() != ""){
+        $('input').prop("readonly",true)
+    }else{
+        $('.form-control').prop("readonly",false)
+    }
+});
+
+</script>

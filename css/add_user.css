@@ -7,8 +7,11 @@ body{
   margin-top:-370px;
 }
 .contain_table{
-    width:1000px;
+    width:950px;
     margin-left:100px;
+}
+.nav-logo{
+  font-size:3rem !important;
 }
 
 .add-users-btn{
