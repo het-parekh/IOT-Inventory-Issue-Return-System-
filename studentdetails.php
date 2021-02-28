@@ -94,6 +94,14 @@
                     <input type="tel" class="form-control" placeholder="example@gmail.com">
                 </div>
                 <br>
+                <div class="form-group">
+                <form action="/import.php">
+                    <label>Import from Excel</label>
+                    <br>
+                    <input type="file" id="myFile" name="filename">
+                </form>
+                </div>
+                <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
