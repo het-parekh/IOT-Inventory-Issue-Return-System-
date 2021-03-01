@@ -14,7 +14,7 @@
     <style>
         body{
             font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-            background-color: #fff;
+            background-image: url(./images/back.jpg);
             margin: 0;
         }
 
@@ -23,7 +23,7 @@
             display: block;
             margin: auto;
             max-width: 90%;
-            background:#fcfcfc;
+            background:#fff;
             width:600px;
             padding:50px;
             box-shadow:0 2px 5px rgba(0,0,0,.25);

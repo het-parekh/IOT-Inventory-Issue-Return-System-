@@ -98,6 +98,10 @@ nav ul li > a:active{
     transition: all .3s ease;
 }
 
+.drop-men{
+	position:relative;
+}
+
 @media (max-width:900px){
 	nav{
         justify-content: start;
@@ -138,7 +142,7 @@ nav ul li > a:active{
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			align-text:center 
+			text-align:center 
 		}
 		nav ul li:last-child{
 			margin-bottom:50px;
@@ -182,11 +186,11 @@ nav ul li > a:active{
 			<li class="nav-link"><a href="dashboard-new.php">Dashboard</a></li>
 			<li class="nav-link"><a href="search.php">Components</a></li>
 			<li class="nav-link"><a href="Issue_and_Return.php">Issue/Return</a></li>
-			<li>
+			<li style="position: relative;">
 				<a class="nav-link dropdown-toggle" style="padding-right:0px;margin:0px" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					More Features
 				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-top: 6px;">
 						<a class="dropdown-item" href="GroupForm.php">New Group</a>
 						<a class="dropdown-item" href="damagedComponents.php">Damaged Components</a>
 						<a class="dropdown-item" href="log.php">Log</a>
