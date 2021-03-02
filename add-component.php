@@ -25,10 +25,25 @@ if(isset($_COOKIE['username'])):{
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-
+<script src="js/add_components.js"></script>
 
 </head>
-
+<style>
+ .photo-button{
+            display: inline-block;
+            padding: 8px 12px; 
+            cursor: pointer;
+            border-radius: 4px;
+            background-color: #0d6efd;
+            font-size: 16px;
+            color: #fff;
+            position:relative;
+            z-index:10;
+        }
+#import{
+            left:55px !important;
+        }
+</style>
 <script>
 	 	 $(function(){
     $("#header").load("header.html"); 
@@ -66,83 +81,33 @@ if(isset($_COOKIE['username'])):{
     <div align="right">
      <button type="button" name="add" id="add" class="btn btn-success btn-xs">+</button>
     </div>
-    <div align="center">
+
+    <br />
+    <form enctype="multipart/form-data" method = "POST" id="import_form">
+    <label for="import" class="photo-button">Import from Excel</label>
+    <input type="file" name="import" id="import" ></input>
+    <div style="margin-top:0px;color:#b30000"> 
+        <ul style="margin-left:-20px;">
+        <li>Only .xls, .xlsx, .csv file formats are allowed.</li>
+        <li>All headers are compulsory.</li>
+        <li>Ensure that the the file has headers in the following order :- <small>(Component ID*, Component Size*, 
+        Component Quantity*, Component Price*) </small></li>
+        <li>No space between rows or columns.</li>  
+        <li>( * ) means providing value(s) to that field is not required.</li></li>  
+        </ul>
+        </div>
+    </form>
+   </div>
+   <br />
+   <br />
+   <div align="center">
      <button type="button" name="save" id="save" class="btn btn-info">Save</button>
     </div>
-    <br />
-    <div id="inserted_item_data"></div>
-   </div>
-   
   </div>  
   <div id="footer-section"></div>
 </body>
 </html>
-<script>
-    $(document).ready(function(){
-        var count = 1;
-        $('#add').click(function(){
-        count = count + 1;
-        var html_code = "<tr id='row"+count+"'>";
-        html_code += "<td contenteditable='true' class='item_id'></td>";
-        html_code += "<td contenteditable='true' class='item_name'></td>";
-        html_code += "<td class='item_size'><select name='i_size' id='i_size'><option value='S'>S</option><option value='M'>M</option><option value='L'>L</option></td>";
-        html_code += "<td contenteditable='true' class='item_quantity' ></td>";
-        html_code += "<td contenteditable='true' class='item_price' ></td>";
-        html_code += "<td><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
-        html_code += "</tr>";  
-        $('#crud_table').append(html_code);
-        });
-        
-        $(document).on('click', '.remove', function(){
-        var delete_row = $(this).data("row");
-        $('#' + delete_row).remove();
-        });
-        $('#save').click(function(){
-        var item_id = [];
-        var item_name = [];
-        var item_size = [];
-        var item_quantity = [];
-        var item_price=[];
-        $('.item_id').each(function(){
-        item_id.push($(this).text());
-        });
-        $('.item_name').each(function(){
-        item_name.push($(this).text());
-        });
-        $('.item_size').each(function(){
-           item_size.push($(this).find('#i_size :selected').text());
-        });
-        $('.item_quantity').each(function(){
-        item_quantity.push($(this).text());
-        });
-        $('.item_price').each(function(){
-        item_price.push($(this).text());
-        });
-        $.ajax({
-        url:"./includes/add-to-database.php",
-        method:"POST",
-        data:{item_id:item_id, item_name:item_name, item_size:item_size, item_quantity:item_quantity,item_price:item_price},
-        success:function(response){
 
-          var jsonData = JSON.parse(response);
-            if(jsonData.success==1){
-                $("td[contentEditable='true']").text("");
-            for(var i=2; i<= count; i++)
-            {
-            $('#row'+i).remove();
-            }
-            swal({title: 'success!',text: 'Data added successfully!',type: 'success'});
-            }else if(jsonData.success==2){
-                swal({title: 'Oops!',text: 'Please try again!',type: 'error'});  
-            }else{
-                swal({title: 'Oops!',text: 'All fields are required!',type: 'error'});   
-            }
-        }
-        });
-        });
-        
-    });
-</script>
 <?php
 else:{
 	echo "<script>location.href='loginpro7.php'</script>";

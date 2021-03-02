@@ -54,10 +54,7 @@ $(document).ready(function(){
 					btnClass: 'btn-dark',
 					action:function(){}	
 				}
-			}
-			
-			
-			
+			},
 		});
 	}
 	var rowHead='<thead><th>#</th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Quantity</th><th style="text-align:center;">Available Quantity</th></thead>';
@@ -124,10 +121,10 @@ $(document).ready(function(){
 					else{
 						
 						var row="";
-						var head ='<thead><th></th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Quantity</th><th style="text-align:center;">Available Quantity</th></thead>';
+						var head ='<thead><th></th><th style="text-align:center;">Component Name</th><th style="text-align:center;">Component ID</th><th style="text-align:center;">Quantity</th></thead>';
 						for(i=0;i<item.comp_id.length;i++)
 						{
-							row +='<tr><td>'+(i+1)+'</td><td style="min-width:10px"><input value="'+item.description[i] +'" readonly  spellcheck="false"  required class="form-control form-control-sm "></td><td style="min-width:20px;"><input value="'+ item.comp_id[i] +'" readonly type="text"  class="form-control form-control-sm "></td><td><center><input value="'+ item.quantity[i] +'" readonly  required class="form-control form-control-sm"></center></td><td ><input type="text" readonly class="form-control form-control-sm"></td></tr>';
+							row +='<tr><td>'+(i+1)+'</td><td style="min-width:10px"><input value="'+item.description[i] +'" readonly  spellcheck="false"  required class="form-control form-control-sm "></td><td style="min-width:20px;"><input value="'+ item.comp_id[i] +'" readonly type="text"  class="form-control form-control-sm "></td><td><center><input value="'+ item.quantity[i] +'" readonly  required class="form-control form-control-sm"></center></td></tr>';
 						}	
 						$("#already_issued").html("")
 						$("#already_issued").append(head).append(row);
@@ -297,26 +294,33 @@ $(document).ready(function(){
 		var issueData=[];
 		 issueData["c_id"]=[];
 		 issueData["req_qty"]=[];
-	
-
+		
 		$("form#main").on('click', 'button#submit2', function(e) {
 			var count=0;
-			$
+			var flag=0;
 			$('.c_id').each(function()
 			{	
-				console.log($('.c_id'))
+				var thisRow=$(this).parents("tr");
+				var rowcells2 = thisRow.find(".req_qty").val();
 				++count;
+				if (rowcells2 == false && count >= 1){
+
+					flag = 1
+				}
 			})
 			console.log(count)
 			if(!window.confirm("Are you sure?"))
 			{
 				e.preventDefault();
 			}
-			else if(count==0)
+			else if($("#due_date").val() == false){
+				alert1="Enter Due Date";
+				alertme();
+			}
+			else if(count==0 || flag == 1)
 			{
-				console.log("how the it is getting here",count)
 				e.preventDefault();
-				alert1="Issue Atleast One Component";
+				alert1="Issue Atleast 1 Component";
 				alertme();
 			}
 			else{
@@ -324,15 +328,13 @@ $(document).ready(function(){
 			$('.c_id').each(function(){
 
 				var thisRow=$(this).parents("tr");
-				 var rowcells1 = $(this).val();
-				 var rowcells2 = thisRow.find(".req_qty").val();
-
+				var rowcells1 = $(this).val();
+				var rowcells2 = thisRow.find(".req_qty").val();
+				
 				issueData.c_id.push(rowcells1);
 				issueData.req_qty.push(rowcells2);
-				console.log(issueData)
 
 			});
-			
 			issue();
 			}
 		});
@@ -340,6 +342,7 @@ $(document).ready(function(){
 
 		function issue() 
 		{
+			
 			var roll=$("#roll").val();
 			var due_date=$("#due_date ").val();
 			var cur_dept=get_dept;

@@ -1,6 +1,40 @@
 <?php
 include "DB.php";
-if(isset($_POST["item_id"]))
+
+
+if($con){
+  if (isset($_FILES["import"]["tmp_name"])){ 
+        
+    $file = $_FILES['import']['tmp_name'];
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime_type = finfo_file($finfo,$file);
+    $allowed_mimes = ['application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','text/csv','application/csv'];
+    if ($allowed_mimes.includes($mime_type))  
+      {
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file);
+        $sheetCount = $spreadsheet->getSheetCount();
+        for ($i = 0; $i < $sheetCount; $i++) {
+            $sheet = $spreadsheet->getSheet($i);
+            $rows = $sheet-> toArray();
+            foreach($rows as $row){                    
+                $values  = implode("', '", array_values($row));
+                $values = "'".$values."'";
+                $sql = mysqli_query($con,"INSERT INTO components(C_ID,Description,Size,Total_Quantity,Price) VALUES($values)");
+                
+            }
+        } 
+        if($sql == false){
+            die("invalid file orientation");
+        }else{
+            echo "component list updated successfully";
+        }           
+      }
+      else{
+          die("invalid format");
+      }
+}
+
+  else if(isset($_POST["item_id"]))
 {
  $item_id = $_POST["item_id"];
  $item_name = $_POST["item_name"];
@@ -38,5 +72,8 @@ if(isset($_POST["item_id"]))
  {
   echo json_encode(array('success' => 0));
  }
+}
+
+  
 }
 ?>

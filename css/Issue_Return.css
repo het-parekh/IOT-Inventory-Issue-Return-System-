@@ -3,6 +3,9 @@ body{
     background-image: url('../images/back.jpg') ;
 }
 
+.jconfirm-box{
+    width:400px !important; 
+}
 .previous {
     background-color: #f1f1f1;
     color: black;

@@ -68,7 +68,7 @@ if(isset($_COOKIE['username'])):{
     <div class="container" style="margin-top:-250px; margin-bottom:160px;">
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
+                <div class="card" style="box-shadow:0 0 10px 0 #222;">
                     <div class="card-header">
                         <h4 style="font-family:'Garamond','Times New Roman'">Issue / Return </h4><div id="statusp" class="status"><div id="status"></div></div>
                     </div>

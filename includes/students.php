@@ -62,7 +62,7 @@ if ($con){
 
          
           
-        }
+    }
 }
 else{
     echo"Connection was unsuccessful with the server...";
