@@ -20,9 +20,11 @@ $(document).ready(function () {
             });
           });
     })
-
     $("#add_user").click(function(){
-        $("#add_user_modal").load("add_user.php")
+        $(".add-user-cont").addClass("active")
+    })
+    $("#close-modal").click(function(){
+        $(".add-user-cont").removeClass("active")
     })
     $("#image").change(function() {
         if(this.files[0].size > 2097152){
