@@ -66,7 +66,29 @@ if(isset($_COOKIE['username'])):{
 .add-user-cont.active{
   display: block;
 }
+  .edit-user-cont{
+    position:absolute;
+    top:50px;
+    left:50%;
+    transform: translateX(-50%);
+    z-index:100;
+  display:none;
+}
+.edit-user-cont form{
+  position:relative;
+  max-width:90%;
+  width:600px;
+}
+.edit-user-cont.active{
+  display: block;
+}
 #close-modal{
+  position:absolute;
+  top: 5%;
+  right:5%;
+  cursor:pointer;
+}
+#close-modal2{
   position:absolute;
   top: 5%;
   right:5%;
@@ -77,6 +99,52 @@ if(isset($_COOKIE['username'])):{
   <div id="header"></div>
 
   <div class="full-contain">
+
+  <!-- EDIT user modal -->
+  <div class="edit-user-cont">
+
+  <form id="edit_user_form" method="POST" action="includes/manage_users_db.php" enctype="multipart/form-data">
+  <div id="close-modal2"> &#10006; </div>
+    <h1 style="width:350px;color:brown;" class="text-center pt-8">EDIT USER
+    <button onClick="location.href='passwordreset.php'" class="btn btn-info btn-lg float-right" type="button" id="pass_reset_btn" >Reset My Password &nbsp;<i style="color:white" class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </h1>
+
+    <label>
+      <input type="email"  class="input" id="edit_email" required name="email" placeholder="ENTER EMAIL*"/>
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+    </label>
+
+    <label>
+      <input type="file" id="edit_image" accept ="image/*" name="edit_profile_photo" class="input"   />
+      <small style="color:red;padding:0px;margin-top:-5px;float:left;margin-left:8px;">File Size should not exceed 2 MB*</small>
+    </label>
+
+    <label>
+        <input type="text" id='edit_username'  class="input" required name="edit_username" placeholder="ENTER USERNAME*"/>
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+    </label>
+
+        <?php if($get_user_role == "ADMIN"){ ?>
+
+        <select  name="edit_role" id="edit_role" required style="color:#787878">
+        <option disabled value="" >---SELECT ROLE---</option>
+        <option>ADMIN</option>
+        <option>ADVANCED USER</option>
+        </select>
+        <?php } ?>
+       
+        <br/>
+        <br/>
+        <br/>
+    <label class='mr-auto'>
+          <button type="button"  id="submit_user_edit" >SUBMIT</button>
+    </label>   
+  </form>
+  </div>
 
   <!-- add user modal -->
   <div class="add-user-cont">
@@ -134,6 +202,8 @@ if(isset($_COOKIE['username'])):{
     <button type="button" id="sumbit_user" >SUBMIT</button>
   </form>
   </div>
+
+
   <div class="main-content" style="margin-top:-320px; background:#fff; width:80%; position:relative; left:50%; transform:translate(-50%); box-shadow:4px 8px 16px rgba(0,0,0,.4); border-radius:10px; padding-bottom:30px; overflow:auto;">
 
   <div>
@@ -183,7 +253,7 @@ if(isset($_COOKIE['username'])):{
             <?php if ($row['email'] !== $name){?>
             <td> <input type="checkbox" id="delete <?php echo $row['email']; ?>" name="del" > 
             <?php if ($get_user_role == "ADMIN") { ?>
-            | <button data-toggle="modal" data-target="#edit_user_modal"  value="<?php echo $row['user_name'].',',$row['email'].',',$row['role'] ?>" style="color:white;background-color:#1a75ff;font-size:12px;" class='edit_user_btn btn btn-primary py-0 px-1'>Edit <i class="fa fa-pencil-square-o" ></i></button></td>
+            | <button  value="<?php echo $row['user_name'].',',$row['email'].',',$row['role'] ?>" style="color:white;background-color:#1a75ff;font-size:12px;" class='edit_user_btn btn btn-primary py-0 px-1'>Edit <i class="fa fa-pencil-square-o" ></i></button></td>
             <?php
             }
             }
@@ -192,7 +262,7 @@ if(isset($_COOKIE['username'])):{
               if ($get_user_role == "ADMIN") {
             }
             ?>
-            | <button data-toggle="modal" data-target="#edit_user_modal"  value="<?php echo $row['user_name'].',',$row['email'].',',$row['role'] ?>" style="color:white;background-color:#1a75ff;font-size:12px;" class='edit_user_btn btn btn-primary py-0   px-1'>Edit <i class="fa fa-pencil-square-o" ></i></button></td>
+            | <button  value="<?php echo $row['user_name'].',',$row['email'].',',$row['role'] ?>" style="color:white;background-color:#1a75ff;font-size:12px;" class='edit_user_btn btn btn-primary py-0   px-1'>Edit <i class="fa fa-pencil-square-o" ></i></button></td>
             <?php } ?>
            
         </tr>

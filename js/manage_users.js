@@ -1,10 +1,16 @@
 $(document).ready(function () {
     $("#update_user_table").on('click','.edit_user_btn',function(){
+        $(".edit-user-cont").addClass("active")
         var val = $(this).val().split(",")
         var username = val[0]
         var email = val[1]
         var role = val[2]
-        $("#edit_user_modal").load('edit_user.php',{role:role,username:username,email:email},function(){})        
+
+        $("#edit_email").val(email)
+        $("#edit_username").val(username)
+        $("#edit_role").val(role)
+
+    
     })
     
     $("#delete_user").click(function(){
@@ -26,7 +32,12 @@ $(document).ready(function () {
     $("#close-modal").click(function(){
         $(".add-user-cont").removeClass("active")
     })
-    $("#image").change(function() {
+
+    $("#close-modal2").click(function(){
+        $(".edit-user-cont").removeClass("active")
+    })
+
+    $("#image , #edit_image").change(function() {
         if(this.files[0].size > 2097152){
             swal({title:"File size should not exceed 2 MB",icon: "error"})
            this.value = "";
@@ -47,7 +58,7 @@ $(document).ready(function () {
 
     $("#submit_user_edit").click(function(){
         swal({title:"User Profile Updated Successfully",icon: "success"}).then(function() {
-            $("#add_user_form").submit()
+            $("#edit_user_form").submit()
         });
     })
 

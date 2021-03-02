@@ -10,6 +10,7 @@ if($con){
     }
     
     if(isset($_POST['password']) && isset($_POST['username'])){
+        echo "lol";
         $username = $_POST['username'];
         $email = $_POST['email'];
         $role = $_POST['role'];
