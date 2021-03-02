@@ -202,6 +202,15 @@ if(isset($_COOKIE['username'])):{
 						</div>
 				</div>
 			</div>
+			<div class="col-md-4">
+				<div class="card card-dashboard">
+						<div class="card-body" border-radius:24px>
+							<h4 class="card-title"><b>Add Students</b></h4>
+							<p class="card-text">Users can add new students either manually or through an excel file.</p><br />
+							<a href="studentdetails.php" class="btn btn-outline-success">Add Students</a>
+						</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div id="footer-section"></div>

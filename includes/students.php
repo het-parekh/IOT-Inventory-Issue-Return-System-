@@ -46,7 +46,7 @@ if ($con){
                 foreach($rows as $row){                    
                     $values  = implode("', '", array_values($row));
                     $values = "'".$values."'";
-                    $sql = mysqli_query($con,"INSERT INTO test VALUES($values)");
+                    $sql = mysqli_query($con,"INSERT INTO students VALUES($values)");
                     
                 }
             } 
