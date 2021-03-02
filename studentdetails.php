@@ -173,7 +173,7 @@ if(isset($_COOKIE['username'])):{
                     <input accept=".csv, .xls, .xlsx" type="file" id="import" name="import">
                     <div style="margin-top:-10px;color:#b30000"> 
                     <ul>
-                    <li>Only .xls,xlsx,xlsm file formats are allowed.</li>
+                    <li>Only .xls,.xlsx,.csv file formats are allowed.</li>
                     <li>Ensure that the the file has headers in the following order :- <small>(Student ID*, Student photo link, 
                     Student Year*, Student Roll No.*, Department Name*, Group ID, Student Name*, Student Mobile*,Student Email*, 
                     Parent's mobile No., Parent's Email ) </small></li>
