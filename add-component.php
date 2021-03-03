@@ -40,9 +40,6 @@ if(isset($_COOKIE['username'])):{
             position:relative;
             z-index:10;
         }
-#import{
-            left:55px !important;
-        }
 </style>
 <script>
 	 	 $(function(){
@@ -84,8 +81,11 @@ if(isset($_COOKIE['username'])):{
 
     <br />
     <form enctype="multipart/form-data" method = "POST" id="import_form">
-    <label for="import" class="photo-button">Import from Excel</label>
-    <input type="file" name="import" id="import" ></input>
+    <div style="position:relative;">
+      <label for="import" class="photo-button">Import from Excel</label>
+      <input type="file" name="import" id="import" style="position:absolute; top:10px; left:69px;outline:none;"></input>
+    </div>
+    
     <div style="margin-top:0px;color:#b30000"> 
         <ul style="margin-left:-20px;">
         <li>Only .xls, .xlsx, .csv file formats are allowed.</li>
