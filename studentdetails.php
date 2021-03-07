@@ -88,6 +88,16 @@ if(isset($_COOKIE['username'])):{
         #import #myFile{
             left:55px !important;
         }
+        .visuallyhidden {
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
     </style>
 </head>
 <script>
@@ -106,69 +116,69 @@ if(isset($_COOKIE['username'])):{
             <h1 style="text-align: center;">Student Details</h1>
             <form enctype="multipart/form-data" method = "POST" id = "input_form" action="students.php">
                 <div class="form-group">
-                  <!-- <label >Student ID</label> -->
+                  <label class="visuallyhidden" for="exmapleInputEmail1">Student ID</label>
                   <br>
                   <input class="form-control"  required style="outline:none;" id="exampleInputEmail1" placeholder="Student ID*">
                 </div>
                 <br>
                 <div class="form-group" style="position:relative;">
                 <form action="/action.php">
-                    <label for="myFile" style="left:15px;" class="photo-button">Student Photo</label>
+                    <label for="myFile" class="photo-button">Student Photo</label>
                     <br>
                     <input accept="image/*" type="file" id="myFile" name="s_photo">
                 </form>
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Student Name</label> -->
-                    <input name="s_name" class="form-control" required placeholder="Name*">
+                    <label class="visuallyhidden" for="name">Student Name</label>
+                    <input name="s_name" id="name" class="form-control" required placeholder="Name*">
                 </div>
                 <br>
                 <div class="form-group">
-                  <!-- <label>Year</label> -->
-                  <input name="s_year" class="form-control" required placeholder="Current Year*">
+                  <label class="visuallyhidden" for="year">Year</label>
+                  <input name="s_year" class="form-control" id="year" required placeholder="Current Year*">
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Roll Number</label> -->
-                    <input name="s_roll" class="form-control" required placeholder="Roll Number*">
+                    <label class="visuallyhidden" for="roll-no">Roll Number</label>
+                    <input name="s_roll" class="form-control" id="roll-no" required placeholder="Roll Number*">
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Department</label> -->
-                    <input name="s_dept" class="form-control" required placeholder="Department*">
+                    <label class="visuallyhidden" for="department">Department</label>
+                    <input name="s_dept" class="form-control" id="department" required placeholder="Department*">
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Group ID</label> -->
-                    <input name="s_grp" class="form-control" placeholder="Group ID">
+                    <label class="visuallyhidden" for="g_id">Group ID</label>
+                    <input name="s_grp" class="form-control" id="g_id" placeholder="Group ID">
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Student Mobile Number</label> -->
-                    <input name="s_mobile" type="tel" class="form-control" required placeholder="Student Mobile Number*">
+                    <label class="visuallyhidden" for="mobile_no">Student Mobile Number</label>
+                    <input name="s_mobile" type="tel" class="form-control" id="mobile_no" required placeholder="Student Mobile Number*">
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Parent Mobile Number</label> -->
-                    <input name="s_p_mobile" type="tel" class="form-control" placeholder="Parent Mobile Number">
+                    <label class="visuallyhidden" for="parent_no">Parent Mobile Number</label>
+                    <input name="s_p_mobile" type="tel" class="form-control" id="parent_no" placeholder="Parent Mobile Number">
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Student Email Address</label> -->
-                    <input name="s_email" type="email" class="form-control" required placeholder="Student Email Address*">
+                    <label class="visuallyhidden" for="email_stud">Student Email Address</label>
+                    <input name="s_email" type="email" id="email_stud" class="form-control" required placeholder="Student Email Address*">
                 </div>
                 <br>
                 <div class="form-group">
-                    <!-- <label>Parent email address</label> -->
-                    <input name="s_p_email" type="email" class="form-control"  placeholder="Parent Email address">
+                    <label class="visuallyhidden" for="email_parent">Parent email address</label>
+                    <input name="s_p_email" type="email" id="email_parent" class="form-control"  placeholder="Parent Email address">
                 </div>
                 <br>
                 <center><h5>OR</h5></center>
                 <br />
                 <div class="form-group" style="position:relative;">
                 <form  enctype="multipart/form-data" method = "POST" id="import_form">
-                    <label for="import" class="photo-button">Import from Excel</label>
+                    <label for="import" class="photo-button ">Import from Excel</label>
                     <br>
                     <input accept=".csv, .xls, .xlsx" type="file" id="import" name="import">
                     <div style="margin-top:-10px;color:#b30000"> 
